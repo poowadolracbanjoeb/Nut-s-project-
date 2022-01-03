@@ -6,6 +6,7 @@ use App\Models\Activity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\CheckName;
 
 class ActivityController extends Controller
 {
@@ -114,18 +115,6 @@ class ActivityController extends Controller
             return view('auth.Activity.manageActivityAllOutlineHead_Information_Unit')->with('file', $Activity);
         }
     }
-
-    
-
-
-
-
-
-
-
-
-
-
 
 
     public function submitCreateActivityDormitory_Director(Request $request)
@@ -706,21 +695,23 @@ class ActivityController extends Controller
         $file = Activity::all();
         return view('auth.Activity.viewStatusActivityApproveDormitory_Director', compact('file'));
     }
+
+
+
+
     public function checkName($activityId)
     {
-        $file = Activity::all();
-        $Activity = DB::table('activities')->where('activityId', $activityId)->first();
         $Members = User::all();
-        return view('auth.checkName.checkName')->with('data',$Members);
+        return view('auth.checkName.checkName', compact('activityId'))->with('data',$Members);
     }
-    public function submitCheckName($activityId,$Members)
+
+
+    public function submitCheckName($activityId, $id_user)
     {
-        $file = Activity::all();
-        $Activity = DB::table('activities')->where('activityId', $activityId)->first();
-        $Members = User::all();
-        return view('auth.checkName.checkName')->with('data',$Members);
+        $data = new CheckName;
+        $data->id_user = $id_user;
+        $data->activityId = $activityId;
+        $data->save();
+        return back()->with('post_update', 'บันทึกเค้าโครงร่างกิจกรรมสำเร็จ');
     }
-    
-    
-    
 }

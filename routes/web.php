@@ -163,7 +163,7 @@ Route::group(['middleware' => ['role']], function () {
     Route::get('/Dormitory_Director/viewStatusActivityApprove', [App\Http\Controllers\ActivityController::class, 'viewStatusActivityApproveDormitory_Director'])->name('viewStatusActivityApproveDormitory_Director');
 
     Route::get('/checkName/{activityId}', [App\Http\Controllers\ActivityController::class, 'checkName'])->name('checkName');
-    Route::get('/checkName/Submit/{activityId}/{id}', [App\Http\Controllers\ActivityController::class, 'submitCheckName'])->name('submitCheckName');
+    Route::get('/checkName/{activityId}/{id_user}/Submit', [App\Http\Controllers\ActivityController::class, 'submitCheckName'])->name('submitCheckName');
 });
 
 Auth::routes();
