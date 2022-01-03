@@ -10,6 +10,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Rules\MatchOldPassword;
 use Illuminate\Support\Facades\Hash;
+use App\Models\CheckName;
+
 
 class UserController extends Controller
 {
@@ -100,28 +102,29 @@ class UserController extends Controller
 
     public function showDataActivityDormitory_Director()
     {
-        $Activity = User::all();
-        return view('auth.ManagerUser.showDataActivityDormitory_Director',compact('Activity'));
+        $joinActivity = CheckName::all();
+        return view('auth.ManagerUser.showDataActivityDormitory_Director',compact('joinActivity'));
     }
+
     public function showDataActivityDormitory_Chairman()
     {
-        $Activity = User::all();
-        return view('auth.ManagerUser.showDataActivityDormitory_Chairman',compact('Activity'));
+        $joinActivity = CheckName::all();
+        return view('auth.ManagerUser.showDataActivityDormitory_Chairman',compact('joinActivity'));
     }
     public function showDataActivityAllDormitory_Counselor()
     {
-        $Activity = User::all();
-        return view('auth.ManagerUser.showDataActivityAllDormitory_Counselor',compact('Activity'));
+        $joinActivity = CheckName::all();
+        return view('auth.ManagerUser.showDataActivityAllDormitory_Counselor',compact('joinActivity'));
     }
     public function showDataActivityAllHead_Dormitory_Service()
     {
-        $Activity = User::all();
-        return view('auth.ManagerUser.showDataActivityAllHead_Dormitory_Service',compact('Activity'));
+        $joinActivity = CheckName::all();
+        return view('auth.ManagerUser.showDataActivityAllHead_Dormitory_Service',compact('joinActivity'));
     }
     public function showDataActivityAllDirector_Dormitory_Service_Division()
     {
-        $Activity = User::all();
-        return view('auth.ManagerUser.showDataActivityAllDirector_Dormitory_Service_Division',compact('Activity'));
+        $joinActivity = CheckName::all();
+        return view('auth.ManagerUser.showDataActivityAllDirector_Dormitory_Service_Division',compact('joinActivity'));
     }
     
     

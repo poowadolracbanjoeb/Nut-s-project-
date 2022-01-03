@@ -27,18 +27,13 @@
           <thead>
             <tr class="table-warning ">
               <th>ชื่อโครงการ</th>
-              <th>สถานที่ปฏิบัติงาน</th>
-              <th>วันที่จัดกิจกรรม</th>
               <th>ดำเนินการ</th>
             </tr>
           </thead>
-          @foreach($Activity as $Activity)
+          @foreach($joinActivity as $joinActivity)
           <tbody>
-            <td>{{$Activity->activityName}}</td>
-            <td>{{$Activity->activityPlace}}</td>
-            <td>{{$Activity->activityStartDate}} ถึง {{$Activity->activityEndDate}}</td>
-            <td><a class="btn btn-info" href="/Dormitory_Director/manageActivity/activityDetail/{{$Activity->activityId}}">ดูรายละเอียด</a>
-              <a class="btn btn-info" href="/Dormitory_Director/manageActivity/activityDetail/{{$Activity->activityId}}">เช็กชื่อ</a>
+            <td>{{$joinActivity->activityId}}</td>
+            <td><a class="btn btn-info" href="">ดูรายละเอียด</a>
             </td>
           </tbody>
           @endforeach
