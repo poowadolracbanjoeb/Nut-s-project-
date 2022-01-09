@@ -714,4 +714,19 @@ class ActivityController extends Controller
         $data->save();
         return back()->with('post_update', 'บันทึกเค้าโครงร่างกิจกรรมสำเร็จ');
     }
+
+    public function calenderActivity(Request $request)
+    {
+
+        if($request->ajax()) {
+
+             $data = Activity::whereDate('activityStartDate', '>=', $request->activityStartDate)
+                       ->whereDate('activityEndDate',   '<=', $request->activityEndDate)
+                       ->get(['activityID', 'activityName', 'activityStartDate', 'activityEndDate']);
+
+             return response()->json($data);
+        }
+
+        return view('Home.Home');
+    }
 }

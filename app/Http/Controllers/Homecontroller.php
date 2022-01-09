@@ -50,4 +50,7 @@ class HomeController extends Controller
     {
         return view('Home.Director_Dormitory_Service_Division');
     }
+
+
+    
 }

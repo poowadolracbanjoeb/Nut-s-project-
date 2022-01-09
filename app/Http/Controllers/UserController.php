@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\DB;
 use App\Rules\MatchOldPassword;
 use Illuminate\Support\Facades\Hash;
 use App\Models\CheckName;
+use App\Models\dormitories;
+
 
 
 class UserController extends Controller
@@ -52,31 +54,38 @@ class UserController extends Controller
 
     public function showDataUserStudent()
     {
-        return view('auth.ManagerUser.showDataUserStudent');
+        $data = dormitories::all();
+        return view('auth.ManagerUser.showDataUserStudent')->with('data',$data);
     }
     public function showDataUserDormitory_Director()
     {
-        return view('auth.ManagerUser.showDataUserDormitory_Director');
+        $data = dormitories::all();
+        return view('auth.ManagerUser.showDataUserDormitory_Director')->with('data',$data);
     }
     public function showDataUserDormitory_Chairman()
     {
-        return view('auth.ManagerUser.showDataUserDormitory_Chairman');
+        $data = dormitories::all();
+        return view('auth.ManagerUser.showDataUserDormitory_Chairman')->with('data',$data);
     }
     public function showDataUserDormitory_Counselor()
     {
-        return view('auth.ManagerUser.showDataUserDormitory_Counselor');
+        $data = dormitories::all();
+        return view('auth.ManagerUser.showDataUserDormitory_Counselor')->with('data',$data);
     }
     public function showDataUserHead_Dormitory_Service()
     {
-        return view('auth.ManagerUser.showDataUserHead_Dormitory_Service');
+        $data = dormitories::all();
+        return view('auth.ManagerUser.showDataUserHead_Dormitory_Service')->with('data',$data);
     }
     public function showDataUserDirector_Dormitory_Service_Division()
     {
-        return view('auth.ManagerUser.showDataUserDirector_Dormitory_Service_Division');
+        $data = dormitories::all();
+        return view('auth.ManagerUser.showDataUserDirector_Dormitory_Service_Division')->with('data',$data);
     }
     public function showDataUserHead_Information_Unit()
     {
-        return view('auth.ManagerUser.showDataUserHead_Information_Unit');
+        $data = dormitories::all();
+        return view('auth.ManagerUser.showDataUserHead_Information_Unit')->with('data',$data);
     }
     
     
