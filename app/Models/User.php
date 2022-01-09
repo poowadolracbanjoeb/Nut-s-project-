@@ -26,8 +26,7 @@ class User extends Authenticatable
         'student_degree', 
         'student_faculty',    
         'student_score',     
-        'id_role' ,   
-        'id_room',    
+        'id_role' ,      
    
         
     ];
