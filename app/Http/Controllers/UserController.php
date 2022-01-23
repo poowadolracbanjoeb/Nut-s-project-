@@ -12,6 +12,8 @@ use App\Rules\MatchOldPassword;
 use Illuminate\Support\Facades\Hash;
 use App\Models\CheckName;
 use App\Models\dormitories;
+use App\Models\dormitory_user_history;
+
 
 
 
@@ -59,7 +61,7 @@ class UserController extends Controller
     }
     public function showDataUserDormitory_Director()
     {
-        $data = dormitories::all();
+        $data = dormitory_user_history::all();
         return view('auth.ManagerUser.showDataUserDormitory_Director')->with('data',$data);
     }
     public function showDataUserDormitory_Chairman()
