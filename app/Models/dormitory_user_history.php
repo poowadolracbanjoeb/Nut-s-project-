@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class dormitories extends Model
+class dormitory_user_history extends Model
 {
     protected $fillable = [
-        'id_dorm',
+        'semester',
+        'room',
         'dormName',
-        'dorm_service', 
+        'id_users',
          
     ];
 
-    protected $table ="dormitories";
+    protected $table ="dormitory_user_history";
 }

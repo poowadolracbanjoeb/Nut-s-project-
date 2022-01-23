@@ -100,22 +100,17 @@
     <div class="card">
         <div class="card-body">
             <div class="row">
-                <div class="col-3 bg-warning">
+                <div class="col-4 bg-warning">
                     <a>ปีการศึกษา</a>
                 </div>
-                <div class="col-3 bg-warning">
+                <div class="col-4 bg-warning">
                     <a>
                         หมายเลขห้อง
                     </a>
                 </div>
-                <div class="col-3 bg-warning">
+                <div class="col-4 bg-warning">
                     <a>
                         หอพักนักศึกษา
-                    </a>
-                </div>
-                <div class="col-3 bg-warning">
-                    <a>
-                        หน่วยบริการหอพักนักศึกษา
                     </a>
                 </div>
             </div>
@@ -126,24 +121,18 @@
         <div class="card-body">
             @foreach($data as $data)
             <div class="row">
-                <div class="col-3 bg-light">
+                <div class="col-4 bg-light">
                     <a>{{$data->semester}}
-
                     </a>
                 </div>
-                <div class="col-3 bg-light">
+                <div class="col-4 bg-light">
                     <a>
                         {{$data->room}}
                     </a>
                 </div>
-                <div class="col-3 bg-light">
+                <div class="col-4 bg-light">
                     <a>
-                        {{$data->dorm}}
-                    </a>
-                </div>
-                <div class="col-3 bg-light">
-                    <a>
-                        {{$data->dorm_service}}
+                        {{$data->dormName}}
                     </a>
                 </div>
             </div>
