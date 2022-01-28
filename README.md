@@ -11,4 +11,4 @@ Activities management system for central dormitories of Khon Kaen University
 
 ***
 
-![image](https://user-images.githubusercontent.com/76694513/151580094-0e8c0c7b-c6dc-4ad2-a8be-1085fe210855.png)
+![image](https://user-images.githubusercontent.com/76694513/151580360-f997005f-50da-4df0-90eb-b2dc7fda0da6.png)
