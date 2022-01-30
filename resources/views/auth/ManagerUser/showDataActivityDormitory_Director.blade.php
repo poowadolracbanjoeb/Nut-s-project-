@@ -51,7 +51,7 @@
           <div class="col-1 bg-light">
           </div>
           <div class="col-1 bg-light">
-            <a>5 </a>
+            <a>4 </a>
           </div>
           <div class="col-1 bg-warning">
             <a>กิจกรรม </a>
@@ -65,7 +65,7 @@
           <div class="col-1 bg-light">
           </div>
           <div class="col-1 bg-light">
-            <a>5 </a>
+            <a>400 </a>
           </div>
           <div class="col-1 bg-warning">
             <a>คะแนน </a>

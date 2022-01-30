@@ -140,6 +140,11 @@ Route::group(['middleware' => ['role']], function () {
     Route::get('/Dormitory_Chairman/manageActivity/deleteActivity/{activityId}', [App\Http\Controllers\ActivityController::class, 'deleteActivity_Dormitory_Chairman'])->name('deleteActivity_Dormitory_Chairman');
     Route::get('/Head_Information_Unit/manageActivityAll/deleteActivity/{activityId}', [App\Http\Controllers\ActivityController::class, 'deleteActivityAll_Head_Information_Unit'])->name('deleteActivityAll_Head_Information_Unit');
 
+
+    Route::get('/Dormitory_Director/checkName/delete_user/{id_user}', [App\Http\Controllers\ActivityController::class, 'delete_user_has_Activity_Dormitory_Director'])->name('delete_user_has_Activity_Dormitory_Director');
+
+
+
     Route::get('/Dormitory_Director/manageActivity/Outline', [App\Http\Controllers\ActivityController::class, 'manageActivityOutlineDormitory_Director'])->name('manageActivityOutlineDormitory_Director');
     Route::get('/Dormitory_Director/manageActivity/Fell', [App\Http\Controllers\ActivityController::class, 'manageActivityFellDormitory_Director'])->name('manageActivityFellDormitory_Director');
 
@@ -163,9 +168,12 @@ Route::group(['middleware' => ['role']], function () {
     Route::get('/Dormitory_Director/viewStatusActivityApprove', [App\Http\Controllers\ActivityController::class, 'viewStatusActivityApproveDormitory_Director'])->name('viewStatusActivityApproveDormitory_Director');
 
     Route::get('/checkName/{activityId}', [App\Http\Controllers\ActivityController::class, 'checkName'])->name('checkName');
-    Route::get('/checkName/{activityId}/{id_user}/Submit', [App\Http\Controllers\ActivityController::class, 'submitCheckName'])->name('submitCheckName');
+    Route::post('/checkName/{activityId}/Submit', [App\Http\Controllers\ActivityController::class, 'submitCheckName'])->name('submitCheckName');
 
     Route::get('/Dormitory_Director/AddActivityType', [App\Http\Controllers\ActivityController::class, 'AddActivityTypeDormitory_Director'])->name('AddActivityTypeDormitory_Director');
+
+    Route::get('/Dormitory_Director/manageActivity/activityHasUser/{activityId}', [App\Http\Controllers\ActivityController::class, 'activityHasUserDormitory_Director'])->name('activityHasUserDormitory_Director');
+
     
 });
 

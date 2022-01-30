@@ -141,6 +141,12 @@ class ActivityController extends Controller
         return view('auth.Activity.editActivity_Dormitory_Director', compact('Activity'));
     }
 
+    public function delete_user_has_Activity_Dormitory_Director($id_user)
+    {
+        DB::table('users_has_activities')->where('id_users', $id_user)->delete();
+        return back()->with('post_delete', 'ลบสำเร็จแล้ว');
+    }
+
     public function deleteActivity_Dormitory_Director(Request $request)
     {
         DB::table('activities')->where('activityId', $request->activityId)->delete();
@@ -184,6 +190,15 @@ class ActivityController extends Controller
         $data->save();
         return back()->with('post_update', 'บันทึกเค้าโครงร่างกิจกรรมสำเร็จ');
     }
+
+    public function activityHasUserDormitory_Director($activityId)
+    {
+        $Activity = DB::table('activities')->where('activityId', $activityId)->first();
+        return view('auth.Activity.activityHasUserDormitory_Director', compact('Activity'));
+    }
+
+
+    
 
 //---------------------------------------------------------------------------------------------------------------------------------
 
@@ -777,15 +792,17 @@ class ActivityController extends Controller
 
     public function checkName($activityId)
     {
-        $Members = User::all();
-        return view('auth.checkName.checkName', compact('activityId'))->with('data',$Members);
+        $user_has_activity = CheckName::all();
+        $Activity = DB::table('activities')->where('activityId', $activityId)->first();
+        return view('auth.checkName.checkName', compact('Activity'))->with('data', $user_has_activity);
     }
 
 
-    public function submitCheckName($activityId, $id_user)
+    public function submitCheckName(Request $request, $activityId)
     {
+        
         $data = new CheckName;
-        $data->id_user = $id_user;
+        $data->id_users = $request->id_users;
         $data->activityId = $activityId;
         $data->save();
         return back()->with('post_update', 'บันทึกเค้าโครงร่างกิจกรรมสำเร็จ');

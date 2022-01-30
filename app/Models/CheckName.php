@@ -9,7 +9,7 @@ class CheckName extends Model
 {
     // use HasFactory;
     protected $fillable=[
-        'id_user',
+        'id_users',
         'activityId',];
     protected $table ="users_has_activities";
 }

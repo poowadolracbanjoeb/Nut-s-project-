@@ -37,7 +37,8 @@
                 </div>
                 <div class="col-9 bg-light">
                     <a>
-                        {{ Auth::user()->id }}
+                        {{ Auth::user()->id_users }}
+                        
                     </a>
                 </div>
             </div>

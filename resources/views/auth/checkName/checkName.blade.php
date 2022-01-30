@@ -21,69 +21,79 @@
 </section>
 
 
+
+
+
 <div class="container">
-  <div class="card bg-light mt-3">
+  <div class="low">
+    <div class="col-sm-6">
+      <font size="5">{{$Activity->activityName}}
+      </font><br>
+    </div>
+  </div>
+  <br>
+
+  <form action="/checkName/{{$Activity->activityId}}/Submit" method="POST" enctype="multipart/form-data">
+    {{csrf_field()}}
+    <div class="form-inline">
+      <input type="text" name="id_users" placeholder="กรอกรหัสนักศึกษา" class="form-control" aria-label="Search" />
+      <input type="submit" class="btn btn-success" value="เช็กชื่อ" />
+    </div>
+  </form><br>
+
+
+
+  <div class="card">
     <div class="card-body">
-      <form action="">
-        <div class="form-group">
-          <input type="text" name="q" placeholder="ค้นหารายชื่อนักศึกษา" class="form-control" /><br>
-          <input type="submit" class="btn btn-primary" value="ค้นหา" />
-          <input type="submit" class="btn btn-primary" value="ดูนักศึกษาที่เข้าร่วม" />
-        </div>
-      </form>
-      <div class="row">
-        <div class="col-10">
-
-        </div>
-      </div>
-      <br>
-
-
-      <table class="table table-striped table-ligh">
+      <table class="table table-striped table-light">
         <thead>
           <tr class="table-warning ">
-            <th>รหัสผู้ใช้</th>
-            <th>ชื่อผู้ใช้</th>
-            <th>อีเมลล์</th>
-            <th>เบอร์โทร</th>
-            <th>เช็กชื่อ</th>
+            <th>รหัสนักศึกษา</th>
+            <th>ดำเนินการ</th>
           </tr>
         </thead>
-
-        @foreach($data as $Members)
+        @foreach($data as $user_has_activity)
+        @if($user_has_activity -> activityId == $Activity -> activityId)
         <tbody>
-          <td>{{$Members->id}}</td>
-          <td>{{$Members->name}}</td>
-          <td>{{$Members->email}}</td>
-          <td>{{$Members->tel}}</td>
-          <td><a class="btn btn-info" href="/checkName/{{$activityId}}/{{$Members->id_user}}/Submit">เลือก</a></td>
-          @endforeach
+          <tr>
+            <td> {{$user_has_activity -> id_users}}</td>
+            <td>
+              <a class="btn btn-danger" href="/Dormitory_Director/checkName/delete_user/{{$user_has_activity -> id_users}}">ลบ</a>
+            </td>
+          </tr>
         </tbody>
+        @endif
+        @endforeach
+
+
+
       </table>
     </div>
   </div>
 </div>
 
-<!-- Modal -->
-<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ยืนยันการเช็กชื่อ
-      </div>
-      <div class="modal-footer">
-      <button type="button" class="btn btn-primary" href ="" >ตกลง</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-        
-      </div>
-    </div>
-  </div>
-</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
 
 @endsection
