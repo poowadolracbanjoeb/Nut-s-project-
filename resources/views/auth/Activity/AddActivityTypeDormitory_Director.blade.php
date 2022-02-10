@@ -25,12 +25,13 @@
       <form method="POST" enctype="multipart/form-data">
         {{csrf_field()}}
         <div class="form-group">
-          ชื่อลักษณะกิจกรรม
-          <input type="text" name="activityName" class="form-control">
-          <span class="text-danger"> @error("activityName"){{$message}}@enderror </span><br><br>
+          ด้านที่ 
+          <input type="text" name="a" class="form-inline"><br>
 
-          <input type="submit" class="btn btn-success" value="ยืนยัน" formaction="{{url('/Dormitory_Director/createActivity/Submit')}}">
-          <input type="submit" class="btn btn-warning" value="ยกเลิก" formaction="{{url('/Dormitory_Director/createActivity/Outline/Submit')}}">
+          ชื่อลักษณะกิจกรรม
+          <input type="text" name="typeName" class="form-control"><br><br>
+
+          <input type="submit" class="btn btn-success" value="ยืนยัน" formaction="{{url('/Dormitory_Director/createActivity/AddActivityType/Submit')}}">
       </form>
     </div>
   </div>

@@ -33,8 +33,8 @@
           </thead>
           @foreach($joinActivity as $joinActivity)
           <tbody>
-            <td>{{$joinActivity->activityId}}</td>
-            <td>100</td>
+            <td>กิจกรรมต้อนรับน้องใหม่</td>
+            <td>30</td>
             <td><a class="btn btn-info" href="">ดูรายละเอียด</a>
             </td>
           </tbody>
@@ -51,7 +51,7 @@
           <div class="col-1 bg-light">
           </div>
           <div class="col-1 bg-light">
-            <a>4 </a>
+            <a>1 </a>
           </div>
           <div class="col-1 bg-warning">
             <a>กิจกรรม </a>
@@ -65,7 +65,7 @@
           <div class="col-1 bg-light">
           </div>
           <div class="col-1 bg-light">
-            <a>400 </a>
+            <a>30 </a>
           </div>
           <div class="col-1 bg-warning">
             <a>คะแนน </a>

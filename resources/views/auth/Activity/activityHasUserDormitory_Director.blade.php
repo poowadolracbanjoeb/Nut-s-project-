@@ -36,7 +36,7 @@
 
             </div>
             <div class="col">
-                <a class="btn btn-warning" href="{{ route('export') }}">Export User Data</a>
+                <a class="btn btn-warning" href="/export/UserHasActivity">ดาวน์โหลด</a>
             </div>
 
         </div>
@@ -45,20 +45,26 @@
                 <table class="table table-striped table-light">
                     <thead>
                         <tr class="table-warning ">
-                            <th>ชื่อ</th>
                             <th>รหัสนักศึกษา</th>
+                            <th>ชื่อ</th>
                         </tr>
                     </thead>
+                    @foreach($data as $user_has_activity)
+                    @if($user_has_activity -> activityId == $Activity -> activityId)
                     <tbody>
                         <tr>
-                            <td>555555555555</td>
-                            <td>44444444444</td>
+                            <td> {{$user_has_activity -> id_users}}</td>
+                            <td> {{ Auth::user()->name }}</td>
+                            
                         </tr>
                     </tbody>
+                    @endif
+                    @endforeach
                 </table>
             </div>
         </div>
     </div>
+</div>
 
 </div>
 @endsection

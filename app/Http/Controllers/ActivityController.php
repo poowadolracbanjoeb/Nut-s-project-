@@ -61,19 +61,20 @@ class ActivityController extends Controller
         return view('auth.Activity.viewStatusActivityApproveDormitory_Director', compact('file'));
     }
 
+
+
     public function submitCreateActivityDormitory_Director(Request $request)
     {
-        $request->validate([
-            'activityName' => 'required ',
-            'id_type' => 'required ',
-            'activityPlace' => 'required ',
-            'activityResponsible' => 'required',
-            'activityStartDate' => 'required ',
-            'activityEndDate' => 'required ',
-            'activity_Target' => 'required ',
-            'activity_Budget' => 'required ',
-            'activityFile' => 'required '
-        ]);
+        // $request->validate([
+        //     'activityName' => 'required ',
+        //     'id_type' => 'required ',
+        //     'activityPlace' => 'required ',
+        //     'activityStartDate' => 'required ',
+        //     'activityEndDate' => 'required ',
+        //     'activity_Target' => 'required ',
+        //     'activity_Budget' => 'required ',
+        //     'activityFile' => 'required ' 
+        // ]);
 
         $data = new Activity;
         if ($request->file('activityFile')) {
@@ -82,18 +83,24 @@ class ActivityController extends Controller
             $request->activityFile->move('storage/', $activityFile);
             $data->activityFile = $activityFile;
         }
+
         $data->activityName = $request->activityName;
-        $data->id_type = $request->id_type;
         $data->activityPlace = $request->activityPlace;
-        $data->activityResponsible = $request->activityResponsible;
         $data->activityStartDate = $request->activityStartDate;
         $data->activityEndDate = $request->activityEndDate;
+        $data->activityScore = $request->activityScore;
+        $data->id_type = $request->id_type;
         $data->activity_Target = $request->activityTarget;
         $data->activity_Budget = $request->activityBudget;
+        $data->semester = $request->semester;
         $data->id_status = 11;
         $data->save();
         return back()->with('post_update', 'บันทึกเค้าโครงร่างกิจกรรมสำเร็จ');
     }
+
+
+
+
 
     public function activityDetailDormitory_Director($activityId)
     {
@@ -193,10 +200,25 @@ class ActivityController extends Controller
 
     public function activityHasUserDormitory_Director($activityId)
     {
+        $user_has_activity = CheckName::all();
         $Activity = DB::table('activities')->where('activityId', $activityId)->first();
-        return view('auth.Activity.activityHasUserDormitory_Director', compact('Activity'));
+        return view('auth.Activity.activityHasUserDormitory_Director', compact('Activity'))->with('data', $user_has_activity);
     }
 
+    public function SubmitAddActivityTypeDormitory_Director(Request $request)
+    {
+        $data = new activities_types;
+        $data->id_type = $request->a;
+        $data->typeName = $request->typeName;
+        $data->save();
+        return back()->with('post_update', 'บันทึกเค้าโครงร่างกิจกรรมสำเร็จ');
+    }
+
+    
+
+    
+
+        
 
     
 

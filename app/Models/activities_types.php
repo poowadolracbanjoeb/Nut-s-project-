@@ -11,5 +11,5 @@ class activities_types extends Model
     protected $fillable=[
         'id_type',
         'typeName',];
-    protected $table ="activities_types";
+    protected $table ="activitiestypes";
 }

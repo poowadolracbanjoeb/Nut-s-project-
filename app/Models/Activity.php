@@ -17,13 +17,13 @@ class Activity extends Model
         'activityScore',
         'activityFile',
         'activityAdvice',
-        'activityResponsible',
         'activity_Target',
         'activity_Budget',
         'activity_Year',
         'id_type',
         'created_at',
         'update_at',
+        'semester',
         'id_status'];
     protected $table ="activities";
 }

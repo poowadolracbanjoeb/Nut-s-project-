@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\CheckName;
 use App\Models\dormitories;
 use App\Models\dormitory_user_history;
+use App\Exports\ExportUserHasActivity;
+
 
 
 
@@ -202,6 +204,12 @@ class UserController extends Controller
     {
         return Excel::download(new UsersExport, 'users.xlsx');
     }
+
+    public function exportUserHasActivity()
+    {
+        return Excel::download(new ExportUserHasActivity, 'ExportUserHasActivity.xlsx');
+    }
+    
 
     /**
      * @return \Illuminate\Support\Collection

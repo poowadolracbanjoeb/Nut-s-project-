@@ -38,8 +38,7 @@
               @endforeach
             </select>
             <a href="/Dormitory_Director/AddActivityType">เพิ่มลักษณะกิจกรรม</a>
-            <br>
-
+            <br>  
             <span class="text-danger"> @error("id_type"){{$message}}@enderror </span><br><br>
             คะแนนกิจกรรม
             <input type="text" name="activityScore" class="form-control">
@@ -49,15 +48,14 @@
             <span class="text-danger"> @error("activityPlace"){{$message}}@enderror </span><br><br>
             หน่วยงานที่รับผิดชอบโครงการ
             <br>
-            <select class="form-select" name="id_type" class="form-control">
+            <select class="form-select" name="dormResponsibility1" class="form-control">
               @foreach($data as $dorm)
               <option value="{{$dorm->id_dorm}}">{{$dorm->dormName}}</option>
               @endforeach
             </select>
-
             <a href="#demo" data-toggle="collapse">เพิ่มหน่วยงานรับผิดชอบโครงการ</a>
             <div id="demo" class="collapse">
-              <select class="form-select" name="id_type" class="form-control">
+              <select class="form-select" name="dormResponsibility2" class="form-control">
                 @foreach($data as $dorm)
                 <option value="{{$dorm->id_dorm}}">{{$dorm->dormName}}</option>
                 @endforeach
@@ -77,6 +75,8 @@
             งบประมาณที่ใช้ดำเนินโครงการ
             <input type="text" name="activityBudget" class="form-control"><br>
             <span class="text-danger"> @error("activityBudget"){{$message}}@enderror </span><br>
+            ปีการศึกษา
+            <input type="text" name="semester" class="form-control"><br>
             เอกสารประกอบโครงการ<br><br>
             <input type="file" name="activityFile"><br><br>
             <span class="text-danger"> @error("activityFile"){{$message}}@enderror </span><br>

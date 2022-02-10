@@ -174,6 +174,9 @@ Route::group(['middleware' => ['role']], function () {
 
     Route::get('/Dormitory_Director/manageActivity/activityHasUser/{activityId}', [App\Http\Controllers\ActivityController::class, 'activityHasUserDormitory_Director'])->name('activityHasUserDormitory_Director');
 
+    Route::post('/Dormitory_Director/createActivity/AddActivityType/Submit', [App\Http\Controllers\ActivityController::class, 'SubmitAddActivityTypeDormitory_Director'])->name('SubmitAddActivityTypeDormitory_Director');
+    
+    Route::get('/export/UserHasActivity', [App\Http\Controllers\UserController::class, 'exportUserHasActivity'])->name('exportUserHasActivity');
     
 });
 
