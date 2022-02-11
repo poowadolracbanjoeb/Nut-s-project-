@@ -14,8 +14,8 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/Dormitory_Director/home">หน้าหลัก</a></li>
-                        <li class="breadcrumb-item active"><a href="/Dormitory_Director/showDataActivity">จัดการกิจกรรม</a></li>
-                        <li class="breadcrumb-item active"><a href="/Dormitory_Director/showDataActivity">นักศึกษาที่เข้าร่วมกิจกรรม</a></li>
+                        <li class="breadcrumb-item active"><a href="/Dormitory_Director/manageActivity">จัดการกิจกรรม</a></li>
+                        <li class="breadcrumb-item active"><a href="/Dormitory_Director/manageActivity/activityHasUser/{{$Activity->activityId}}">นักศึกษาที่เข้าร่วมกิจกรรม</a></li>
                     </ol>
                 </div>
             </div>
@@ -25,12 +25,6 @@
 
 
     <div class="container">
-        <div class="low">
-            <div class="col-sm-6">
-                <font size="5">กิจกรรมต้อนรับน้องใหม่
-                </font><br>
-            </div>
-        </div>
         <div class="row">
             <div class="col-10">
 
@@ -42,6 +36,12 @@
         </div>
         <div class="card">
             <div class="card-body">
+                <div class="low">
+                    <div class="col-sm-6">
+                        <font size="5">กิจกรรมต้อนรับน้องใหม่
+                        </font><br>
+                    </div>
+                </div><br>
                 <table class="table table-striped table-light">
                     <thead>
                         <tr class="table-warning ">
@@ -55,7 +55,7 @@
                         <tr>
                             <td> {{$user_has_activity -> id_users}}</td>
                             <td> {{ Auth::user()->name }}</td>
-                            
+
                         </tr>
                     </tbody>
                     @endif

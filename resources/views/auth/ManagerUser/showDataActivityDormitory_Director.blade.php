@@ -35,7 +35,7 @@
           <tbody>
             <td>กิจกรรมต้อนรับน้องใหม่</td>
             <td>30</td>
-            <td><a class="btn btn-info" href="">ดูรายละเอียด</a>
+            <td><a class="btn btn-info" href="/Dormitory_Director/manageActivity/activityDetail/">ดูรายละเอียด</a>
             </td>
           </tbody>
           @endforeach

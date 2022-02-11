@@ -9,17 +9,19 @@ use App\Models\User;
 use App\Models\CheckName;
 use App\Models\activities_types;
 use App\Models\dormitories;
+use App\Models\activity_responsible_dorm;
+
 
 class ActivityController extends Controller
 {
-//--------------------Dormitory_Director-------------------------------------
+    //--------------------Dormitory_Director-------------------------------------
 
 
     public function createActivityDormitory_Director()
     {
         $type = activities_types::all();
         $dorm = dormitories::all();
-        return view('auth.Activity.createActivityDormitory_Director')->with('data',$dorm)->with('data2',$type);
+        return view('auth.Activity.createActivityDormitory_Director')->with('data', $dorm)->with('data2', $type);
     }
 
     public function manageActivityDormitory_Director(Request $request)
@@ -65,37 +67,57 @@ class ActivityController extends Controller
 
     public function submitCreateActivityDormitory_Director(Request $request)
     {
-        // $request->validate([
-        //     'activityName' => 'required ',
-        //     'id_type' => 'required ',
-        //     'activityPlace' => 'required ',
-        //     'activityStartDate' => 'required ',
-        //     'activityEndDate' => 'required ',
-        //     'activity_Target' => 'required ',
-        //     'activity_Budget' => 'required ',
-        //     'activityFile' => 'required ' 
-        // ]);
+        $request->validate([
+            'activityFile' => 'required ',
+            'activityId' => 'required ',
+            'activityName' => 'required ',
+            'activityPlace' => 'required ',
+            'activityStartDate' => 'required ',
+            'activityEndDate' => 'required ',
+            'activityScore' => 'required ',
+            'id_type' => 'required ',
+            'activity_Target' => 'required ',
+            'activity_Budget' => 'required ',
+            'semester' => 'required ',
+            'dormResponsibility1' => 'required|min:1',
+            'dormResponsibility2' => 'required|min:1 ',         
+        ]);
 
-        $data = new Activity;
+        $data1 = new Activity;
         if ($request->file('activityFile')) {
             $activityFile = $request->file('activityFile');
             $activityFile = time() . '.' . $activityFile->getClientOriginalExtension();
             $request->activityFile->move('storage/', $activityFile);
-            $data->activityFile = $activityFile;
+            $data1->activityFile = $activityFile;
+        }
+        $data1->activityId = $request->activityId;
+        $data1->activityName = $request->activityName;
+        $data1->activityPlace = $request->activityPlace;
+        $data1->activityStartDate = $request->activityStartDate;
+        $data1->activityEndDate = $request->activityEndDate;
+        $data1->activityScore = $request->activityScore;
+        $data1->id_type = $request->id_type;
+        $data1->activity_Target = $request->activityTarget;
+        $data1->activity_Budget = $request->activityBudget;
+        $data1->semester = $request->semester;
+        $data1->id_status = 11;
+        $data1->save();
+
+        if ($request->dormResponsibility1 != null){
+            $data2 = new activity_responsible_dorm;
+            $data2->activityID = $request->activityId;
+            $data2->id_dorm = $request->dormResponsibility1;
+            $data2->save();
+        }    
+
+        if ($request->dormResponsibility2 != null){
+            $data3 = new activity_responsible_dorm;
+            $data3->activityID = $request->activityId;
+            $data3->id_dorm = $request->dormResponsibility2;
+            $data3->save();
         }
 
-        $data->activityName = $request->activityName;
-        $data->activityPlace = $request->activityPlace;
-        $data->activityStartDate = $request->activityStartDate;
-        $data->activityEndDate = $request->activityEndDate;
-        $data->activityScore = $request->activityScore;
-        $data->id_type = $request->id_type;
-        $data->activity_Target = $request->activityTarget;
-        $data->activity_Budget = $request->activityBudget;
-        $data->semester = $request->semester;
-        $data->id_status = 11;
-        $data->save();
-        return back()->with('post_update', 'บันทึกเค้าโครงร่างกิจกรรมสำเร็จ');
+        return back();
     }
 
 
@@ -214,22 +236,22 @@ class ActivityController extends Controller
         return back()->with('post_update', 'บันทึกเค้าโครงร่างกิจกรรมสำเร็จ');
     }
 
-    
-
-    
-
-        
-
-    
-
-//---------------------------------------------------------------------------------------------------------------------------------
 
 
 
 
 
 
-//-----------------Dormitory_Chairman-----------------------------------------
+
+
+    //---------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+    //-----------------Dormitory_Chairman-----------------------------------------
 
     public function createActivityDormitory_Chairman()
     {
@@ -388,7 +410,7 @@ class ActivityController extends Controller
         return view('auth.Activity.activityDetailDormitory_Chairman', compact('Activity'));
     }
 
-//-------------------------------------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -412,7 +434,7 @@ class ActivityController extends Controller
 
 
 
-    
+
     public function approveActivityDirector_Dormitory_Service_Division()
     {
         $file = Activity::all();
@@ -430,8 +452,8 @@ class ActivityController extends Controller
     }
 
 
-    
-    
+
+
 
 
     public function viewAllActivityDormitory_Counselor()
@@ -484,13 +506,13 @@ class ActivityController extends Controller
     }
 
 
-    
 
 
 
 
 
-    
+
+
 
     public function submitCreateActivityHead_Information_Unit(Request $request)
     {
@@ -527,7 +549,7 @@ class ActivityController extends Controller
 
     public function submitCreateActivityOutlineHead_Information_Unit(Request $request)
     {
-       $request->validate([
+        $request->validate([
             'activityName' => 'required | max:50',
         ]);
 
@@ -553,9 +575,6 @@ class ActivityController extends Controller
 
 
 
-    
-    
-    
 
 
 
@@ -566,7 +585,10 @@ class ActivityController extends Controller
 
 
 
-    
+
+
+
+
     public function approveDormitory_Counselor($activityId)
     {
         $Activity = DB::table('activities')->where('activityId', $activityId)->first();
@@ -585,7 +607,7 @@ class ActivityController extends Controller
 
 
 
-    
+
     public function notapproveDormitory_Counselor($activityId)
     {
         $Activity = DB::table('activities')->where('activityId', $activityId)->first();
@@ -605,9 +627,9 @@ class ActivityController extends Controller
 
 
 
-    
 
-    
+
+
 
     public function submitApproveDormitory_Counselor(Request $request)
     {
@@ -719,8 +741,8 @@ class ActivityController extends Controller
         return back()->with('post_update', 'ไม่อนุมัติสำเร็จแล้ว');
     }
 
-    
-    
+
+
 
 
     public function deleteActivityAll_Head_Information_Unit(Request $request)
@@ -781,7 +803,7 @@ class ActivityController extends Controller
         $Activity = DB::table('activities')->where('activityId', $activityId)->first();
         return view('auth.Activity.activityDetailStudent', compact('Activity'));
     }
-    
+
     public function activityDetailDormitory_Counselor($activityId)
     {
         $file = Activity::all();
@@ -810,7 +832,7 @@ class ActivityController extends Controller
 
 
 
-//--------------------combined function-------------------------------
+    //--------------------combined function-------------------------------
 
     public function checkName($activityId)
     {
@@ -822,7 +844,7 @@ class ActivityController extends Controller
 
     public function submitCheckName(Request $request, $activityId)
     {
-        
+
         $data = new CheckName;
         $data->id_users = $request->id_users;
         $data->activityId = $activityId;
@@ -833,13 +855,13 @@ class ActivityController extends Controller
     public function calenderActivity(Request $request)
     {
 
-        if($request->ajax()) {
+        if ($request->ajax()) {
 
-             $data = Activity::whereDate('activityStartDate', '>=', $request->activityStartDate)
-                       ->whereDate('activityEndDate',   '<=', $request->activityEndDate)
-                       ->get(['activityID', 'activityName', 'activityStartDate', 'activityEndDate']);
+            $data = Activity::whereDate('activityStartDate', '>=', $request->activityStartDate)
+                ->whereDate('activityEndDate',   '<=', $request->activityEndDate)
+                ->get(['activityID', 'activityName', 'activityStartDate', 'activityEndDate']);
 
-             return response()->json($data);
+            return response()->json($data);
         }
 
         return view('Home.Home');
@@ -849,6 +871,6 @@ class ActivityController extends Controller
     {
         return response()->download('storage/' . $activityFile);
     }
-    
-//----------------------------------------------------------------------------------
+
+    //----------------------------------------------------------------------------------
 }

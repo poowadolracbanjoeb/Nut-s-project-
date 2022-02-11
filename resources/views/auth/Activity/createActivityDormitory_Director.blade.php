@@ -30,16 +30,23 @@
             ชื่อกิจกรรม
             <input type="text" name="activityName" class="form-control">
             <span class="text-danger"> @error("activityName"){{$message}}@enderror </span><br><br>
+            รหัสกิจกรรม
+            <input type="text" name="activityId" class="form-control">
+            <span class="text-danger"> @error("activityId"){{$message}}@enderror </span><br><br>
+
             ลักษณะกิจกรรม
+            <br>
 
             <select class="form-select" name="id_type" class="form-control">
               @foreach($data2 as $type)
               <option value="{{$type->id_type}}">ด้านที่ {{$type->id_type}} {{$type->typeName}}</option>
               @endforeach
             </select>
+            
             <a href="/Dormitory_Director/AddActivityType">เพิ่มลักษณะกิจกรรม</a>
             <br>  
-            <span class="text-danger"> @error("id_type"){{$message}}@enderror </span><br><br>
+            <br>
+            <br>
             คะแนนกิจกรรม
             <input type="text" name="activityScore" class="form-control">
             <span class="text-danger"> @error("activityScore"){{$message}}@enderror </span><br><br>
@@ -49,26 +56,28 @@
             หน่วยงานที่รับผิดชอบโครงการ
             <br>
             <select class="form-select" name="dormResponsibility1" class="form-control">
+            <option value="">เลือกหน่วยงานที่รับผิดชอบโครงการ</option>
               @foreach($data as $dorm)
               <option value="{{$dorm->id_dorm}}">{{$dorm->dormName}}</option>
               @endforeach
             </select>
+            <span class="text-danger"> @error("dormResponsibility1"){{$message}}@enderror </span>
             <a href="#demo" data-toggle="collapse">เพิ่มหน่วยงานรับผิดชอบโครงการ</a>
             <div id="demo" class="collapse">
               <select class="form-select" name="dormResponsibility2" class="form-control">
+              <option value="">เลือกหน่วยงานที่รับผิดชอบโครงการ</option>
                 @foreach($data as $dorm)
                 <option value="{{$dorm->id_dorm}}">{{$dorm->dormName}}</option>
                 @endforeach
               </select>
-            </div>
+              <span class="text-danger"> @error("dormResponsibility2"){{$message}}@enderror </span><br><br>
+            </div><br><br><br>
 
-            
-            <span class="text-danger"> @error("activityResponsible"){{$message}}@enderror </span><br><br>
             จัดกิจกรรมตั้งแต่วันที่<br>
             <input type="text" name="activityStartDate" class="form-control" placeholder="dd/mm/yy"><br>ถึงวันที่
             <span class="text-danger"> @error("activityStartDate"){{$message}}@enderror </span><br>
             <input type="text" name="activityEndDate" class="form-control" placeholder="dd/mm/yy"><br>
-            <span class="text-danger"> @error("activityEndDate"){{$message}}@enderror </span><br>
+            <span class="text-danger"> @error("activityEndDate"){{$message}}@enderror </span><br><br>
             จำนวนเป้าหมายผู้เข้าร่วมโครงการ
             <input type="text" name="activityTarget" class="form-control"><br>
             <span class="text-danger"> @error("activityTarget"){{$message}}@enderror </span><br>

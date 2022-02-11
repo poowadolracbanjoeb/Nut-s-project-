@@ -17,90 +17,82 @@ class CreateUserSeeder extends Seeder
         $user = [
             [
                 #นักศึกษา
-                'id' => '613020565-8',
+                'id_users' => '61385456-8',
                 'name' => 'บุญมา ดัตวทฤษ',
                 'email' => '1@1',
                 'password' => bcrypt('1'),
                 'tel' =>'0812345678',
-                'studentDegree' =>'1',
-                'studentFaculty' =>'วิทยาศาสตร์',
-                'studentScore' =>'100',
+                'student_degree' =>'1',
+                'student_faculty' =>'วิทยาศาสตร์',
                 'id_role' =>'1',
-                'id_room' =>'102_14_2_2564_2',
-
+                'id' =>'1'
 
             ], [
                 #กรรมการหอพัก
-                'id' => '603020585-2',
+                'id_users' => '603785986-8',
                 'name' => 'ชาครีย์สร เถกิงศักดิ์',
                 'email' => '2@2',
                 'password' => bcrypt('2'),
                 'tel' =>'0852155698',
-                'studentDegree' =>'2',
-                'studentFaculty' =>'วิศวกรรมศาสตร์',
-                'studentScore' =>'86',
+                'student_degree' =>'2',
+                'student_faculty' =>'วิศวกรรมศาสตร์',
                 'id_role' =>'2',
-                'id_room' =>'123_2_1_2564_2',
+                'id' =>'1'
             ], [
                 #ประธานหอพัก
-                'id' => '603020585-2',
+                'id_users' => '603452635-6',
                 'name' => 'วเรณย์ กัญจนญากิตติ์',
                 'email' => '3@3',
                 'password' => bcrypt('3'),
                 'tel' =>'0852568998',
-                'studentDegree' =>'2',
-                'studentFaculty' =>'นิติศาสตร์',
-                'studentScore' =>'98',
+                'student_degree' =>'2',
+                'student_faculty' =>'นิติศาสตร์',
                 'id_role' =>'3',
-                'id_room' =>'123_2_1_2564_2',
+                'id' =>'1'
             ], [
                 #ที่ปรึกษาหอพัก
-                'id' => '',
+                'id_users' => '603456985-9',
                 'name' => 'ธีร์สิรธนัศ ปรีย์สุนาเรศ',
                 'email' => '4@4',
                 'password' => bcrypt('4'),
                 'tel' =>'0812345678',
-                'studentDegree' =>'',
-                'studentFaculty' =>'',
-                'studentScore' =>'',
+                'student_degree' =>'',
+                'student_faculty' =>'',
                 'id_role' =>'4',
-                'id_room' =>'0_5_5_2564_2',
+                'id' =>'1'
             ], [
                 #หัวหน้าหน่วยบริการหอพัก
-                'id' => '',
+                'id_users' => '456235659-8',
                 'name' => 'ปัณฑ์ธร คุณัญญา',
                 'email' => '5@5',
                 'password' => bcrypt('5'),
                 'tel' =>'0812345678',
-                'studentDegree' =>'',
-                'studentFaculty' =>'',
-                'studentScore' =>'',
+                'student_degree' =>'',
+                'student_faculty' =>'',
                 'id_role' =>'5',
-                'id_room' =>'0',
+                'id' =>'1'
             ],[
                 #ผู้อำนวยการกองบริการหอพัก
-                'id' => '',
+                'id_users' => '789456123-9',
                 'name' => 'อุตสาหะ ภัคศิณีพิชญ์',
                 'email' => '6@6',
                 'password' => bcrypt('6'),
                 'tel' =>'0812555678',
-                'studentDegree' =>'',
-                'studentFaculty' =>'',
-                'studentScore' =>'',
+                'student_degree' =>'',
+                'student_faculty' =>'',
                 'id_role' =>'6',
-                'id_room' =>'0',
+                'id' =>'6'
             ],[
                 #หัวหน้าหน่วยสารสนเทศ
-                'id' => '',
+                'id_users' => '321654987-3',
                 'name' => 'อุตสาหะ ภัคศิณีพิชญ์',
                 'email' => '7@7',
                 'password' => bcrypt('7'),
                 'tel' =>'0652345678',
-                'studentDegree' =>'',
-                'studentFaculty' =>'',
-                'studentScore' =>'',
+                'student_degree' =>'',
+                'student_faculty' =>'',
                 'id_role' =>'7',
-                'id_room' =>'0',
+                'id' =>'7'
             ]
 
         ];
