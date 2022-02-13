@@ -56,7 +56,7 @@
                     </tr>
                 </thead>
                 @foreach($file as $key=>$data)
-                @if($data->activityStatus==1||$data->activityStatus==2||$data->activityStatus==3||$data->activityStatus==4||$data->activityStatus==5)
+                @if($Activity->id_status == 11 || $Activity->id_status == 21|| $Activity->id_status == 31|| $Activity->id_status == 41)
                 <tbody>
                     <td>{{$data->activityId}}</td>
                     <td>{{$data->activityName}}</td>

@@ -15,9 +15,8 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/Dormitory_Director/home">หน้าหลัก</a></li>
-                        <li class="breadcrumb-item active"><a href="/Dormitory_Director/manageActivity">จัดการกิจกรรม</a></li>
-                        <li class="breadcrumb-item active"><a href="/Dormitory_Director/viewStatusActivityApprove">อนุมัติกิจกรรม</a></li>
+                        <li class="breadcrumb-item"><a href="/Director_Dormitory_Service_Division/home">หน้าหลัก</a></li>
+                        <li class="breadcrumb-item active"><a href="/Director_Dormitory_Service_Division/approveActivity">อนุมัติกิจกรรม</a></li>
                     </ol>
                 </div>
             </div>
@@ -37,14 +36,14 @@
                         </tr>
                     </thead>
                     @foreach($file as $Activity)
-                    @if($Activity->id_status == 51)
+                    @if($Activity->id_status == 41)
                     <tbody>
                         <td>{{$Activity->activityName}}</td>
                         <td>{{$Activity->activityPlace}}</td>
                         <td>{{$Activity->activityStartDate}} ถึง {{$Activity->activityEndDate}}</td>
                         <td><a class="btn btn-info" href="/activityFile/download/{{$Activity->activityFile}}">ดาวน์โหลด</a></td>
                         <td>
-                        <a class="btn btn-info" href="/Dormitory_Director/manageActivity/activityDetail/{{$Activity->activityId}}">อนุมัติกิจกรรม</a>
+                        <a class="btn btn-info" href="/Director_Dormitory_Service_Division/approveActivity/approve/{{$Activity->activityId}}">อนุมัติกิจกรรม</a>
                         </td>
                     </tbody>
                     @endif
@@ -57,4 +56,4 @@
 </div>
 
 
-    @endsection
+@endsection

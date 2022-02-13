@@ -48,7 +48,7 @@
             </tr>
           </thead>
           @foreach($file as $Activity)
-          @if($Activity->id_status == 51)
+          @if($Activity->id_status == 10)
           <tbody>
             <td>{{$Activity->activityName}}</td>
             <td>{{$Activity->activityPlace}}</td>

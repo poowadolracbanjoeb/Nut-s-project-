@@ -18,7 +18,8 @@
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/Dormitory_Director/home">หน้าหลัก</a></li>
             <li class="breadcrumb-item active"> <a href="/Dormitory_Director/manageActivity">จัดการกิจกรรม</a></li>
-            <li class="breadcrumb-item active"> <a href="/Dormitory_Director/createActivity">คำอธิบายกิจกรรม</a></li>
+            <li class="breadcrumb-item active"> <a href="/Dormitory_Director/manageActivity/Fell">กิจกรรมที่ไม่อนุมัติ</a></li>
+            <li class="breadcrumb-item active"> <a href="/Dormitory_Director/showActivityAdvice\{{$Activity->activityId}}">คำอธิบายกิจกรรม</a></li>
           </ol>
         </div>
       </div>

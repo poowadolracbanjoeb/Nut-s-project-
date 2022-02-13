@@ -61,8 +61,8 @@
               <option value="{{$dorm->id_dorm}}">{{$dorm->dormName}}</option>
               @endforeach
             </select>
+            <a href="#demo" data-toggle="collapse">เพิ่มหน่วยงานรับผิดชอบโครงการ</a><br>
             <span class="text-danger"> @error("dormResponsibility1"){{$message}}@enderror </span>
-            <a href="#demo" data-toggle="collapse">เพิ่มหน่วยงานรับผิดชอบโครงการ</a>
             <div id="demo" class="collapse">
               <select class="form-select" name="dormResponsibility2" class="form-control">
               <option value="">เลือกหน่วยงานที่รับผิดชอบโครงการ</option>
@@ -79,13 +79,14 @@
             <input type="text" name="activityEndDate" class="form-control" placeholder="dd/mm/yy"><br>
             <span class="text-danger"> @error("activityEndDate"){{$message}}@enderror </span><br><br>
             จำนวนเป้าหมายผู้เข้าร่วมโครงการ
-            <input type="text" name="activityTarget" class="form-control"><br>
-            <span class="text-danger"> @error("activityTarget"){{$message}}@enderror </span><br>
+            <input type="text" name="activity_Target" class="form-control"><br>
+            <span class="text-danger"> @error("activity_Target"){{$message}}@enderror </span><br>
             งบประมาณที่ใช้ดำเนินโครงการ
-            <input type="text" name="activityBudget" class="form-control"><br>
-            <span class="text-danger"> @error("activityBudget"){{$message}}@enderror </span><br>
+            <input type="text" name="activity_Budget" class="form-control"><br>
+            <span class="text-danger"> @error("activity_Budget"){{$message}}@enderror </span><br>
             ปีการศึกษา
-            <input type="text" name="semester" class="form-control"><br>
+            <input type="text" name="semester" class="form-control">
+            <span class="text-danger"> @error("semester"){{$message}}@enderror </span><br><br>
             เอกสารประกอบโครงการ<br><br>
             <input type="file" name="activityFile"><br><br>
             <span class="text-danger"> @error("activityFile"){{$message}}@enderror </span><br>

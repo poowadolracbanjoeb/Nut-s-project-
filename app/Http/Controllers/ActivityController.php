@@ -79,8 +79,7 @@ class ActivityController extends Controller
             'activity_Target' => 'required ',
             'activity_Budget' => 'required ',
             'semester' => 'required ',
-            'dormResponsibility1' => 'required|min:1',
-            'dormResponsibility2' => 'required|min:1 ',         
+            'dormResponsibility1' => 'required|min:1', 
         ]);
 
         $data1 = new Activity;
@@ -97,8 +96,8 @@ class ActivityController extends Controller
         $data1->activityEndDate = $request->activityEndDate;
         $data1->activityScore = $request->activityScore;
         $data1->id_type = $request->id_type;
-        $data1->activity_Target = $request->activityTarget;
-        $data1->activity_Budget = $request->activityBudget;
+        $data1->activity_Target = $request->activity_Target;
+        $data1->activity_Budget = $request->activity_Budget;
         $data1->semester = $request->semester;
         $data1->id_status = 11;
         $data1->save();
@@ -337,11 +336,8 @@ class ActivityController extends Controller
                 'activityFile' => $filename
             ]);
         }
-        $status = 2;
-        $activityStatusName = 'รอที่ปรึกษาหอพักอนุมัติ';
         DB::table('activities')->where('activityId', $request->activityId)->update([
-            'activityStatus' => $status,
-            'activityStatusName' => $activityStatusName
+            'id_status' => 21
         ]);
         return back()->with('post_update', 'อนุมัติสำเร็จแล้ว');
     }
@@ -351,12 +347,9 @@ class ActivityController extends Controller
         $request->validate([
             'activityAdvice' => 'required '
         ]);
-        $status = 0;
-        $activityStatusName = 'ประธานหอพักไม่อนุมัติ';
         DB::table('activities')->where('activityId', $request->activityId)->update([
-            'activityStatus' => $status,
-            'activityAdvice' => $request->activityAdvice,
-            'activityStatusName' => $activityStatusName
+            'id_status' => 20,
+            'activityAdvice' => $request->activityAdvice
         ]);
 
 
@@ -644,11 +637,8 @@ class ActivityController extends Controller
                 'activityFile' => $filename
             ]);
         }
-        $status = 3;
-        $activityStatusName = 'รอหัวหน้าหน่วยบริการหอพักอนุมัติ';
         DB::table('activities')->where('activityId', $request->activityId)->update([
-            'activityStatus' => $status,
-            'activityStatusName' => $activityStatusName
+            'id_status' => 31
         ]);
         return back()->with('post_update', 'อนุมัติสำเร็จแล้ว');
     }
@@ -658,12 +648,9 @@ class ActivityController extends Controller
         $request->validate([
             'activityAdvice' => 'required '
         ]);
-        $status = 0;
-        $activityStatusName = 'ที่ปรึกษาหอพักไม่อนุมัติ';
         DB::table('activities')->where('activityId', $request->activityId)->update([
-            'activityStatus' => $status,
-            'activityAdvice' => $request->activityAdvice,
-            'activityStatusName' => $activityStatusName
+            'id_status' => 30,
+            'activityAdvice' => $request->activityAdvice
         ]);
         return back()->with('post_update', 'ไม่อนุมัติสำเร็จแล้ว');
     }
@@ -681,11 +668,8 @@ class ActivityController extends Controller
                 'activityFile' => $filename
             ]);
         }
-        $status = 4;
-        $activityStatusName = 'รอผู้อำนวยการกองบริการหอพักอนุมัติ';
         DB::table('activities')->where('activityId', $request->activityId)->update([
-            'activityStatus' => $status,
-            'activityStatusName' => $activityStatusName
+            'id_status' => 41
         ]);
         return back()->with('post_update', 'อนุมัติสำเร็จแล้ว');
     }
@@ -694,12 +678,9 @@ class ActivityController extends Controller
         $request->validate([
             'activityAdvice' => 'required '
         ]);
-        $status = 0;
-        $activityStatusName = 'หัวหน้าหน่วยบริการหอพักไม่อนุมัติ';
         DB::table('activities')->where('activityId', $request->activityId)->update([
-            'activityStatus' => $status,
-            'activityAdvice' => $request->activityAdvice,
-            'activityStatusName' => $activityStatusName
+            'id_status' => 40,
+            'activityAdvice' => $request->activityAdvice
         ]);
         return back()->with('post_update', 'ไม่อนุมัติสำเร็จแล้ว');
     }
@@ -717,11 +698,8 @@ class ActivityController extends Controller
                 'activityFile' => $filename
             ]);
         }
-        $status = 5;
-        $activityStatusName = 'อนุมัติสำเร็จ';
         DB::table('activities')->where('activityId', $request->activityId)->update([
-            'activityStatus' => $status,
-            'activityStatusName' => $activityStatusName
+            'id_status' => 51
         ]);
         return back()->with('post_update', 'อนุมัติสำเร็จแล้ว');
     }
@@ -731,12 +709,9 @@ class ActivityController extends Controller
         $request->validate([
             'activityAdvice' => 'required '
         ]);
-        $status = 0;
-        $activityStatusName = 'ผู้อำนวยการกองบริการหอพักไม่อนุมัติ';
         DB::table('activities')->where('activityId', $request->activityId)->update([
-            'activityStatus' => $status,
-            'activityAdvice' => $request->activityAdvice,
-            'activityStatusName' => $activityStatusName
+            'id_status' => 50,
+            'activityAdvice' => $request->activityAdvice
         ]);
         return back()->with('post_update', 'ไม่อนุมัติสำเร็จแล้ว');
     }
