@@ -5,13 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CheckName extends Model
+class user_score extends Model
 {
-    // use HasFactory;
     protected $fillable = [
         'id_users',
-        'activityId',
-        'activityScore'
+        'semester',
+        'count_of_activities',
+        'dormName',
+        'sum_score',
+         
     ];
-    protected $table = "users_has_activities";
+
+    protected $table ="user_score";
 }

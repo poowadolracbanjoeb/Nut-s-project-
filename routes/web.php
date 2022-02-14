@@ -141,7 +141,7 @@ Route::group(['middleware' => ['role']], function () {
     Route::get('/Head_Information_Unit/manageActivityAll/deleteActivity/{activityId}', [App\Http\Controllers\ActivityController::class, 'deleteActivityAll_Head_Information_Unit'])->name('deleteActivityAll_Head_Information_Unit');
 
 
-    Route::get('/Dormitory_Director/checkName/delete_user/{id_user}', [App\Http\Controllers\ActivityController::class, 'delete_user_has_Activity_Dormitory_Director'])->name('delete_user_has_Activity_Dormitory_Director');
+    Route::get('/Dormitory_Director/checkName/delete_user/{id_user}/{activityId}', [App\Http\Controllers\ActivityController::class, 'delete_user_has_Activity_Dormitory_Director'])->name('delete_user_has_Activity_Dormitory_Director');
 
 
 

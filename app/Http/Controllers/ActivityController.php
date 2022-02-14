@@ -10,6 +10,7 @@ use App\Models\CheckName;
 use App\Models\activities_types;
 use App\Models\dormitories;
 use App\Models\activity_responsible_dorm;
+use App\Models\user_score;
 
 
 class ActivityController extends Controller
@@ -79,7 +80,7 @@ class ActivityController extends Controller
             'activity_Target' => 'required ',
             'activity_Budget' => 'required ',
             'semester' => 'required ',
-            'dormResponsibility1' => 'required|min:1', 
+            'dormResponsibility1' => 'required|min:1',
         ]);
 
         $data1 = new Activity;
@@ -102,14 +103,14 @@ class ActivityController extends Controller
         $data1->id_status = 11;
         $data1->save();
 
-        if ($request->dormResponsibility1 != null){
+        if ($request->dormResponsibility1 != null) {
             $data2 = new activity_responsible_dorm;
             $data2->activityID = $request->activityId;
             $data2->id_dorm = $request->dormResponsibility1;
             $data2->save();
-        }    
+        }
 
-        if ($request->dormResponsibility2 != null){
+        if ($request->dormResponsibility2 != null) {
             $data3 = new activity_responsible_dorm;
             $data3->activityID = $request->activityId;
             $data3->id_dorm = $request->dormResponsibility2;
@@ -169,9 +170,18 @@ class ActivityController extends Controller
         return view('auth.Activity.editActivity_Dormitory_Director', compact('Activity'));
     }
 
-    public function delete_user_has_Activity_Dormitory_Director($id_user)
+    public function delete_user_has_Activity_Dormitory_Director($id_user, $activityId)
     {
-        DB::table('users_has_activities')->where('id_users', $id_user)->delete();
+
+        DB::table('users_has_activities')->where('id_users', $id_user)->where('activityId', $activityId)->delete();
+
+        $count_user_has_activities = DB::table('users_has_activities')->where('id_users', $id_user)->count();
+        $sum_user_has_activities = DB::table('users_has_activities')->where('id_users', $id_user)->sum('activityScore');
+
+        DB::table('user_score')->where('id_users', $id_user)->update([
+            'count_of_activities' => $count_user_has_activities,
+            'sum_score' =>  $sum_user_has_activities
+        ]);
         return back()->with('post_delete', 'ลบสำเร็จแล้ว');
     }
 
@@ -819,13 +829,33 @@ class ActivityController extends Controller
 
     public function submitCheckName(Request $request, $activityId)
     {
+        $Activity = DB::table('activities')->where('activityId', $activityId)->first();
 
         $data = new CheckName;
         $data->id_users = $request->id_users;
         $data->activityId = $activityId;
+        $data->activityScore = $Activity->activityScore;
         $data->save();
+
+        $checkUser = DB::table('user_score')->where('id_users', $request->id_users)->count();
+        if ($checkUser == 0) {
+            $data2 = new user_score;
+            $data2->id_users = $request->id_users;
+            $data2->semester = $Activity->semester;
+            $data2->save();
+        }
+
+        $count_user_has_activities = DB::table('users_has_activities')->where('id_users', $request->id_users)->count();
+        $sum_user_has_activities = DB::table('users_has_activities')->where('id_users', $request->id_users)->sum('activityScore');
+
+        DB::table('user_score')->where('id_users', $request->id_users)->update([
+            'count_of_activities' => $count_user_has_activities,
+            'sum_score' =>  $sum_user_has_activities
+        ]);
+
         return back()->with('post_update', 'บันทึกเค้าโครงร่างกิจกรรมสำเร็จ');
     }
+
 
     public function calenderActivity(Request $request)
     {

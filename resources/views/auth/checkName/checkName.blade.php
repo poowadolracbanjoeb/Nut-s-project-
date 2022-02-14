@@ -56,7 +56,7 @@
           <tr>
             <td> {{$user_has_activity -> id_users}}</td>
             <td>
-              <a class="btn btn-danger" href="/Dormitory_Director/checkName/delete_user/{{$user_has_activity -> id_users}}">ลบ</a>
+              <a class="btn btn-danger" href="/Dormitory_Director/checkName/delete_user/{{$user_has_activity -> id_users}}/{{$Activity->activityId}}">ลบ</a>
             </td>
           </tr>
         </tbody>
