@@ -117,7 +117,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="/Dormitory_Director/showDataActivity" class="nav-link">
+              <a href="/Dormitory_Director/showDataActivity/{{ Auth::user()->id_users }}" class="nav-link">
                 <i class="nav-icon far">
                   <ion-icon name="flag-outline"></ion-icon>
                 </i>

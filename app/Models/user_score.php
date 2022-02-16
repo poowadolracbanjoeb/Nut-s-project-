@@ -11,7 +11,6 @@ class user_score extends Model
         'id_users',
         'semester',
         'count_of_activities',
-        'dormName',
         'sum_score',
          
     ];

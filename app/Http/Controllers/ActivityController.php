@@ -6,7 +6,7 @@ use App\Models\Activity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
-use App\Models\CheckName;
+use App\Models\users_has_activities;
 use App\Models\activities_types;
 use App\Models\dormitories;
 use App\Models\activity_responsible_dorm;
@@ -231,7 +231,7 @@ class ActivityController extends Controller
 
     public function activityHasUserDormitory_Director($activityId)
     {
-        $user_has_activity = CheckName::all();
+        $user_has_activity = users_has_activities::all();
         $Activity = DB::table('activities')->where('activityId', $activityId)->first();
         return view('auth.Activity.activityHasUserDormitory_Director', compact('Activity'))->with('data', $user_has_activity);
     }
@@ -821,7 +821,7 @@ class ActivityController extends Controller
 
     public function checkName($activityId)
     {
-        $user_has_activity = CheckName::all();
+        $user_has_activity = users_has_activities::all();
         $Activity = DB::table('activities')->where('activityId', $activityId)->first();
         return view('auth.checkName.checkName', compact('Activity'))->with('data', $user_has_activity);
     }
@@ -831,7 +831,7 @@ class ActivityController extends Controller
     {
         $Activity = DB::table('activities')->where('activityId', $activityId)->first();
 
-        $data = new CheckName;
+        $data = new users_has_activities;
         $data->id_users = $request->id_users;
         $data->activityId = $activityId;
         $data->activityScore = $Activity->activityScore;
@@ -853,6 +853,7 @@ class ActivityController extends Controller
             'sum_score' =>  $sum_user_has_activities
         ]);
 
+        
         return back()->with('post_update', 'บันทึกเค้าโครงร่างกิจกรรมสำเร็จ');
     }
 

@@ -10,9 +10,10 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Rules\MatchOldPassword;
 use Illuminate\Support\Facades\Hash;
-use App\Models\CheckName;
+use App\Models\users_has_activities;
 use App\Models\dormitories;
 use App\Models\dormitory_user_history;
+use App\Models\user_score;
 use App\Exports\ExportUserHasActivity;
 
 
@@ -113,30 +114,32 @@ class UserController extends Controller
 
 
 
-    public function showDataActivityDormitory_Director()
+    public function showDataActivityDormitory_Director($id_users)
     {
-        $joinActivity = CheckName::all();
-        return view('auth.ManagerUser.showDataActivityDormitory_Director',compact('joinActivity'));
+        $joinActivity = users_has_activities::all();
+        $user_score = DB::table('user_score')->where('id_users', $id_users)->first();
+        return view('auth.ManagerUser.showDataActivityDormitory_Director',compact('user_score'))->with('data', $joinActivity);
+
     }
 
     public function showDataActivityDormitory_Chairman()
     {
-        $joinActivity = CheckName::all();
+        $joinActivity = users_has_activities::all();
         return view('auth.ManagerUser.showDataActivityDormitory_Chairman',compact('joinActivity'));
     }
     public function showDataActivityAllDormitory_Counselor()
     {
-        $joinActivity = CheckName::all();
+        $joinActivity = users_has_activities::all();
         return view('auth.ManagerUser.showDataActivityAllDormitory_Counselor',compact('joinActivity'));
     }
     public function showDataActivityAllHead_Dormitory_Service()
     {
-        $joinActivity = CheckName::all();
+        $joinActivity = users_has_activities::all();
         return view('auth.ManagerUser.showDataActivityAllHead_Dormitory_Service',compact('joinActivity'));
     }
     public function showDataActivityAllDirector_Dormitory_Service_Division()
     {
-        $joinActivity = CheckName::all();
+        $joinActivity = users_has_activities::all();
         return view('auth.ManagerUser.showDataActivityAllDirector_Dormitory_Service_Division',compact('joinActivity'));
     }
     

@@ -71,7 +71,7 @@ Route::group(['middleware' => ['role']], function () {
 
     Route::get('/Student/showDataActivity', [App\Http\Controllers\UserController::class, 'showDataActivityStudent'])->name('showDataActivityStudent');
     Route::get('/Student/showDataActivityAll', [App\Http\Controllers\UserController::class, 'showDataActivityAllStudent'])->name('showDataActivityAllStudent');
-    Route::get('/Dormitory_Director/showDataActivity', [App\Http\Controllers\UserController::class, 'showDataActivityDormitory_Director'])->name('showDataActivityDormitory_Director');
+    Route::get('/Dormitory_Director/showDataActivity/{id_users}', [App\Http\Controllers\UserController::class, 'showDataActivityDormitory_Director'])->name('showDataActivityDormitory_Director');
     Route::get('/Dormitory_Chairman/showDataActivity', [App\Http\Controllers\UserController::class, 'showDataActivityDormitory_Chairman'])->name('showDataActivityDormitory_Chairman');
     Route::get('Dormitory_Counselor/showDataActivityAll', [App\Http\Controllers\UserController::class, 'showDataActivityAllDormitory_Counselor'])->name('showDataActivityAllDormitory_Counselor');
     Route::get('Head_Dormitory_Service/showDataActivityAll', [App\Http\Controllers\UserController::class, 'showDataActivityAllHead_Dormitory_Service'])->name('showDataActivityAllHead_Dormitory_Service');

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CheckName extends Model
+class users_has_activities extends Model
 {
     // use HasFactory;
     protected $fillable = [

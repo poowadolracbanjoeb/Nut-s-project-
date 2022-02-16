@@ -31,13 +31,17 @@
               <th>ดำเนินการ</th>
             </tr>
           </thead>
-          @foreach($joinActivity as $joinActivity)
+
+
+          @foreach($data as $joinActivity)
+          @if($joinActivity->id_users == '603785986-8')
           <tbody>
-            <td>กิจกรรมต้อนรับน้องใหม่</td>
-            <td>30</td>
-            <td><a class="btn btn-info" href="/Dormitory_Director/manageActivity/activityDetail/">ดูรายละเอียด</a>
+            <td>{{$joinActivity->activityId}}</td>
+            <td>{{$joinActivity->activityId}}</td>
+            <td><a class="btn btn-info" href="/Dormitory_Director/manageActivity/activityDetail/{{$joinActivity ->activityId}}">ดูรายละเอียด</a>
             </td>
           </tbody>
+          @endif
           @endforeach
         </table>
       </div>
@@ -51,7 +55,7 @@
           <div class="col-1 bg-light">
           </div>
           <div class="col-1 bg-light">
-            <a>1 </a>
+            <a>{{$user_score -> count_of_activities	 }}</a>
           </div>
           <div class="col-1 bg-warning">
             <a>กิจกรรม </a>
@@ -65,7 +69,7 @@
           <div class="col-1 bg-light">
           </div>
           <div class="col-1 bg-light">
-            <a>30 </a>
+            <a>{{$user_score->sum_score }}</a>
           </div>
           <div class="col-1 bg-warning">
             <a>คะแนน </a>
