@@ -228,15 +228,16 @@ class UserController extends Controller
 
     public function changePassword(Request $request)
     {
-        // $request->validate([
-        //     'current_password' => ['required', new MatchOldPassword],
-        //     'new_password' => ['required'],
-        //     'new_confirm_password' => ['same:new_password'],
-        // ]);
+        $id_users =$request->id_users;
+        $request->validate([
+            'current_password' => ['required', new MatchOldPassword],
+            'new_password' => ['required'],
+            'new_confirm_password' => ['same:new_password'],
+        ]);
+
+        DB::table('users')->where('id_users', $id_users)->update(['password'=> Hash::make($request->new_password)]);
    
-        User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
-   
-        dd('Password change successfully.');
+        return back()->with('post_update', 'เปลี่ยนรหัสผ่านสำเร็จ');
     }
     
     

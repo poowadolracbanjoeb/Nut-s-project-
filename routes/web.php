@@ -163,7 +163,7 @@ Route::group(['middleware' => ['role']], function () {
     Route::get('export', [App\Http\Controllers\UserController::class, 'export'])->name('export');
     Route::post('import', [App\Http\Controllers\UserController::class, 'import'])->name('import');
     Route::get('search', [App\Http\Controllers\UserController::class, 'search'])->name('search');
-    Route::post('change-password', [App\Http\Controllers\UserController::class, 'changePassword'])->name('changePassword');
+    Route::post('changePassword', [App\Http\Controllers\UserController::class, 'changePassword'])->name('changePassword');
 
     Route::get('/Dormitory_Director/viewStatusActivityApprove', [App\Http\Controllers\ActivityController::class, 'viewStatusActivityApproveDormitory_Director'])->name('viewStatusActivityApproveDormitory_Director');
 

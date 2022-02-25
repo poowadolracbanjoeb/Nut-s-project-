@@ -42,9 +42,9 @@
               <option value="{{$type->id_type}}">ด้านที่ {{$type->id_type}} {{$type->typeName}}</option>
               @endforeach
             </select>
-            
+
             <a href="/Dormitory_Director/AddActivityType">เพิ่มลักษณะกิจกรรม</a>
-            <br>  
+            <br>
             <br>
             <br>
             คะแนนกิจกรรม
@@ -56,7 +56,7 @@
             หน่วยงานที่รับผิดชอบโครงการ
             <br>
             <select class="form-select" name="dormResponsibility1" class="form-control">
-            <option value="">เลือกหน่วยงานที่รับผิดชอบโครงการ</option>
+              <option value="">เลือกหน่วยงานที่รับผิดชอบโครงการ</option>
               @foreach($data as $dorm)
               <option value="{{$dorm->id_dorm}}">{{$dorm->dormName}}</option>
               @endforeach
@@ -65,7 +65,7 @@
             <span class="text-danger"> @error("dormResponsibility1"){{$message}}@enderror </span>
             <div id="demo" class="collapse">
               <select class="form-select" name="dormResponsibility2" class="form-control">
-              <option value="">เลือกหน่วยงานที่รับผิดชอบโครงการ</option>
+                <option value="">เลือกหน่วยงานที่รับผิดชอบโครงการ</option>
                 @foreach($data as $dorm)
                 <option value="{{$dorm->id_dorm}}">{{$dorm->dormName}}</option>
                 @endforeach
@@ -74,9 +74,9 @@
             </div><br><br><br>
 
             จัดกิจกรรมตั้งแต่วันที่<br>
-            <input type="text" name="activityStartDate" class="form-control" placeholder="dd/mm/yy"><br>ถึงวันที่
+            <input type="text" name="activityStartDate" class="form-control" placeholder=""><br>ถึงวันที่
             <span class="text-danger"> @error("activityStartDate"){{$message}}@enderror </span><br>
-            <input type="text" name="activityEndDate" class="form-control" placeholder="dd/mm/yy"><br>
+            <input type="text" name="activityEndDate" class="form-control" placeholder=""><br>
             <span class="text-danger"> @error("activityEndDate"){{$message}}@enderror </span><br><br>
             จำนวนเป้าหมายผู้เข้าร่วมโครงการ
             <input type="text" name="activity_Target" class="form-control"><br>
@@ -96,11 +96,12 @@
             <br>
             <br>
             <input type="submit" class="btn btn-success" value="สร้างกิจกรรม" formaction="{{url('/Dormitory_Director/createActivity/Submit')}}">
-            <input type="submit" class="btn btn-warning" value="บันทึกร่างโครงการ" formaction="{{url('/Dormitory_Director/createActivity/Outline/Submit')}}">
+            <input type="submit" class="btn btn-warning" value="บันทึกร่างโครงการ" formaction="{{url('change-password')}}">
         </form>
       </div>
     </div>
   </div>
+</div>
 
 </div>
 

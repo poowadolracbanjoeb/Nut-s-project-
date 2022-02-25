@@ -26,7 +26,7 @@
         <table class="table table-striped table-light">
           <thead>
             <tr class="table-warning ">
-              <th>ชื่อกิจกรรม</th>
+              <th>รหัสกิจกรรม</th>
               <th>คะแนนกิจกรรม</th>
               <th>ดำเนินการ</th>
             </tr>
@@ -37,7 +37,7 @@
           @if($joinActivity->id_users == '603785986-8')
           <tbody>
             <td>{{$joinActivity->activityId}}</td>
-            <td>{{$joinActivity->activityId}}</td>
+            <td>{{$joinActivity->activityScore}}</td>
             <td><a class="btn btn-info" href="/Dormitory_Director/manageActivity/activityDetail/{{$joinActivity ->activityId}}">ดูรายละเอียด</a>
             </td>
           </tbody>

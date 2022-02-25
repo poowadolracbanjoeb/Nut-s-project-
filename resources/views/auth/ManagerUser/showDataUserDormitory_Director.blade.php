@@ -10,8 +10,8 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="/Student/home">หน้าหลัก</a></li>
-                    <li class="breadcrumb-item active"><a href="/Student/showDataUser">ข้อมูลนักศึกษา</a></li>
+                    <li class="breadcrumb-item"><a href="/Dormitory_Director/home">หน้าหลัก</a></li>
+                    <li class="breadcrumb-item active"><a href="/Dormitory_Director/showDataUser">ข้อมูลนักศึกษา</a></li>
                 </ol>
             </div>
         </div>
@@ -38,7 +38,7 @@
                 <div class="col-9 bg-light">
                     <a>
                         {{ Auth::user()->id_users }}
-                        
+
                     </a>
                 </div>
             </div>
@@ -67,26 +67,14 @@
             <br>
             <div class="row">
                 <div class="col-3 bg-warning">
-                    <a>จำนวนกิจกรรมที่เข้าร่วม</a>
+                    <a>ชั้นปีที่</a>
                 </div>
                 <div class="col-9 bg-light">
                     <a>
-                        10
+                        {{ Auth::user()->student_degree }}
                     </a>
                 </div>
             </div>
-            <br>
-            <div class="row">
-                <div class="col-3 bg-warning">
-                    <a>คะแนนกิจกรรม</a>
-                </div>
-                <div class="col-9 bg-light">
-                    <a>
-                        5
-                    </a>
-                </div>
-            </div>
-            <br>
         </div>
     </div>
     <br>
