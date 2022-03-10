@@ -206,27 +206,46 @@ class ActivityController extends Controller
     public function submitCreateActivityOutlineDormitory_Director(Request $request)
     {
         $request->validate([
-            'activityName' => 'required | max:50',
+            'activityName' => 'required ',
         ]);
 
-        $data = new Activity;
+        $data1 = new Activity;
         if ($request->file('activityFile')) {
             $activityFile = $request->file('activityFile');
             $activityFile = time() . '.' . $activityFile->getClientOriginalExtension();
             $request->activityFile->move('storage/', $activityFile);
-            $data->activityFile = $activityFile;
+            $data1->activityFile = $activityFile;
         }
-        $data->activityName = $request->activityName;
-        $data->id_type = $request->id_type;
-        $data->activityPlace = $request->activityPlace;
-        $data->activityResponsible = $request->activityResponsible;
-        $data->activityStartDate = $request->activityStartDate;
-        $data->activityEndDate = $request->activityEndDate;
-        $data->activity_Target = $request->activityTarget;
-        $data->activity_Budget = $request->activityBudget;
-        $data->id_status = 10;
-        $data->save();
-        return back()->with('post_update', 'บันทึกเค้าโครงร่างกิจกรรมสำเร็จ');
+        $data1->activityName = $request->activityName;
+        $data1->id_type = $request->id_type;
+        if ($request->activityId != null) {
+            $data1->activityId = $request->activityPlace;
+        }
+
+        if ($request->activityPlace != null) {
+            $data1->activityPlace = $request->activityPlace;
+        }
+        if ($request->activityStartDate != null) {
+            $data1->activityStartDate = $request->activityStartDate;
+        }
+        if ($request->activityEndDate != null) {
+            $data1->activityEndDate = $request->activityEndDate;
+        }
+        if ($request->activityScore != null) {
+            $data1->activityScore = $request->activityScore;
+        }
+        if ($request->activity_Target != null) {
+            $data1->activity_Target = $request->activity_Target;
+        }
+        if ($request->activity_Budget != null) {
+            $data1->activity_Budget = $request->activity_Budget;
+        }
+        if ($request->semester != null) {
+            $data1->semester = $request->semester;
+        }
+        $data1->id_status = 10;
+        $data1->save();
+        return back();
     }
 
     public function activityHasUserDormitory_Director($activityId)

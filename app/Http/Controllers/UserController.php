@@ -59,7 +59,7 @@ class UserController extends Controller
 
     public function showDataUserStudent()
     {
-        $data = dormitories::all();
+        $data = dormitory_user_history::all();
         return view('auth.ManagerUser.showDataUserStudent')->with('data',$data);
     }
     public function showDataUserDormitory_Director()
@@ -69,27 +69,27 @@ class UserController extends Controller
     }
     public function showDataUserDormitory_Chairman()
     {
-        $data = dormitories::all();
+        $data = dormitory_user_history::all();
         return view('auth.ManagerUser.showDataUserDormitory_Chairman')->with('data',$data);
     }
     public function showDataUserDormitory_Counselor()
     {
-        $data = dormitories::all();
+        $data = dormitory_user_history::all();
         return view('auth.ManagerUser.showDataUserDormitory_Counselor')->with('data',$data);
     }
     public function showDataUserHead_Dormitory_Service()
     {
-        $data = dormitories::all();
+        $data = dormitory_user_history::all();
         return view('auth.ManagerUser.showDataUserHead_Dormitory_Service')->with('data',$data);
     }
     public function showDataUserDirector_Dormitory_Service_Division()
     {
-        $data = dormitories::all();
+        $data = dormitory_user_history::all();
         return view('auth.ManagerUser.showDataUserDirector_Dormitory_Service_Division')->with('data',$data);
     }
     public function showDataUserHead_Information_Unit()
     {
-        $data = dormitories::all();
+        $data = dormitory_user_history::all();
         return view('auth.ManagerUser.showDataUserHead_Information_Unit')->with('data',$data);
     }
     
@@ -100,11 +100,8 @@ class UserController extends Controller
     
     
 
-    public function showDataActivityStudent()
-    {
-        $Activity = User::all();
-        return view('auth.ManagerUser.showDataActivityStudent');
-    }
+ 
+
     public function showDataActivityAllStudent()
     {
         $Activity = User::all();
@@ -114,19 +111,35 @@ class UserController extends Controller
 
 
 
-    public function showDataActivityDormitory_Director($id_users)
+    public function showDataActivityJoinStudent($id_users)
     {
         $joinActivity = users_has_activities::all();
         $user_score = DB::table('user_score')->where('id_users', $id_users)->first();
-        return view('auth.ManagerUser.showDataActivityDormitory_Director',compact('user_score'))->with('data', $joinActivity);
+        return view('auth.ManagerUser.showDataActivityJoinStudent',compact('user_score'))->with('data', $joinActivity);
 
     }
 
-    public function showDataActivityDormitory_Chairman()
+
+
+
+    public function showDataActivityJoinDormitory_Director($id_users)
     {
         $joinActivity = users_has_activities::all();
-        return view('auth.ManagerUser.showDataActivityDormitory_Chairman',compact('joinActivity'));
+        $user_score = DB::table('user_score')->where('id_users', $id_users)->first();
+        return view('auth.ManagerUser.showDataActivityJoinDormitory_Director',compact('user_score'))->with('data', $joinActivity);
+
     }
+
+    
+    public function showDataActivityJoinDormitory_Chairman($id_users)
+    {
+        $joinActivity = users_has_activities::all();
+        $user_score = DB::table('user_score')->where('id_users', $id_users)->first();
+        return view('auth.ManagerUser.showDataActivityJoinDormitory_Chairman',compact('user_score'))->with('data', $joinActivity);
+
+    }
+
+
     public function showDataActivityAllDormitory_Counselor()
     {
         $joinActivity = users_has_activities::all();

@@ -56,6 +56,17 @@
             <br>
             <div class="row">
                 <div class="col-3 bg-warning">
+                    <a>ชั้นปีที่</a>
+                </div>
+                <div class="col-9 bg-light">
+                    <a>
+                        {{ Auth::user()->student_degree }}
+                    </a>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-3 bg-warning">
                     <a>เบอร์โทร</a>
                 </div>
                 <div class="col-9 bg-light">
@@ -67,11 +78,11 @@
             <br>
             <div class="row">
                 <div class="col-3 bg-warning">
-                    <a>ชั้นปีที่</a>
+                    <a>อีเมล</a>
                 </div>
                 <div class="col-9 bg-light">
                     <a>
-                        {{ Auth::user()->student_degree }}
+                        {{ Auth::user()->email }}
                     </a>
                 </div>
             </div>
@@ -109,6 +120,7 @@
     <div class="card">
         <div class="card-body">
             @foreach($data as $data)
+            @if($data->id_users == Auth::user()->id_users )
             <div class="row">
                 <div class="col-4 bg-light">
                     <a>{{$data->semester}}
@@ -125,6 +137,7 @@
                     </a>
                 </div>
             </div>
+            @endif
             @endforeach
             <br>
         </div>

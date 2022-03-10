@@ -11,7 +11,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="/Dormitory_Counselor/home">หน้าหลัก</a></li>
-                    <li class="breadcrumb-item active"><a href="/Dormitory_Counselor/showDataUser">ข้อมูลนักศึกษา</a></li>
+                    <li class="breadcrumb-item active"><a href="/Dormitory_Counselor/showDataUser">ข้อมูลผู้ใช้ระบบ</a></li>
                 </ol>
             </div>
         </div>
@@ -33,33 +33,12 @@
             <br>
             <div class="row">
                 <div class="col-3 bg-warning">
-                    <a>รหัสนักศึกษา </a>
+                    <a>รหัสผู้ใช้ระบบ </a>
                 </div>
                 <div class="col-9 bg-light">
                     <a>
-                        {{ Auth::user()->id }}
-                    </a>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-3 bg-warning">
-                    <a>คณะ</a>
-                </div>
-                <div class="col-9 bg-light">
-                    <a>
-                        {{ Auth::user()->student_faculty }}
-                    </a>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-3 bg-warning">
-                    <a>หอพัก</a>
-                </div>
-                <div class="col-9 bg-light">
-                    <a>
-                        {{ Auth::user()->id_room }}
+                        {{ Auth::user()->id_users }}
+
                     </a>
                 </div>
             </div>
@@ -71,6 +50,17 @@
                 <div class="col-9 bg-light">
                     <a>
                         {{ Auth::user()->tel }}
+                    </a>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-3 bg-warning">
+                    <a>อีเมล</a>
+                </div>
+                <div class="col-9 bg-light">
+                    <a>
+                        {{ Auth::user()->email }}
                     </a>
                 </div>
             </div>

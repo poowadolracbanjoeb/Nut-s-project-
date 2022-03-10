@@ -18,7 +18,10 @@ use database\Seeders\CreateUserSeeder;
 Route::get('/', function () {
     return view('Home.Home');
 });
+
 Route::group(['middleware' => ['role']], function () {
+});
+
     Route::get('Student/home', [App\Http\Controllers\HomeController::class, 'Student'])->name('Student')->middleware('role');
     Route::get('Dormitory_Director/home', [App\Http\Controllers\HomeController::class, 'Dormitory_Director'])->name('Dormitory_Director')->middleware('role');
     Route::get('Dormitory_Chairman/home', [App\Http\Controllers\HomeController::class, 'Dormitory_Chairman'])->name('Dormitory_Chairman')->middleware('role');
@@ -69,14 +72,15 @@ Route::group(['middleware' => ['role']], function () {
     Route::get('/Director_Dormitory_Service_Division/showDataUser', [App\Http\Controllers\UserController::class, 'showDataUserDirector_Dormitory_Service_Division'])->name('showDataUserDirector_Dormitory_Service_Division');
     Route::get('/Head_Information_Unit/showDataUser', [App\Http\Controllers\UserController::class, 'showDataUserHead_Information_Unit'])->name('showDataUserHead_Information_Unit');
 
-    Route::get('/Student/showDataActivity', [App\Http\Controllers\UserController::class, 'showDataActivityStudent'])->name('showDataActivityStudent');
+   
+    Route::get('/Student/showDataActivityJoin/{id_users} ', [App\Http\Controllers\UserController::class, 'showDataActivityJoinStudent'])->name('showDataActivityJoinStudent');
+    Route::get('/Dormitory_Director/showDataActivityJoin/{id_users}', [App\Http\Controllers\UserController::class, 'showDataActivityJoinDormitory_Director'])->name('showDataActivityDormitory_Director');
+    Route::get('/Dormitory_Chairman/showDataActivityJoin/{id_users}', [App\Http\Controllers\UserController::class, 'showDataActivityJoinDormitory_Chairman'])->name('showDataActivityDormitory_Chairman');
+
     Route::get('/Student/showDataActivityAll', [App\Http\Controllers\UserController::class, 'showDataActivityAllStudent'])->name('showDataActivityAllStudent');
-    Route::get('/Dormitory_Director/showDataActivity/{id_users}', [App\Http\Controllers\UserController::class, 'showDataActivityDormitory_Director'])->name('showDataActivityDormitory_Director');
-    Route::get('/Dormitory_Chairman/showDataActivity', [App\Http\Controllers\UserController::class, 'showDataActivityDormitory_Chairman'])->name('showDataActivityDormitory_Chairman');
     Route::get('Dormitory_Counselor/showDataActivityAll', [App\Http\Controllers\UserController::class, 'showDataActivityAllDormitory_Counselor'])->name('showDataActivityAllDormitory_Counselor');
     Route::get('Head_Dormitory_Service/showDataActivityAll', [App\Http\Controllers\UserController::class, 'showDataActivityAllHead_Dormitory_Service'])->name('showDataActivityAllHead_Dormitory_Service');
     Route::get('Director_Dormitory_Service_Division/showDataActivityAll', [App\Http\Controllers\UserController::class, 'showDataActivityAllDirector_Dormitory_Service_Division'])->name('showDataActivityAllDirector_Dormitory_Service_Division');
-
 
     Route::get('/Head_Information_Unit/manageActivityAll', [App\Http\Controllers\ActivityController::class, 'manageActivityAllHead_Information_Unit'])->name('manageActivityAllHead_Information_Unit');
     Route::get('/Head_Information_Unit/manageActivityAll/Outline', [App\Http\Controllers\ActivityController::class, 'manageActivityAllOutlineHead_Information_Unit'])->name('manageActivityAllOutlineHead_Information_Unit');
@@ -178,6 +182,6 @@ Route::group(['middleware' => ['role']], function () {
     
     Route::get('/export/UserHasActivity', [App\Http\Controllers\UserController::class, 'exportUserHasActivity'])->name('exportUserHasActivity');
     
-});
+
 
 Auth::routes();

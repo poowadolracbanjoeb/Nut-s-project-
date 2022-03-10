@@ -119,7 +119,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="/Student/showDataActivity" class="nav-link">
+              <a href="/Student/showDataActivityJoin/{{ Auth::user()->id_users }}" class="nav-link">
                 <i class="nav-icon far">
                   <ion-icon name="flag-outline"></ion-icon>
                 </i>

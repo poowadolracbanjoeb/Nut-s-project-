@@ -74,9 +74,10 @@
             </div><br><br><br>
 
             จัดกิจกรรมตั้งแต่วันที่<br>
-            <input type="text" name="activityStartDate" class="form-control" placeholder=""><br>ถึงวันที่
+            <span class="glyphicon glyphicon-calendar"></span>
+            <input type="text" name="activityStartDate" class="form-control date form-control" placeholder=""><br>ถึงวันที่
             <span class="text-danger"> @error("activityStartDate"){{$message}}@enderror </span><br>
-            <input type="text" name="activityEndDate" class="form-control" placeholder=""><br>
+            <input type="text" name="activityEndDate" class="form-control date form-control" placeholder=""><br>
             <span class="text-danger"> @error("activityEndDate"){{$message}}@enderror </span><br><br>
             จำนวนเป้าหมายผู้เข้าร่วมโครงการ
             <input type="text" name="activity_Target" class="form-control"><br>
@@ -90,13 +91,30 @@
             เอกสารประกอบโครงการ<br><br>
             <input type="file" name="activityFile"><br><br>
             <span class="text-danger"> @error("activityFile"){{$message}}@enderror </span><br>
+
+
+
+
+              <script type="text/javascript">
+                $('.date').datepicker({
+                  format: 'yyyy-mm-dd'
+                });
+              </script>
+
+
+
+
+
+
+
+
             @if(Session::has('post_update'))
             <span>{{Session::get('post_update')}}</span>
             @endif
             <br>
             <br>
             <input type="submit" class="btn btn-success" value="สร้างกิจกรรม" formaction="{{url('/Dormitory_Director/createActivity/Submit')}}">
-            <input type="submit" class="btn btn-warning" value="บันทึกร่างโครงการ" formaction="{{url('change-password')}}">
+            <input type="submit" class="btn btn-warning" value="บันทึกร่างโครงการ" formaction="{{url('/Dormitory_Director/createActivity/Outline/Submit')}}">
         </form>
       </div>
     </div>

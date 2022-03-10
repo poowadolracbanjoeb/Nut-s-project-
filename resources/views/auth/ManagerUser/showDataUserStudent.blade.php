@@ -17,6 +17,7 @@
         </div>
     </div><!-- /.container-fluid -->
 </section>
+
 <div class="container">
     <div class="card">
         <div class="card-body">
@@ -37,7 +38,8 @@
                 </div>
                 <div class="col-9 bg-light">
                     <a>
-                        {{ Auth::user()->id }}
+                        {{ Auth::user()->id_users }}
+
                     </a>
                 </div>
             </div>
@@ -55,6 +57,17 @@
             <br>
             <div class="row">
                 <div class="col-3 bg-warning">
+                    <a>ชั้นปีที่</a>
+                </div>
+                <div class="col-9 bg-light">
+                    <a>
+                        {{ Auth::user()->student_degree }}
+                    </a>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-3 bg-warning">
                     <a>เบอร์โทร</a>
                 </div>
                 <div class="col-9 bg-light">
@@ -66,26 +79,14 @@
             <br>
             <div class="row">
                 <div class="col-3 bg-warning">
-                    <a>จำนวนกิจกรรมที่เข้าร่วม</a>
+                    <a>อีเมล</a>
                 </div>
                 <div class="col-9 bg-light">
                     <a>
-                        10
+                        {{ Auth::user()->email }}
                     </a>
                 </div>
             </div>
-            <br>
-            <div class="row">
-                <div class="col-3 bg-warning">
-                    <a>คะแนนกิจกรรม</a>
-                </div>
-                <div class="col-9 bg-light">
-                    <a>
-                        5
-                    </a>
-                </div>
-            </div>
-            <br>
         </div>
     </div>
     <br>
@@ -100,22 +101,17 @@
     <div class="card">
         <div class="card-body">
             <div class="row">
-                <div class="col-3 bg-warning">
+                <div class="col-4 bg-warning">
                     <a>ปีการศึกษา</a>
                 </div>
-                <div class="col-3 bg-warning">
+                <div class="col-4 bg-warning">
                     <a>
                         หมายเลขห้อง
                     </a>
                 </div>
-                <div class="col-3 bg-warning">
+                <div class="col-4 bg-warning">
                     <a>
                         หอพักนักศึกษา
-                    </a>
-                </div>
-                <div class="col-3 bg-warning">
-                    <a>
-                        หน่วยบริการหอพักนักศึกษา
                     </a>
                 </div>
             </div>
@@ -125,28 +121,24 @@
     <div class="card">
         <div class="card-body">
             @foreach($data as $data)
+            @if($data->id_users == Auth::user()->id_users )
             <div class="row">
-                <div class="col-3 bg-light">
+                <div class="col-4 bg-light">
                     <a>{{$data->semester}}
-
                     </a>
                 </div>
-                <div class="col-3 bg-light">
+                <div class="col-4 bg-light">
                     <a>
                         {{$data->room}}
                     </a>
                 </div>
-                <div class="col-3 bg-light">
+                <div class="col-4 bg-light">
                     <a>
-                        {{$data->dorm}}
-                    </a>
-                </div>
-                <div class="col-3 bg-light">
-                    <a>
-                        {{$data->dorm_service}}
+                        {{$data->dormName}}
                     </a>
                 </div>
             </div>
+            @endif
             @endforeach
             <br>
         </div>

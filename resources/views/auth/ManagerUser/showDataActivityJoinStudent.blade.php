@@ -1,4 +1,4 @@
-@extends('layouts.appDormitory_Director')
+@extends('layouts.appStudent')
 
 @section('content')
 <div class="wrapper">
@@ -13,8 +13,8 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="/Dormitory_Director/home">หน้าหลัก</a></li>
-            <li class="breadcrumb-item active"><a href="/Dormitory_Director/showDataActivity">กิจกรรมที่เข้าร่วม</a></li>
+          <li class="breadcrumb-item"><a href="/Student/home">หน้าหลัก</a></li>
+            <li class="breadcrumb-item active"><a href="/Student/showDataActivityJoin/{{ Auth::user()->id_users }}">กิจกรรมที่เข้าร่วม</a></li>
           </ol>
         </div>
       </div>
@@ -34,11 +34,11 @@
 
 
           @foreach($data as $joinActivity)
-          @if($joinActivity->id_users == '603785986-8')
+          @if($joinActivity->id_users == Auth::user()->id_users )
           <tbody>
             <td>{{$joinActivity->activityId}}</td>
             <td>{{$joinActivity->activityScore}}</td>
-            <td><a class="btn btn-info" href="/Dormitory_Director/manageActivity/activityDetail/{{$joinActivity ->activityId}}">ดูรายละเอียด</a>
+            <td><a class="btn btn-info" href="/Student/manageActivity/activityDetail/{{$joinActivity ->activityId}}">ดูรายละเอียด</a>
             </td>
           </tbody>
           @endif
@@ -55,7 +55,7 @@
           <div class="col-1 bg-light">
           </div>
           <div class="col-1 bg-light">
-            <a>{{$user_score -> count_of_activities	 }}</a>
+            <a>{{$user_score -> count_of_activities}}</a>
           </div>
           <div class="col-1 bg-warning">
             <a>กิจกรรม </a>
@@ -79,6 +79,4 @@
       </div>
     </div>
   </div>
-
-</div>
-@endsection
+</div>@endsection
