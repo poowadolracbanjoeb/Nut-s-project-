@@ -80,10 +80,10 @@
             <input type="text" name="activityEndDate" class="form-control date form-control" placeholder=""><br>
             <span class="text-danger"> @error("activityEndDate"){{$message}}@enderror </span><br><br>
             จำนวนเป้าหมายผู้เข้าร่วมโครงการ
-            <input type="text" name="activity_Target" class="form-control"><br>
+            <input type="number" name="activity_Target" class="form-control"><br>
             <span class="text-danger"> @error("activity_Target"){{$message}}@enderror </span><br>
             งบประมาณที่ใช้ดำเนินโครงการ
-            <input type="text" name="activity_Budget" class="form-control"><br>
+            <input type="number" name="activity_Budget" class="form-control"><br>
             <span class="text-danger"> @error("activity_Budget"){{$message}}@enderror </span><br>
             ปีการศึกษา
             <input type="text" name="semester" class="form-control">

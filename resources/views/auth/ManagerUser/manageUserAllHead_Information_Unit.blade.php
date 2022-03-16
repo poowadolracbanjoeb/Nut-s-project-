@@ -5,45 +5,62 @@
 
 <section class="content-header">
     <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1>จัดการข้อมูลผู้ใช้
-          </h1><br>
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>จัดการข้อมูลผู้ใช้</h1><br>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/Head_Information_Unit/home">หน้าหลัก</a></li>
+                    <li class="breadcrumb-item active"><a href="/Head_Information_Unit/manageUserAll">จัดการข้อมูลผู้ใช้</a></li>
+                </ol>
+            </div>
         </div>
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="/Head_Information_Unit/home">หน้าหลัก</a></li>
-            <li class="breadcrumb-item active"><a href="/Head_Information_Unit/manageUserAll">จัดการข้อมูลผู้ใช้</a></li>
-          </ol>
-        </div>
-      </div>
     </div><!-- /.container-fluid -->
-  </section>
+</section>
 
 
-<div class="container">
+<section class="container">
     <div class="card bg-light mt-3">
         <div class="card-body">
+            <h3>นำข้อมูลผู้ใช้เข้า</h3><br>
             <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="file" name="file" class="form-control">
                 <br>
-                <button class="btn btn-success">Import User Data</button>
+                <button class="btn btn-success">นำข้อมูลเข้า</button>
 
             </form>
-            <br>
+        </div>
+    </div>
+</section>
+<br>
+
+<div class="container">
+    <div class="card bg-light mt-3">
+        <div class="card-body">
+            <h3>ค้นหาผู้ใช้</h3><br>
+            
             <form action="">
                 <div class="form-group">
-                    <input type="text" name="q" placeholder="Find or Search Members...!" class="form-control" /><br>
-                    <input type="submit" class="btn btn-primary" value="Search" />
+                    <input type="text" name="q" placeholder="กรุณากรอกชื่อหรือรหัสผู้ใช้งาน" class="form-control" /><br>
+                    <input type="submit" class="btn btn-primary" value="ค้นหา" />
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card bg-light mt-3">
+        <div class="card-body">
+            <br>
             <div class="row">
                 <div class="col-10">
 
                 </div>
                 <div class="col">
-                    <a class="btn btn-warning" href="{{ route('export') }}">Export User Data</a>
+                    <a class="btn btn-warning" href="{{ route('export') }}">นำข้อมูลออก</a>
                 </div>
 
             </div>
@@ -55,17 +72,13 @@
                     <tr class="table-warning ">
                         <th>รหัสผู้ใช้</th>
                         <th>ชื่อผู้ใช้</th>
-                        <th>อีเมลล์</th>
-                        <th>เบอร์โทร</th>
-                        <th>จัดการข้อมูล</th>
+                        <th>ดำเนินการ</th>
                     </tr>
                 </thead>
                 @foreach($data as $Members)
                 <tbody>
-                    <td>{{$Members->id}}</td>
+                    <td>{{$Members->id_users}}</td>
                     <td>{{$Members->name}}</td>
-                    <td>{{$Members->email}}</td>
-                    <td>{{$Members->tel}}</td>
                     <td><a class="btn btn-info" href="">ดูข้อมูล</a>
                         <a class="btn btn-warning" href="">แก้ไข</a>
                         <a class="btn btn-danger" href="">ลบ</a>

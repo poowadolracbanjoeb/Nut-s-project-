@@ -7,7 +7,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>ข้อมูลผู้ใช้ หอพักชายที่ 
+          <h1>ข้อมูลผู้ใช้ หอพักชายที่ 16
           </h1><br>
         </div>
         <div class="col-sm-6">
@@ -27,7 +27,7 @@
             <form action="">
                 <div class="form-group">
                     <input type="text" name="q" placeholder="ค้นหารายชื่อนักศึกษา" class="form-control" /><br>
-                    <input type="submit" class="btn btn-primary" value="Search" />
+                    <input type="submit" class="btn btn-primary" value="ค้นหา" />
                 </div>
             </form>
             <div class="row">
@@ -35,7 +35,7 @@
 
                 </div>
                 <div class="col">
-                    <a class="btn btn-warning" href="{{ route('export') }}">Export User Data</a>
+                    <a class="btn btn-warning" href="{{ route('export') }}">ดาวน์โหลดข้อมูล</a>
                 </div>
 
             </div>
@@ -45,19 +45,15 @@
             <table class="table table-striped table-ligh">
                 <thead>
                     <tr class="table-warning ">
-                        <th>รหัสผู้ใช้</th>
-                        <th>ชื่อผู้ใช้</th>
-                        <th>อีเมลล์</th>
-                        <th>เบอร์โทร</th>
-                        <th>จัดการข้อมูล</th>
+                        <th>รหัสนักศึกษา</th>
+                        <th>ชื่อ</th>
+                        <th>ดำเนินการ</th>
                     </tr>
                 </thead>
                 @foreach($data as $Members)
                 <tbody>
-                    <td>{{$Members->id}}</td>
+                    <td>{{$Members->id_users}}</td>
                     <td>{{$Members->name}}</td>
-                    <td>{{$Members->email}}</td>
-                    <td>{{$Members->tel}}</td>
                     <td><a class="btn btn-info" href="">ดูข้อมูล</a>
                         <a class="btn btn-warning" href="">แก้ไข</a>
                         <a class="btn btn-danger" href="">ลบ</a>

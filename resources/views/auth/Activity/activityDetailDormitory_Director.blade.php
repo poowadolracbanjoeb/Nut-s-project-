@@ -26,7 +26,7 @@
 <div class="container">
     <div class="card">
         <div class="card-body">
-            <form action="/Director_Dormitory_Service_Division/approveActivity/approve/submit" method="POST" enctype="multipart/form-data">
+            <form>
                 {{csrf_field()}}
                 <div class="form-group">
                     รหัสกิจกรรม

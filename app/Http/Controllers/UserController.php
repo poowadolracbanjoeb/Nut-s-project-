@@ -15,7 +15,7 @@ use App\Models\dormitories;
 use App\Models\dormitory_user_history;
 use App\Models\user_score;
 use App\Exports\ExportUserHasActivity;
-
+use App\Models\Activity;
 
 
 
@@ -102,26 +102,18 @@ class UserController extends Controller
 
  
 
-    public function showDataActivityAllStudent()
-    {
-        $Activity = User::all();
-        return view('auth.ManagerUser.showDataActivityAllStudent');
-    }
 
 
 
 
     public function showDataActivityJoinStudent($id_users)
     {
+        $Activity = Activity::all();
         $joinActivity = users_has_activities::all();
         $user_score = DB::table('user_score')->where('id_users', $id_users)->first();
         return view('auth.ManagerUser.showDataActivityJoinStudent',compact('user_score'))->with('data', $joinActivity);
 
     }
-
-
-
-
     public function showDataActivityJoinDormitory_Director($id_users)
     {
         $joinActivity = users_has_activities::all();
@@ -130,7 +122,6 @@ class UserController extends Controller
 
     }
 
-    
     public function showDataActivityJoinDormitory_Chairman($id_users)
     {
         $joinActivity = users_has_activities::all();
@@ -140,20 +131,28 @@ class UserController extends Controller
     }
 
 
+
+
+
+    public function showDataActivityAllStudent()
+    {
+        $Activity = Activity::all();
+        return view('auth.ManagerUser.showDataActivityAllStudent')->with('data',$Activity);
+    }
     public function showDataActivityAllDormitory_Counselor()
     {
-        $joinActivity = users_has_activities::all();
-        return view('auth.ManagerUser.showDataActivityAllDormitory_Counselor',compact('joinActivity'));
+        $Activity = Activity::all();
+        return view('auth.ManagerUser.showDataActivityAllDormitory_Counselor')->with('data',$Activity);
     }
     public function showDataActivityAllHead_Dormitory_Service()
     {
-        $joinActivity = users_has_activities::all();
-        return view('auth.ManagerUser.showDataActivityAllHead_Dormitory_Service',compact('joinActivity'));
+        $Activity = Activity::all();
+        return view('auth.ManagerUser.showDataActivityAllHead_Dormitory_Service')->with('data',$Activity);
     }
     public function showDataActivityAllDirector_Dormitory_Service_Division()
     {
-        $joinActivity = users_has_activities::all();
-        return view('auth.ManagerUser.showDataActivityAllDirector_Dormitory_Service_Division',compact('joinActivity'));
+        $Activity = Activity::all();
+        return view('auth.ManagerUser.showDataActivityAllDirector_Dormitory_Service_Division')->with('data',$Activity);
     }
     
     
@@ -201,7 +200,7 @@ class UserController extends Controller
         if($search!=""){
             $Members = User::where(function ($query) use ($search){
                 $query->where('name', 'like', '%'.$search.'%')
-                    ->orWhere('email', 'like', '%'.$search.'%');
+                    ->orWhere('id_users', 'like', '%'.$search.'%');
             })
             ->paginate(10);
             $Members->appends(['q' => $search]);

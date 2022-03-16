@@ -28,13 +28,6 @@
   <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
   <!-- fullCalendar -->
   <link rel="stylesheet" href="{{ asset('plugins/fullcalendar/main.css') }}">
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
-  
-
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -53,7 +46,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="/Dormitory_Director/home" class="nav-link">หน้าหลัก</a>
+          <a href="/Dormitory_Chairman/home" class="nav-link">หน้าหลัก</a>
         </li>
       </ul>
 
@@ -65,14 +58,6 @@
             {{ Auth::user()->name }}
           </a>
         </li>
-        <!-- Notification -->
-        <li class="nav-item d-none d-sm-inline-block">
-          <a class="nav-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
-              <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
-            </svg>
-          </a>
-        </li>
       </ul>
     </nav>
     <!-- /.navbar -->
@@ -80,10 +65,11 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-light-success elevation-4">
       <!-- Brand Logo -->
-      <a href="/Dormitory_Director/home" class="brand-link">
+      <a href="/Dormitory_Chairman/home" class="brand-link">
         <img src="{{ asset('dist/img/LogoKKU-thai.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">AMS KKU</span>
       </a>
+
 
       <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
@@ -174,7 +160,23 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <!-- <h1 class="m-0">ระบบบริหารจัดการกิจกรรมสำหรับหอพักส่วนกลาง</h1> -->
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <!-- <li class="breadcrumb-item"><a href="#">หน้าหลัก</a></li> -->
+                <!-- <li class="breadcrumb-item active">Dashboard v1</li> -->
+              </ol>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
 
       <!-- Main content -->
       @yield('content')
