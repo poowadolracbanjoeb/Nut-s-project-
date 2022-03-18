@@ -54,9 +54,7 @@
                 <tbody>
                     <td>{{$Members->id_users}}</td>
                     <td>{{$Members->name}}</td>
-                    <td><a class="btn btn-info" href="">ดูข้อมูล</a>
-                        <a class="btn btn-warning" href="">แก้ไข</a>
-                        <a class="btn btn-danger" href="">ลบ</a>
+                    <td><a class="btn btn-info" href="/Dormitory_Director/userDetail/{{$Members->id_users}}">ดูข้อมูล</a>
                     </td>
 
 

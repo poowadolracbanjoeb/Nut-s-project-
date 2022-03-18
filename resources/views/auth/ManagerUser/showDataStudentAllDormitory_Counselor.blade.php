@@ -58,9 +58,7 @@
                     <td>{{$Members->name}}</td>
                     <td>{{$Members->email}}</td>
                     <td>{{$Members->tel}}</td>
-                    <td><a class="btn btn-info" href="">ดูข้อมูล</a>
-                        <a class="btn btn-warning" href="">แก้ไข</a>
-                        <a class="btn btn-danger" href="">ลบ</a>
+                    <td><a class="btn btn-info" href="/Dormitory_Counselor/userDetail/{{$Members->id_users}}">ดูข้อมูล</a>
                     </td>
 
 

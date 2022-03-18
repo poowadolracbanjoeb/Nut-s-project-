@@ -185,6 +185,8 @@ class ActivityController extends Controller
         return back()->with('post_delete', 'ลบสำเร็จแล้ว');
     }
 
+    
+
     public function deleteActivity_Dormitory_Director(Request $request)
     {
         DB::table('activities')->where('activityId', $request->activityId)->delete();

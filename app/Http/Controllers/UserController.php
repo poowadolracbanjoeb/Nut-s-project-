@@ -254,6 +254,72 @@ class UserController extends Controller
     
     
     
+
+
+
+    
+
+
+    public function  userDetailDormitory_Director($id_users)
+    {
+        $user = DB::table('users')->where('id_users', $id_users)->first();
+        return view('auth.ManagerUser.userDetailDormitory_Director', compact('user'));
+    }
+    public function  userDetailDormitory_Chairman($id_users)
+    {
+        $user = DB::table('users')->where('id_users', $id_users)->first();
+        return view('auth.ManagerUser.userDetailDormitory_Chairman', compact('user'));
+    }
+
+    public function  userDetailDormitory_Counselor($id_users)
+    {
+        $user = DB::table('users')->where('id_users', $id_users)->first();
+        return view('auth.ManagerUser.userDetailDormitory_Counselor', compact('user'));
+    }
+    public function  userDetailHead_Dormitory_Service($id_users)
+    {
+        $user = DB::table('users')->where('id_users', $id_users)->first();
+        return view('auth.ManagerUser.userDetailHead_Dormitory_Service', compact('user'));
+    }
+    public function  userDetailDirector_Dormitory_Service_Division($id_users)
+    {
+        $user = DB::table('users')->where('id_users', $id_users)->first();
+        return view('auth.ManagerUser.userDetailDirector_Dormitory_Service_Division', compact('user'));
+    }
+    public function  userDetailHead_Information_Unit($id_users)
+    {
+        $user = DB::table('users')->where('id_users', $id_users)->first();
+        return view('auth.ManagerUser.userDetailHead_Information_Unit', compact('user'));
+    }
+
+
+
+    public function  editUserDetailHead_Information_Unit($id_users)
+    {
+        $user = DB::table('users')->where('id_users', $id_users)->first();
+        return view('auth.ManagerUser.editUserDetailHead_Information_Unit', compact('user'));
+    }
+
+    public function  submitEditUserDetailHead_Information_Unit(Request $request)
+    {
+        DB::table('users')->where('id_users', $request->id_users)->update([
+            'name' => $request->name,
+            'id_users' =>  $request->id_users,
+            'student_faculty' => $request->student_faculty,
+            'student_degree' =>  $request->student_degree,
+            'tel' => $request->tel,
+            'email' => $request->email
+        ]);
+        return back()->with('post_update', 'บันทึกเค้าโครงร่างกิจกรรมสำเร็จ');
+        
+    }
+
+    public function deleteUserHead_Information_Unit($id_user)
+    {
+        DB::table('users')->where('id_users', $id_user)->delete();
+        return back()->with('post_delete', 'ลบสำเร็จแล้ว');
+    }
+    
     
 
     

@@ -92,21 +92,11 @@
             <input type="file" name="activityFile"><br><br>
             <span class="text-danger"> @error("activityFile"){{$message}}@enderror </span><br>
 
-
-
-
               <script type="text/javascript">
                 $('.date').datepicker({
                   format: 'yyyy-mm-dd'
                 });
               </script>
-
-
-
-
-
-
-
 
             @if(Session::has('post_update'))
             <span>{{Session::get('post_update')}}</span>

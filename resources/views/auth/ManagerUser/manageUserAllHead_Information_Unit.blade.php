@@ -79,8 +79,8 @@
                 <tbody>
                     <td>{{$Members->id_users}}</td>
                     <td>{{$Members->name}}</td>
-                    <td><a class="btn btn-info" href="">ดูข้อมูล</a>
-                        <a class="btn btn-warning" href="">แก้ไข</a>
+                    <td><a class="btn btn-info" href="/Head_Information_Unit/userDetail/{{$Members->id_users}}">ดูข้อมูล</a>
+                        <a class="btn btn-warning" href="/Head_Information_Unit/editUserDetail/{{$Members->id_users}}">แก้ไข</a>
                         <a class="btn btn-danger" href="">ลบ</a>
                     </td>
 
