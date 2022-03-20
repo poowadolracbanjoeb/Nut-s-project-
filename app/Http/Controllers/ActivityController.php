@@ -22,7 +22,7 @@ class ActivityController extends Controller
     {
         $type = activities_types::all();
         $dorm = dormitories::all();
-        return view('auth.Activity.createActivityDormitory_Director')->with('data', $dorm)->with('data2', $type);
+        return view('auth.Activity.createActivityDormitory_Director')->with('data', $dorm)->with('data2',$type);
     }
 
     public function manageActivityDormitory_Director(Request $request)
@@ -285,7 +285,9 @@ class ActivityController extends Controller
 
     public function createActivityDormitory_Chairman()
     {
-        return view('auth.Activity.createActivityDormitory_Chairman');
+        $type = activities_types::all();
+        $dorm = dormitories::all();
+        return view('auth.Activity.createActivityDormitory_Chairman')->with('data', $dorm)->with('data2', $type);
     }
 
     public function manageActivityDormitory_Chairman()
@@ -449,7 +451,9 @@ class ActivityController extends Controller
 
     public function createActivityHead_Information_Unit()
     {
-        return view('auth.Activity.createActivityHead_Information_Unit');
+        $type = activities_types::all();
+        $dorm = dormitories::all();
+        return view('auth.Activity.createActivityHead_Information_Unit')->with('data', $dorm)->with('data2', $type);
     }
 
 
@@ -840,21 +844,21 @@ class ActivityController extends Controller
 
     //--------------------combined function-------------------------------
 
-    public function checkName($activityId)
+    public function checkName($activityName)
     {
         $user_has_activity = users_has_activities::all();
-        $Activity = DB::table('activities')->where('activityId', $activityId)->first();
+        $Activity = DB::table('activities')->where('activityName', $activityName)->first();
         return view('auth.checkName.checkName', compact('Activity'))->with('data', $user_has_activity);
     }
 
 
-    public function submitCheckName(Request $request, $activityId)
+    public function submitCheckName(Request $request, $activityName)
     {
-        $Activity = DB::table('activities')->where('activityId', $activityId)->first();
+        $Activity = DB::table('activities')->where('activityName', $activityName)->first();
 
         $data = new users_has_activities;
         $data->id_users = $request->id_users;
-        $data->activityId = $activityId;
+        $data->activityId = $activityName;
         $data->activityScore = $Activity->activityScore;
         $data->save();
 

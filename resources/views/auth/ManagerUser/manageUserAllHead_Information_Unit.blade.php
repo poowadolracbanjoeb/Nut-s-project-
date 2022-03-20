@@ -18,32 +18,38 @@
         </div>
     </div><!-- /.container-fluid -->
 </section>
-
-
-<section class="container">
-    <div class="card bg-light mt-3">
-        <div class="card-body">
-            <h3>นำข้อมูลผู้ใช้เข้า</h3><br>
-            <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <input type="file" name="file" class="form-control">
-                <br>
-                <button class="btn btn-success">นำข้อมูลเข้า</button>
-
-            </form>
-        </div>
-    </div>
-</section>
-<br>
-
 <div class="container">
     <div class="card bg-light mt-3">
         <div class="card-body">
             <h3>ค้นหาผู้ใช้</h3><br>
-            
+
             <form action="">
                 <div class="form-group">
-                    <input type="text" name="q" placeholder="กรุณากรอกชื่อหรือรหัสผู้ใช้งาน" class="form-control" /><br>
+                    <input type="text" name="search" placeholder="กรุณากรอกชื่อหรือรหัสนักศึกษา" class="form-control" /><br>
+                    <select class="form-select" name="semester" class="form-control">
+                        <option value="">ปีการศึกษา</option>
+                        <option value="2/2565">2/2565</option>
+                        <option value="1/2565">1/2565</option>
+                        <option value="3/2564">3/2564</option>
+                        <option value="2/2564">2/2564</option>
+                        <option value="1/2564">1/2564</option>
+                        <option value="3/2563">3/2563</option>
+                        <option value="2/2563">2/2563</option>
+                        <option value="1/2563">1/2563</option>
+                    </select>
+                    <select class="form-select" name="semester" class="form-control">
+                        <option value="">หอพัก</option>
+                        <option value="2/2565">2/2565</option>
+                        <option value="1/2565">1/2565</option>
+                        <option value="3/2564">3/2564</option>
+                        <option value="2/2564">2/2564</option>
+                        <option value="1/2564">1/2564</option>
+                        <option value="3/2563">3/2563</option>
+                        <option value="2/2563">2/2563</option>
+                        <option value="1/2563">1/2563</option>
+                    </select>
+                    <br>
+                    <br>
                     <input type="submit" class="btn btn-primary" value="ค้นหา" />
                 </div>
             </form>
@@ -57,10 +63,7 @@
             <br>
             <div class="row">
                 <div class="col-10">
-
-                </div>
-                <div class="col">
-                    <a class="btn btn-warning" href="{{ route('export') }}">นำข้อมูลออก</a>
+                    <a class="btn btn-success" href="/Head_Information_Unit/manageUserAll/importUsers">นำผู้ใช้เข้า</a>
                 </div>
 
             </div>

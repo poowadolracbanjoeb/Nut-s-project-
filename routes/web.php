@@ -173,14 +173,17 @@ Route::get('/Head_Information_Unit/userDetail/{activityId}', [App\Http\Controlle
 Route::get('/Head_Information_Unit/editUserDetail/{activityId}', [App\Http\Controllers\UserController::class, 'editUserDetailHead_Information_Unit'])->name('editUserDetailHead_Information_Unit');
 
 Route::get('export', [App\Http\Controllers\UserController::class, 'export'])->name('export');
-Route::post('import', [App\Http\Controllers\UserController::class, 'import'])->name('import');
+Route::post('importUsers', [App\Http\Controllers\UserController::class, 'importUsers'])->name('importUsers');
+Route::post('importUsersHistory', [App\Http\Controllers\UserController::class, 'importUsersHistory'])->name('importUsersHistory');
 Route::get('search', [App\Http\Controllers\UserController::class, 'search'])->name('search');
 Route::post('changePassword', [App\Http\Controllers\UserController::class, 'changePassword'])->name('changePassword');
+Route::post('importUsersScore', [App\Http\Controllers\UserController::class, 'importUsersScore'])->name('importUsersScore');
+
 
 Route::get('/Dormitory_Director/viewStatusActivityApprove', [App\Http\Controllers\ActivityController::class, 'viewStatusActivityApproveDormitory_Director'])->name('viewStatusActivityApproveDormitory_Director');
 
-Route::get('/checkName/{activityId}', [App\Http\Controllers\ActivityController::class, 'checkName'])->name('checkName');
-Route::post('/checkName/{activityId}/Submit', [App\Http\Controllers\ActivityController::class, 'submitCheckName'])->name('submitCheckName');
+Route::get('/checkName/{activityName}', [App\Http\Controllers\ActivityController::class, 'checkName'])->name('checkName');
+Route::post('/checkName/{activityName}/Submit', [App\Http\Controllers\ActivityController::class, 'submitCheckName'])->name('submitCheckName');
 
 Route::get('/Dormitory_Director/AddActivityType', [App\Http\Controllers\ActivityController::class, 'AddActivityTypeDormitory_Director'])->name('AddActivityTypeDormitory_Director');
 
@@ -198,5 +201,5 @@ Route::post('/Dormitory_Director/createActivity/Outline/Submit', [App\Http\Contr
 Route::post('/Dormitory_Director/editActivity/saveActivity/Outline/Submit', [App\Http\Controllers\ActivityController::class, 'submitsaveActivityOutlineEditActivityDormitory_Director'])->name('submitsaveActivityOutlineEditActivityDormitory_Director');
 
 
-
+Route::get('/Head_Information_Unit/manageUserAll/importUsers', [App\Http\Controllers\UserController::class, 'importUserHead_Information_Unit'])->name('importUserHead_Information_Unit');
 Auth::routes();
