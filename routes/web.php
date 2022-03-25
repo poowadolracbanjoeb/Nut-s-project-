@@ -152,13 +152,13 @@ Route::get('/Dormitory_Director/checkName/delete_user/{id_user}/{activityId}', [
 Route::get('/Dormitory_Director/manageActivity/Outline', [App\Http\Controllers\ActivityController::class, 'manageActivityOutlineDormitory_Director'])->name('manageActivityOutlineDormitory_Director');
 Route::get('/Dormitory_Director/manageActivity/Fell', [App\Http\Controllers\ActivityController::class, 'manageActivityFellDormitory_Director'])->name('manageActivityFellDormitory_Director');
 
-Route::get('/Student/manageActivity/activityDetail/{activityId}', [App\Http\Controllers\ActivityController::class, 'activityDetailStudent'])->name('activityDetailStudent');
-Route::get('/Dormitory_Director/manageActivity/activityDetail/{activityId}', [App\Http\Controllers\ActivityController::class, 'activityDetailDormitory_Director'])->name('activityDetailDormitory_Director');
-Route::get('/Dormitory_Chairman/manageActivity/activityDetail/{activityId}', [App\Http\Controllers\ActivityController::class, 'activityDetailDormitory_Chairman'])->name('activityDetailDormitory_Chairman');
-Route::get('/Dormitory_Counselor/manageActivity/activityDetail/{activityId}', [App\Http\Controllers\ActivityController::class, 'activityDetailDormitory_Counselor'])->name('activityDetailDormitory_Counselor');
-Route::get('/Head_Dormitory_Service/manageActivity/activityDetail/{activityId}', [App\Http\Controllers\ActivityController::class, 'activityDetailHead_Dormitory_Service'])->name('activityDetailHead_Dormitory_Service');
-Route::get('/Director_Dormitory_Service_Division/manageActivity/activityDetail/{activityId}', [App\Http\Controllers\ActivityController::class, 'activityDetailDirector_Dormitory_Service_Division'])->name('activityDetailDirector_Dormitory_Service_Division');
-Route::get('/Head_Information_Unit/manageActivity/activityDetail/{activityId}', [App\Http\Controllers\ActivityController::class, 'activityDetailHead_Information_Unit'])->name('activityDetailHead_Information_Unit');
+Route::get('/Student/manageActivity/activityDetail/{activityName}', [App\Http\Controllers\ActivityController::class, 'activityDetailStudent'])->name('activityDetailStudent');
+Route::get('/Dormitory_Director/manageActivity/activityDetail/{activityName}', [App\Http\Controllers\ActivityController::class, 'activityDetailDormitory_Director'])->name('activityDetailDormitory_Director');
+Route::get('/Dormitory_Chairman/manageActivity/activityDetail/{activityName}', [App\Http\Controllers\ActivityController::class, 'activityDetailDormitory_Chairman'])->name('activityDetailDormitory_Chairman');
+Route::get('/Dormitory_Counselor/manageActivity/activityDetail/{activityName}', [App\Http\Controllers\ActivityController::class, 'activityDetailDormitory_Counselor'])->name('activityDetailDormitory_Counselor');
+Route::get('/Head_Dormitory_Service/manageActivity/activityDetail/{activityName}', [App\Http\Controllers\ActivityController::class, 'activityDetailHead_Dormitory_Service'])->name('activityDetailHead_Dormitory_Service');
+Route::get('/Director_Dormitory_Service_Division/manageActivity/activityDetail/{activityName}', [App\Http\Controllers\ActivityController::class, 'activityDetailDirector_Dormitory_Service_Division'])->name('activityDetailDirector_Dormitory_Service_Division');
+Route::get('/Head_Information_Unit/manageActivity/activityDetail/{activityName}', [App\Http\Controllers\ActivityController::class, 'activityDetailHead_Information_Unit'])->name('activityDetailHead_Information_Unit');
 
 
 Route::get('/Student/userDetail/{activityId}', [App\Http\Controllers\UserController::class, 'userDetailStudent'])->name('userDetailStudent');

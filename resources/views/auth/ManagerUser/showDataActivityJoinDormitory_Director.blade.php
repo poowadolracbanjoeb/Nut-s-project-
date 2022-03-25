@@ -26,7 +26,7 @@
         <table class="table table-striped table-light">
           <thead>
             <tr class="table-warning ">
-              <th>รหัสกิจกรรม</th>
+              <th>ชื่อกิจกรรม</th>
               <th>คะแนนกิจกรรม</th>
               <th>ดำเนินการ</th>
             </tr>
@@ -36,9 +36,9 @@
           @foreach($data as $joinActivity)
           @if($joinActivity->id_users == Auth::user()->id_users )
           <tbody>
-            <td>{{$joinActivity->activityId}}</td>
+            <td>{{$joinActivity->	activityName}}</td>
             <td>{{$joinActivity->activityScore}}</td>
-            <td><a class="btn btn-info" href="/Dormitory_Director/manageActivity/activityDetail/{{$joinActivity ->activityId}}">ดูรายละเอียด</a>
+            <td><a class="btn btn-info" href="/Dormitory_Director/manageActivity/activityDetail/{{$joinActivity->activityName}}">ดูรายละเอียด</a>
             </td>
           </tbody>
           @endif

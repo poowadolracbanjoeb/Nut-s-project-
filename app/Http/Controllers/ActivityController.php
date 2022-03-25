@@ -100,21 +100,22 @@ class ActivityController extends Controller
         $data1->activity_Target = $request->activity_Target;
         $data1->activity_Budget = $request->activity_Budget;
         $data1->semester = $request->semester;
+        $data1->userActivityResponsibleActivity = auth()->user()->id_users;
         $data1->id_status = 11;
         $data1->save();
 
         if ($request->dormResponsibility1 != null) {
             $data2 = new activity_responsible_dorm;
-            $data2->activityID = $request->activityId;
-            $data2->id_dorm = $request->dormResponsibility1;
+            $data2->activityName = $request->activityId;
+            $data2->dormName = $request->dormResponsibility1;
             $data2->save();
         }
 
         if ($request->dormResponsibility2 != null) {
-            $data3 = new activity_responsible_dorm;
-            $data3->activityID = $request->activityId;
-            $data3->id_dorm = $request->dormResponsibility2;
-            $data3->save();
+            $data2 = new activity_responsible_dorm;
+            $data2->activityName = $request->activityId;
+            $data2->dormName = $request->dormResponsibility1;
+            $data2->save();
         }
 
         return back();
@@ -124,12 +125,13 @@ class ActivityController extends Controller
 
 
 
-    public function activityDetailDormitory_Director($activityId)
+    public function activityDetailDormitory_Director($activityName)
     {
         $file = Activity::all();
-        $Activity = DB::table('activities')->where('activityId', $activityId)->first();
+        $Activity = DB::table('activities')->where('activityName', $activityName)->first();
         return view('auth.Activity.activityDetailDormitory_Director', compact('Activity'));
     }
+
 
     public function submitsaveActivityOutlineEditActivityDormitory_Director(Request $request)
     {
@@ -250,10 +252,10 @@ class ActivityController extends Controller
         return back();
     }
 
-    public function activityHasUserDormitory_Director($activityId)
+    public function activityHasUserDormitory_Director($activityName)
     {
         $user_has_activity = users_has_activities::all();
-        $Activity = DB::table('activities')->where('activityId', $activityId)->first();
+        $Activity = DB::table('activities')->where('activityName', $activityName)->first();
         return view('auth.Activity.activityHasUserDormitory_Director', compact('Activity'))->with('data', $user_has_activity);
     }
 
@@ -429,12 +431,13 @@ class ActivityController extends Controller
         return back()->with('post_delete', 'ลบสำเร็จแล้ว');
     }
 
-    public function activityDetailDormitory_Chairman($activityId)
+    public function activityDetailDormitory_Chairman($activityName)
     {
-        $file = Activity::all();
-        $Activity = DB::table('activities')->where('activityId', $activityId)->first();
+        $Activity = DB::table('activities')->where('activityName', $activityName)->first();
         return view('auth.Activity.activityDetailDormitory_Chairman', compact('Activity'));
     }
+    
+
 
     //-------------------------------------------------------------------------------------------------------------------
 
@@ -807,35 +810,30 @@ class ActivityController extends Controller
 
 
 
-    public function activityDetailStudent($activityId)
+    public function activityDetailStudent($activityName)
     {
-        $file = Activity::all();
-        $Activity = DB::table('activities')->where('activityId', $activityId)->first();
+        $Activity = DB::table('activities')->where('activityName', $activityName)->first();
         return view('auth.Activity.activityDetailStudent', compact('Activity'));
     }
 
-    public function activityDetailDormitory_Counselor($activityId)
+    public function activityDetailDormitory_Counselor($activityName)
     {
-        $file = Activity::all();
-        $Activity = DB::table('activities')->where('activityId', $activityId)->first();
+        $Activity = DB::table('activities')->where('activityName', $activityName)->first();
         return view('auth.Activity.activityDetailDormitory_Counselor', compact('Activity'));
     }
-    public function activityDetailHead_Dormitory_Service($activityId)
+    public function activityDetailHead_Dormitory_Service($activityName)
     {
-        $file = Activity::all();
-        $Activity = DB::table('activities')->where('activityId', $activityId)->first();
+        $Activity = DB::table('activities')->where('activityName', $activityName)->first();
         return view('auth.Activity.activityDetailHead_Dormitory_Service', compact('Activity'));
     }
-    public function activityDetailDirector_Dormitory_Service_Division($activityId)
+    public function activityDetailDirector_Dormitory_Service_Division($activityName)
     {
-        $file = Activity::all();
-        $Activity = DB::table('activities')->where('activityId', $activityId)->first();
+        $Activity = DB::table('activities')->where('activityName', $activityName)->first();
         return view('auth.Activity.activityDetailDirector_Dormitory_Service_Division', compact('Activity'));
     }
-    public function activityDetailHead_Information_Unit($activityId)
+    public function activityDetailHead_Information_Unit($activityName)
     {
-        $file = Activity::all();
-        $Activity = DB::table('activities')->where('activityId', $activityId)->first();
+        $Activity = DB::table('activities')->where('activityName', $activityName)->first();
         return view('auth.Activity.activityDetailHead_Information_Unit', compact('Activity'));
     }
 
@@ -858,10 +856,9 @@ class ActivityController extends Controller
 
         $data = new users_has_activities;
         $data->id_users = $request->id_users;
-        $data->activityId = $activityName;
+        $data->activityName = $activityName;
         $data->activityScore = $Activity->activityScore;
         $data->save();
-
         $checkUser = DB::table('user_score')->where('id_users', $request->id_users)->count();
         if ($checkUser == 0) {
             $data2 = new user_score;

@@ -48,7 +48,7 @@
             <br>
             <br>
             คะแนนกิจกรรม
-            <input type="text" name="activityScore" class="form-control">
+            <input type="number" name="activityScore" class="form-control">
             <span class="text-danger"> @error("activityScore"){{$message}}@enderror </span><br><br>
             สถานที่จัดกิจกรรม
             <input type="text" name="activityPlace" class="form-control">

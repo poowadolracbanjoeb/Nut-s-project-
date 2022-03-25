@@ -9,7 +9,8 @@ class activity_responsible_dorm extends Model
 {
     // use HasFactory;
     protected $fillable=[
-        'activityID ',
-        'id_dorm',];
+        'responsible_Id',
+        'activityName ',
+        'dormName',];
     protected $table ="activity_responsible_dorm";
 }

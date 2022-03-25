@@ -13,8 +13,8 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="/Dormitory_Director/home">หน้าหลัก</a></li>
-            <li class="breadcrumb-item active"><a href="/Dormitory_Director/manageActivity">จัดการกิจกรรม</a></li>
+            <li class="breadcrumb-item"><a href="/Dormitory_Chairman/home">หน้าหลัก</a></li>
+            <li class="breadcrumb-item active"><a href="/Dormitory_Chairman/manageActivity">จัดการกิจกรรม</a></li>
           </ol>
         </div>
       </div>
@@ -25,15 +25,15 @@
     <div class="col-1">
 
     </div>
-    <a class="btn btn-success" href="/Dormitory_Director/createActivity">สร้างกิจกรรม</a>
+    <a class="btn btn-success" href="/Dormitory_Chairman/createActivity">สร้างกิจกรรม</a>
 
     <div class="col-3">
 
     </div>
-    <a class="btn btn-warning" href="/Dormitory_Director/manageActivity">จัดกิจกรรม</a>
-    <a class="btn btn-secondary" href="/Dormitory_Director/viewStatusActivityApprove">กิจกรรมที่รออนุมัติ</a>
-    <a class="btn btn-secondary" href="/Dormitory_Director/manageActivity/Outline">เค้าโครงร่างกิจกรรม</a>
-    <a class="btn btn-secondary" href="/Dormitory_Director/manageActivity/Fell">กิจกรรมที่ไม่อนุมัติ</a>
+    <a class="btn btn-warning" href="/Dormitory_Chairman/manageActivity">จัดกิจกรรม</a>
+    <a class="btn btn-secondary" href="/Dormitory_Chairman/viewStatusActivityApprove">กิจกรรมที่รออนุมัติ</a>
+    <a class="btn btn-secondary" href="/Dormitory_Chairman/manageActivity/Outline">เค้าโครงร่างกิจกรรม</a>
+    <a class="btn btn-secondary" href="/Dormitory_Chairman/manageActivity/Fell">กิจกรรมที่ไม่อนุมัติ</a>
   </div>
   <div class="container">
     <div class="card">
@@ -53,8 +53,8 @@
             <td>{{$Activity->activityName}}</td>
             <td>{{$Activity->activityPlace}}</td>
             <td>{{$Activity->activityStartDate}} ถึง {{$Activity->activityEndDate}}</td>
-            <td><a class="btn btn-info" href="/Dormitory_Director/manageActivity/activityDetail/{{$Activity->activityId}}">ดูรายละเอียด</a>
-              <a class="btn btn-info" href="/Dormitory_Director/manageActivity/activityDetail/{{$Activity->activityId}}">เช็กชื่อ</a>
+            <td><a class="btn btn-info" href="/Dormitory_Chairman/manageActivity/activityDetail/{{$Activity->activityName}}">ดูรายละเอียด</a>
+              <a class="btn btn-info" href="/Dormitory_Chairman/manageActivity/activityDetail/{{$Activity->activityName}}">เช็กชื่อ</a>
             </td>
           </tbody>
           @endif

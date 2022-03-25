@@ -5,7 +5,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>ข้อมูลผู้ใช้
+        <h1>นักศึกษา {{$myDorm->dormName}}
         </h1><br>
       </div>
       <div class="col-sm-6">
@@ -54,13 +54,27 @@
           <td>{{$Members->id_users}}</td>
           <td>{{$Members->name}}</td>
           <td><a class="btn btn-info" href="/Dormitory_Director/userDetail/{{$Members->id_users}}">ดูข้อมูล</a>
-          </td>
-          @endforeach
+          </td>  
         </tbody>
+        @endforeach
       </table>
       <div class="d-flex justify-content-center">
         {!! $data->links() !!}
       </div>
+
+
+      <table class="table table-striped table-ligh">
+        <thead>
+          <tr class="table-warning ">
+            <th>รหัสนักศึกษา</th>
+          </tr>
+        </thead>
+        @foreach($data2 as $usersDorm)
+        <tbody>
+          <td>{{$usersDorm->id_users}}</td>
+        </tbody>
+        @endforeach
+      </table>
     </div>
   </div>
 </div>

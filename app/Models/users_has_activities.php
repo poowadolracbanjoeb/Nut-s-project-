@@ -10,7 +10,7 @@ class users_has_activities extends Model
     // use HasFactory;
     protected $fillable = [
         'id_users',
-        'activityId',
+        'activityName',
         'activityScore'
     ];
     protected $table = "users_has_activities";

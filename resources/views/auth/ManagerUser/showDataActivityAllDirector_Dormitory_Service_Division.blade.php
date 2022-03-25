@@ -35,7 +35,7 @@
           <tbody>
             <td>{{$Activity->activityName}}</td>
             <td>{{$Activity->activityScore}}</td>
-            <td><a class="btn btn-info" href="/Student/manageActivity/activityDetail/{{$Activity ->activityId}}">ดูรายละเอียด</a>
+            <td><a class="btn btn-info" href="/Student/manageActivity/activityDetail/{{$Activity ->activityName}}">ดูรายละเอียด</a>
             </td>
           </tbody>
           @endforeach

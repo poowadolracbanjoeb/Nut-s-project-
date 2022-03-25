@@ -37,7 +37,7 @@
   <!-- Bootstrap Date-Picker Plugin -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
-  
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -58,10 +58,8 @@
         <li class="nav-item d-none d-sm-inline-block">
           <a href="/Dormitory_Chairman/home" class="nav-link">หน้าหลัก</a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">ติดต่อเรา</a>
-        </li>
       </ul>
+
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
@@ -105,7 +103,6 @@
                   ออกจากระบบ
                 </p>
               </a>
-
               <form id="logout-form" action="{{
                         route('logout') }}" method="POST" style="display: none;">
                 @csrf
@@ -153,7 +150,6 @@
                 </p>
               </a>
             </li>
-
             <li class="nav-item">
               <a href="/Dormitory_Chairman/showDataStudentAll" class="nav-link">
                 <i class="nav-icon far">

@@ -24,6 +24,7 @@ class Activity extends Model
         'created_at',
         'update_at',
         'semester',
-        'id_status'];
+        'id_status',
+        'userActivityResponsibleActivity'];
     protected $table ="activities";
 }

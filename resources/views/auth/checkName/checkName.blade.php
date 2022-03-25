@@ -36,7 +36,7 @@
       </div>
       <br>
 
-      <form action="/checkName/{{$Activity->activityId}}/Submit" method="POST" enctype="multipart/form-data">
+      <form action="/checkName/{{$Activity->activityName}}/Submit" method="POST" enctype="multipart/form-data">
         {{csrf_field()}}
         <div class="form-inline">
           <input type="text" name="id_users" placeholder="กรอกรหัสนักศึกษา" class="form-control" aria-label="Search" />
@@ -51,12 +51,12 @@
           </tr>
         </thead>
         @foreach($data as $user_has_activity)
-        @if($user_has_activity -> activityId == $Activity -> activityId)
+        @if($user_has_activity -> activityName == $Activity -> activityName)
         <tbody>
           <tr>
             <td> {{$user_has_activity -> id_users}}</td>
             <td>
-              <a class="btn btn-danger" href="/Dormitory_Director/checkName/delete_user/{{$user_has_activity -> id_users}}/{{$Activity->activityId}}">ลบ</a>
+              <a class="btn btn-danger" href="/Dormitory_Director/checkName/delete_user/{{$user_has_activity -> id_users}}/{{$Activity->activityName}}">ลบ</a>
             </td>
           </tr>
         </tbody>

@@ -54,8 +54,8 @@
             <td>{{$Activity->activityName}}</td>
             <td>{{$Activity->activityPlace}}</td>
             <td>{{$Activity->activityStartDate}} ถึง {{$Activity->activityEndDate}}</td>
-            <td><a class="btn btn-info" href="/Dormitory_Director/manageActivity/activityDetail/{{$Activity->activityId}}">ดูรายละเอียด</a>
-              <a class="btn btn-info" href="/Dormitory_Director/manageActivity/activityHasUser/{{$Activity->activityId}}">ดูนักศึกษาที่เข้าร่วม</a>
+            <td><a class="btn btn-info" href="/Dormitory_Director/manageActivity/activityDetail/{{$Activity->activityName}}">ดูรายละเอียด</a>
+              <a class="btn btn-info" href="/Dormitory_Director/manageActivity/activityHasUser/{{$Activity->activityName}}">ดูนักศึกษาที่เข้าร่วม</a>
               <a class="btn btn-info" href="/checkName/{{$Activity->activityName}}">เช็กชื่อ</a>
             </td>
           </tbody>

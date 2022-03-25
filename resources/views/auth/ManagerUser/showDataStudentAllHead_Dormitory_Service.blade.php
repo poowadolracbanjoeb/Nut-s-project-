@@ -7,7 +7,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>ข้อมูลผู้ใช้ 
+      <h1>นักศึกษา 
         </h1><br>
       </div>
       <div class="col-sm-6">

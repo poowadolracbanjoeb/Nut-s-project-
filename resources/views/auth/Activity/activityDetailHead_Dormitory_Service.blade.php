@@ -15,7 +15,7 @@
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/Head_Dormitory_Service/home">หน้าหลัก</a></li>
             <li class="breadcrumb-item active"><a href="/Head_Dormitory_Service/manageActivity">จัดการกิจกรรม</a></li>
-            <li class="breadcrumb-item active"><a href="/Head_Dormitory_Service/manageActivity/activityDetail/{{$Activity->activityId}}">ดูรายละเอียดกิจกรรม</a></li>
+            <li class="breadcrumb-item active"><a href="/Head_Dormitory_Service/manageActivity/activityDetail/{{$Activity->activityName}}">ดูรายละเอียดกิจกรรม</a></li>
           </ol>
         </div>
       </div>

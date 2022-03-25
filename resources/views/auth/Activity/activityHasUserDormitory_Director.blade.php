@@ -15,7 +15,7 @@
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/Dormitory_Director/home">หน้าหลัก</a></li>
                         <li class="breadcrumb-item active"><a href="/Dormitory_Director/manageActivity">จัดการกิจกรรม</a></li>
-                        <li class="breadcrumb-item active"><a href="/Dormitory_Director/manageActivity/activityHasUser/{{$Activity->activityId}}">นักศึกษาที่เข้าร่วมกิจกรรม</a></li>
+                        <li class="breadcrumb-item active"><a href="/Dormitory_Director/manageActivity/activityHasUser/{{$Activity->activityName}}">นักศึกษาที่เข้าร่วมกิจกรรม</a></li>
                     </ol>
                 </div>
             </div>
@@ -46,15 +46,13 @@
                     <thead>
                         <tr class="table-warning ">
                             <th>รหัสนักศึกษา</th>
-                            <th>ชื่อ</th>
                         </tr>
                     </thead>
                     @foreach($data as $user_has_activity)
-                    @if($user_has_activity -> activityId == $Activity -> activityId)
+                    @if($user_has_activity -> activityName == $Activity -> activityName)
                     <tbody>
                         <tr>
                             <td> {{$user_has_activity -> id_users}}</td>
-                            <td> {{ Auth::user()->name }}</td>
 
                         </tr>
                     </tbody>

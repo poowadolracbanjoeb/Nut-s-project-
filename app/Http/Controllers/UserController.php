@@ -166,14 +166,11 @@ class UserController extends Controller
 
     public function showDataStudentAllDormitory_Director(Request $request)
     {
-        $myDorm = dormitory_user_history::where('id_users',auth()->user()->id_users);
-        // $userDorm = dormitory_user_history::where('dormName', $dorm[0] );
+        $myDorm = DB::table('dormitory_user_history')->where('id_users',auth()->user()->id_users)->first();
+        // $usersDorm = DB::table('dormitory_user_history')->where('dormName','หอพักชายที่8');
+        $usersDorm = dormitory_user_history::where('');
 
-
-        $a =[];
-
-
-        $userHistory = dormitory_user_history::where('semester', $request->semester);
+        // $userHistory = dormitory_user_history::where('semester', $request->semester);
         
         $semester = $request->input('semester');
         $search =  $request->input('search');
@@ -188,51 +185,63 @@ class UserController extends Controller
         else{
             $Members = User::paginate(7);
         }
-        return view('auth.ManagerUser.showDataStudentAllDormitory_Director')->with('data',$Members);
+        return view('auth.ManagerUser.showDataStudentAllDormitory_Director',compact('myDorm'))->with('data',$Members)->with('data2',$usersDorm);
     }
-
-    
-
 
     public function showDataStudentAllDormitory_Chairman(Request $request)
     {
-        $search =  $request->input('q');
+        $myDorm = DB::table('dormitory_user_history')->where('id_users',auth()->user()->id_users)->first();
+        // $usersDorm = DB::table('dormitory_user_history')->where('dormName','หอพักชายที่8');
+        $usersDorm = dormitory_user_history::where('');
+
+        // $userHistory = dormitory_user_history::where('semester', $request->semester);
+        
+        $semester = $request->input('semester');
+        $search =  $request->input('search');
         if($search!=""){
             $Members = User::where(function ($query) use ($search){
                 $query->where('name', 'like', '%'.$search.'%')
                     ->orWhere('id_users', 'like', '%'.$search.'%');
             })
             ->paginate(7);
-            $Members->appends(['q' => $search]);
+            $Members->appends(['search' => $search]);
         }
         else{
             $Members = User::paginate(7);
         }
-        return view('auth.ManagerUser.showDataStudentAllDormitory_Chairman')->with('data',$Members);
+        return view('auth.ManagerUser.showDataStudentAllDormitory_Chairman',compact('myDorm'))->with('data',$Members)->with('data2',$usersDorm);
     }
-
 
     public function showDataStudentAllDormitory_Counselor(Request $request)
     {
-        $search =  $request->input('q');
+        $myDorm = DB::table('dormitory_user_history')->where('id_users',auth()->user()->id_users)->first();
+        // $usersDorm = DB::table('dormitory_user_history')->where('dormName','หอพักชายที่8');
+        $usersDorm = dormitory_user_history::where('');
+
+        // $userHistory = dormitory_user_history::where('semester', $request->semester);
+        
+        $semester = $request->input('semester');
+        $search =  $request->input('search');
         if($search!=""){
             $Members = User::where(function ($query) use ($search){
                 $query->where('name', 'like', '%'.$search.'%')
                     ->orWhere('id_users', 'like', '%'.$search.'%');
             })
             ->paginate(7);
-
-            $Members->appends(['q' => $search]);
+            $Members->appends(['search' => $search]);
         }
         else{
             $Members = User::paginate(7);
         }
-        return view('auth.ManagerUser.showDataStudentAllDormitory_Counselor')->with('data',$Members);
+        return view('auth.ManagerUser.showDataStudentAllDormitory_Counselor',compact('myDorm'))->with('data',$Members)->with('data2',$usersDorm);
     }
+    
+
 
 
     public function showDataStudentAllHead_Dormitory_Service(Request $request)
     {
+        $myDorm = DB::table('dormitory_user_history')->where('id_users',auth()->user()->id_users)->first();
         $search =  $request->input('q');
         if($search!=""){
             $Members = User::where(function ($query) use ($search){
@@ -245,12 +254,13 @@ class UserController extends Controller
         else{
             $Members = User::paginate(7);
         }
-        return view('auth.ManagerUser.showDataStudentAllHead_Dormitory_Service')->with('data',$Members);
+        return view('auth.ManagerUser.showDataStudentAllHead_Dormitory_Service',compact('myDorm'))->with('data',$Members);
     }
 
 
     public function showDataStudentAllDirector_Dormitory_Service_Division(Request $request)
     {
+        $myDorm = DB::table('dormitory_user_history')->where('id_users',auth()->user()->id_users)->first();
         $search =  $request->input('q');
         if($search!=""){
             $Members = User::where(function ($query) use ($search){
@@ -263,11 +273,12 @@ class UserController extends Controller
         else{
             $Members = User::paginate(7);
         }
-        return view('auth.ManagerUser.showDataStudentAllDirector_Dormitory_Service_Division')->with('data',$Members);
+        return view('auth.ManagerUser.showDataStudentAllDirector_Dormitory_Service_Division',compact('myDorm'))->with('data',$Members);
     }
 
     public function manageUserAllHead_Information_Unit(Request $request)
     {
+        $myDorm = DB::table('dormitory_user_history')->where('id_users',auth()->user()->id_users)->first();
         $search =  $request->input('q');
         if($search!=""){
             $Members = User::where(function ($query) use ($search){
@@ -280,7 +291,7 @@ class UserController extends Controller
         else{
             $Members = User::paginate(7);
         }
-        return view('auth.ManagerUser.manageUserAllHead_Information_Unit')->with('data',$Members);
+        return view('auth.ManagerUser.manageUserAllHead_Information_Unit',compact('myDorm'))->with('data',$Members);
     }
 
 
