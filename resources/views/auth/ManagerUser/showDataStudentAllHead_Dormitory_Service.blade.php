@@ -70,7 +70,7 @@
         </thead>
         @foreach($data as $Members)
         <tbody>
-          <td>{{$Members->id}}</td>
+          <td>{{$Members->id_users}}</td>
           <td>{{$Members->name}}</td>
           <td>{{$Members->email}}</td>
           <td>{{$Members->tel}}</td>

@@ -14,7 +14,6 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/Student/home">หน้าหลัก</a></li>
-            <li class="breadcrumb-item active"><a href="/Student/manageActivity">จัดการกิจกรรม</a></li>
             <li class="breadcrumb-item active"><a href="/Student/manageActivity/activityDetail/{{$Activity->activityName}}">ดูรายละเอียดกิจกรรม</a></li>
           </ol>
         </div>

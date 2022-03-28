@@ -5,6 +5,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
+      {{csrf_field()}}
         <h1>นักศึกษา {{$myDorm->dormName}}
         </h1><br>
       </div>
@@ -63,18 +64,6 @@
       </div>
 
 
-      <table class="table table-striped table-ligh">
-        <thead>
-          <tr class="table-warning ">
-            <th>รหัสนักศึกษา</th>
-          </tr>
-        </thead>
-        @foreach($data2 as $usersDorm)
-        <tbody>
-          <td>{{$usersDorm->id_users}}</td>
-        </tbody>
-        @endforeach
-      </table>
     </div>
   </div>
 </div>

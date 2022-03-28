@@ -168,7 +168,7 @@ class UserController extends Controller
     {
         $myDorm = DB::table('dormitory_user_history')->where('id_users',auth()->user()->id_users)->first();
         // $usersDorm = DB::table('dormitory_user_history')->where('dormName','หอพักชายที่8');
-        $usersDorm = dormitory_user_history::where('');
+        $usersDorm = dormitory_user_history::where('id_users', $myDorm);
 
         // $userHistory = dormitory_user_history::where('semester', $request->semester);
         
@@ -187,6 +187,11 @@ class UserController extends Controller
         }
         return view('auth.ManagerUser.showDataStudentAllDormitory_Director',compact('myDorm'))->with('data',$Members)->with('data2',$usersDorm);
     }
+
+
+
+
+    
 
     public function showDataStudentAllDormitory_Chairman(Request $request)
     {
@@ -239,6 +244,7 @@ class UserController extends Controller
 
 
 
+
     public function showDataStudentAllHead_Dormitory_Service(Request $request)
     {
         $myDorm = DB::table('dormitory_user_history')->where('id_users',auth()->user()->id_users)->first();
@@ -254,7 +260,7 @@ class UserController extends Controller
         else{
             $Members = User::paginate(7);
         }
-        return view('auth.ManagerUser.showDataStudentAllHead_Dormitory_Service',compact('myDorm'))->with('data',$Members);
+        return view('auth.ManagerUser.showDataStudentAllHead_Dormitory_Service')->with('data',$Members);
     }
 
 
@@ -273,7 +279,7 @@ class UserController extends Controller
         else{
             $Members = User::paginate(7);
         }
-        return view('auth.ManagerUser.showDataStudentAllDirector_Dormitory_Service_Division',compact('myDorm'))->with('data',$Members);
+        return view('auth.ManagerUser.showDataStudentAllDirector_Dormitory_Service_Division')->with('data',$Members);
     }
 
     public function manageUserAllHead_Information_Unit(Request $request)
@@ -291,7 +297,7 @@ class UserController extends Controller
         else{
             $Members = User::paginate(7);
         }
-        return view('auth.ManagerUser.manageUserAllHead_Information_Unit',compact('myDorm'))->with('data',$Members);
+        return view('auth.ManagerUser.manageUserAllHead_Information_Unit')->with('data',$Members);
     }
 
 

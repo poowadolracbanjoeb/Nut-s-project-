@@ -151,6 +151,8 @@ Route::get('/Dormitory_Director/checkName/delete_user/{id_user}/{activityId}', [
 
 Route::get('/Dormitory_Director/manageActivity/Outline', [App\Http\Controllers\ActivityController::class, 'manageActivityOutlineDormitory_Director'])->name('manageActivityOutlineDormitory_Director');
 Route::get('/Dormitory_Director/manageActivity/Fell', [App\Http\Controllers\ActivityController::class, 'manageActivityFellDormitory_Director'])->name('manageActivityFellDormitory_Director');
+Route::get('/Dormitory_Chairman/manageActivity/Outline', [App\Http\Controllers\ActivityController::class, 'manageActivityOutlineDormitory_Chairman'])->name('manageActivityOutlineDormitory_Chairman');
+Route::get('/Dormitory_Chairman/manageActivity/Fell', [App\Http\Controllers\ActivityController::class, 'manageActivityFellDormitory_Chairman'])->name('manageActivityFellDormitory_Chairman');
 
 Route::get('/Student/manageActivity/activityDetail/{activityName}', [App\Http\Controllers\ActivityController::class, 'activityDetailStudent'])->name('activityDetailStudent');
 Route::get('/Dormitory_Director/manageActivity/activityDetail/{activityName}', [App\Http\Controllers\ActivityController::class, 'activityDetailDormitory_Director'])->name('activityDetailDormitory_Director');
@@ -181,6 +183,7 @@ Route::post('importUsersScore', [App\Http\Controllers\UserController::class, 'im
 
 
 Route::get('/Dormitory_Director/viewStatusActivityApprove', [App\Http\Controllers\ActivityController::class, 'viewStatusActivityApproveDormitory_Director'])->name('viewStatusActivityApproveDormitory_Director');
+Route::get('/Dormitory_Chairman/viewStatusActivityApprove', [App\Http\Controllers\ActivityController::class, 'viewStatusActivityApproveDormitory_Chairman'])->name('viewStatusActivityApproveDormitory_Chairman');
 
 Route::get('/checkName/{activityName}', [App\Http\Controllers\ActivityController::class, 'checkName'])->name('checkName');
 Route::post('/checkName/{activityName}/Submit', [App\Http\Controllers\ActivityController::class, 'submitCheckName'])->name('submitCheckName');
@@ -198,8 +201,10 @@ Route::get('/Dormitory_Director/checkName/delete_user/{id_user}/{activityId}', [
 
 
 Route::post('/Dormitory_Director/createActivity/Outline/Submit', [App\Http\Controllers\ActivityController::class, 'submitCreateActivityOutlineDormitory_Director'])->name('submitCreateActivityOutlineDormitory_Director');
-Route::post('/Dormitory_Director/editActivity/saveActivity/Outline/Submit', [App\Http\Controllers\ActivityController::class, 'submitsaveActivityOutlineEditActivityDormitory_Director'])->name('submitsaveActivityOutlineEditActivityDormitory_Director');
+Route::post('/Dormitory_Director/editActivity/saveActivity/Outline/Submit', [App\Http\Controllers\ActivityController::class, 'submitSaveActivityOutlineEditActivityDormitory_Director'])->name('submitSaveActivityOutlineEditActivityDormitory_Director');
 
+Route::post('/Dormitory_Chairman/createActivity/Outline/Submit', [App\Http\Controllers\ActivityController::class, 'submitCreateActivityOutlineDormitory_Chairman'])->name('submitCreateActivityOutlineDormitory_Chairman');
+Route::post('/Dormitory_Chairman/editActivity/saveActivity/Outline/Submit', [App\Http\Controllers\ActivityController::class, 'submitSaveActivityOutlineEditActivityDormitory_Chairman'])->name('submitSaveActivityOutlineEditActivityDormitory_Chairman');
 
 Route::get('/Head_Information_Unit/manageUserAll/importUsers', [App\Http\Controllers\UserController::class, 'importUserHead_Information_Unit'])->name('importUserHead_Information_Unit');
 Auth::routes();
