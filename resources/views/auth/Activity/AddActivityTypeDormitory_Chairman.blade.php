@@ -1,4 +1,4 @@
-@extends('layouts.appDormitory_Director')
+@extends('layouts.Dormitory_Chairman')
 
 @section('content')
 <section class="content-header">
@@ -10,10 +10,10 @@
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="/Dormitory_Director/home">หน้าหลัก</a></li>
-          <li class="breadcrumb-item active"> <a href="/Dormitory_Director/manageActivity">จัดการกิจกรรม</a></li>
-          <li class="breadcrumb-item active"> <a href="/Dormitory_Director/createActivity"> สร้างกิจกรรม</a></li>
-          <li class="breadcrumb-item active"> <a href="/Dormitory_Director/createActivity"> เพิ่มลักษณะกิจกรรม</a></li>
+          <li class="breadcrumb-item"><a href="/Dormitory_Chairman/home">หน้าหลัก</a></li>
+          <li class="breadcrumb-item active"> <a href="/Dormitory_Chairman/manageActivity">จัดการกิจกรรม</a></li>
+          <li class="breadcrumb-item active"> <a href="/Dormitory_Chairman/createActivity"> สร้างกิจกรรม</a></li>
+          <li class="breadcrumb-item active"> <a href="/Dormitory_Chairman/createActivity"> เพิ่มลักษณะกิจกรรม</a></li>
         </ol>
       </div>
     </div>
@@ -32,7 +32,7 @@
           <input type="text" name="typeName" class="form-control">
           <span class="text-danger"> @error("typeName"){{$message}}@enderror </span><br><br>
 
-          <input type="submit" class="btn btn-success" value="ยืนยัน" formaction="{{url('/Dormitory_Director/createActivity/AddActivityType/Submit')}}">
+          <input type="submit" class="btn btn-success" value="ยืนยัน" formaction="{{url('/Dormitory_Chairman/createActivity/AddActivityType/Submit')}}">
       </form>
     </div>
   </div>

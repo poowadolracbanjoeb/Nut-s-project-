@@ -188,7 +188,9 @@ Route::get('/Dormitory_Chairman/viewStatusActivityApprove', [App\Http\Controller
 Route::get('/checkName/{activityName}', [App\Http\Controllers\ActivityController::class, 'checkName'])->name('checkName');
 Route::post('/checkName/{activityName}/Submit', [App\Http\Controllers\ActivityController::class, 'submitCheckName'])->name('submitCheckName');
 
+Route::get('/Dormitory_Chairman/AddActivityType', [App\Http\Controllers\ActivityController::class, 'AddActivityTypeDormitory_Chairman'])->name('AddActivityTypeDormitory_Chairman');
 Route::get('/Dormitory_Director/AddActivityType', [App\Http\Controllers\ActivityController::class, 'AddActivityTypeDormitory_Director'])->name('AddActivityTypeDormitory_Director');
+Route::get('/Head_Information_Unit/AddActivityType', [App\Http\Controllers\ActivityController::class, 'AddActivityTypeHead_Information_Unit'])->name('AddActivityTypeHead_Information_Unit');
 
 Route::get('/Dormitory_Director/manageActivity/activityHasUser/{activityId}', [App\Http\Controllers\ActivityController::class, 'activityHasUserDormitory_Director'])->name('activityHasUserDormitory_Director');
 

@@ -42,6 +42,8 @@
           <input type="text" name="id_users" placeholder="กรอกรหัสนักศึกษา" class="form-control" aria-label="Search" />
           <input type="submit" class="btn btn-success" value="เช็กชื่อ" />
         </div>
+        <br>
+        <span class="text-danger"> @error("id_users"){{$message}}@enderror </span><br>
       </form><br>
       <table class="table table-striped table-light">
         <thead>
@@ -66,29 +68,6 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
-
-
-
+@include('sweetalert::alert')
 @endsection

@@ -43,7 +43,6 @@
               <th>ชื่อโครงการ</th>
               <th>สถานที่ปฏิบัติงาน</th>
               <th>วันที่จัดกิจกรรม</th>
-              <th>เอกสารประกอบโครงการ</th>
               <th>ดำเนินการ</th>
             </tr>
           </thead>
@@ -53,7 +52,6 @@
             <td>{{$Activity->activityName}}</td>
             <td>{{$Activity->activityPlace}}</td>
             <td>{{$Activity->activityStartDate}} ถึง {{$Activity->activityEndDate}}</td>
-            <td><a class="btn btn-info" href="">ดาวน์โหลด</a></td>
             <td><a class="btn btn-info" href="">ดูรายละเอียด</a>
               <a class="btn btn-warning" href="">แก้ไข</a>
               <a class="btn btn-danger" href="/Dormitory_Director/manageActivity/deleteActivity/{{$Activity->activityId}}">ลบ</a>

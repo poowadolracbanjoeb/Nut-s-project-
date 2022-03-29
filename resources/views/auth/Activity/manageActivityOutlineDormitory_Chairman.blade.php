@@ -53,8 +53,8 @@
             <td>{{$Activity->activityName}}</td>
             <td>{{$Activity->activityPlace}}</td>
             <td>{{$Activity->activityStartDate}} ถึง {{$Activity->activityEndDate}}</td>
-            <td><a class="btn btn-info" href="/Dormitory_Chairman/manageActivity/activityDetail/{{$Activity->activityId}}">ดูรายละเอียด</a>
-              <a class="btn btn-info" href="/Dormitory_Chairman/manageActivity/editActivity/{activityId}">แก้ไข</a>
+            <td><a class="btn btn-info" href="/Dormitory_Chairman/manageActivity/activityDetail/{{$Activity->activityName}}">ดูรายละเอียด</a>
+              <a class="btn btn-info" href="/Dormitory_Chairman/manageActivity/editActivity/{{$Activity->activityName}}">แก้ไข</a>
               <a class="btn btn-info" href="/Dormitory_Chairman/manageActivity/deleteActivity/{{$Activity->activityId}}">ลบ</a>
             </td>
           </tbody>

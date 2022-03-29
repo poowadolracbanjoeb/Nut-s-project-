@@ -11,6 +11,7 @@ use App\Models\activities_types;
 use App\Models\dormitories;
 use App\Models\activity_responsible_dorm;
 use App\Models\user_score;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class ActivityController extends Controller
@@ -22,7 +23,7 @@ class ActivityController extends Controller
     {
         $type = activities_types::all();
         $dorm = dormitories::all();
-        return view('auth.Activity.createActivityDormitory_Director')->with('data', $dorm)->with('data2',$type);
+        return view('auth.Activity.createActivityDormitory_Director')->with('data', $dorm)->with('data2', $type);
     }
 
     public function manageActivityDormitory_Director(Request $request)
@@ -45,6 +46,16 @@ class ActivityController extends Controller
     {
         return view('auth.Activity.AddActivityTypeDormitory_Director');
     }
+    public function AddActivityTypeDormitory_Chairman()
+    {
+        return view('auth.Activity.AddActivityTypeDormitory_Chairman');
+    }
+    public function AddActivityTypeHead_Information_Unit()
+    {
+        return view('auth.Activity.AddActivityTypeHead_Information_Unit');
+    }
+
+
 
     public function conductActivityDormitory_Director()
     {
@@ -65,23 +76,39 @@ class ActivityController extends Controller
     }
 
 
-    
+
     public function submitCreateActivityDormitory_Director(Request $request)
     {
-        $request->validate([
-            'activityFile' => 'required ',
-            'activityId' => 'required ',
-            'activityName' => 'required ',
-            'activityPlace' => 'required ',
-            'activityStartDate' => 'required ',
-            'activityEndDate' => 'required ',
-            'activityScore' => 'required ',
-            'id_type' => 'required ',
-            'activity_Target' => 'required ',
-            'activity_Budget' => 'required ',
-            'semester' => 'required ',
-            'dormResponsibility1' => 'required|min:1',
-        ]);
+        $this->validate(
+            $request,
+            [
+                'activityName' => 'required ',
+                'activityId' => 'required ',
+                'activityScore' => 'required ',
+                'activityPlace' => 'required ',
+                'dormResponsibility1' => 'required|min:1',
+                'activityStartDate' => 'required ',
+                'activityEndDate' => 'required ',
+                'activity_Target' => 'required ',
+                'activity_Budget' => 'required ',
+                'semester' => 'required ',
+                'activityFile' => 'required',
+            ],
+            [
+                'activityName.required'    => 'กรุณากรอกชื่อกิจกรรม',
+                'activityId.required'    => 'กรุณากรอกรหัสกิจกรรม',
+                'activityScore.required'    => 'กรุณากรอกคะแนนกิจกรรม',
+                'activityPlace.required'    => 'กรุณากรอกชื่อสถานที่จัดกิจกรรม',
+                'dormResponsibility1.required'    => 'กรุณาเลือกหน่วยงานที่รับผิดชอบโครงการ',
+                'activityStartDate.required'    => 'กรุณาเลือกวันที่เริ่มต้นจัดกิจกรรม',
+                'activityEndDate.required'    => 'กรุณาเลือกวันที่จัดกิจกรรมวันสุดท้าย',
+                'activity_Target.required'    => 'กรุณากรอกจำนวนเป้าหมายผู้เข้าร่วมโครงการ',
+                'activity_Budget.required'    => 'กรุณากรอกงบประมาณที่ใช้ดำเนินโครงการ',
+                'semester.required'    => 'กรุณากรอกปีการศึกษา',
+                'activityFile.required'    => 'กรุณาแนบไฟล์อกสารประกอบโครงการ'
+
+            ]
+        );
 
         $data1 = new Activity;
         if ($request->file('activityFile')) {
@@ -106,18 +133,19 @@ class ActivityController extends Controller
 
         if ($request->dormResponsibility1 != null) {
             $data2 = new activity_responsible_dorm;
-            $data2->activityName = $request->activityId;
+            $data2->activityName = $request->activityName;
             $data2->dormName = $request->dormResponsibility1;
             $data2->save();
         }
 
         if ($request->dormResponsibility2 != null) {
             $data2 = new activity_responsible_dorm;
-            $data2->activityName = $request->activityId;
+            $data2->activityName = $request->activityName;
             $data2->dormName = $request->dormResponsibility1;
             $data2->save();
         }
 
+        Alert::success('สร้างกิจกรรมสำเร็จ');
         return back();
     }
 
@@ -187,7 +215,7 @@ class ActivityController extends Controller
         ]);
         return back()->with('post_update', 'บันทึกเค้าโครงร่างกิจกรรมสำเร็จ');
     }
-    
+
 
     public function showActivityAdvice_Dormitory_Director($activityId)
     {
@@ -215,7 +243,7 @@ class ActivityController extends Controller
         return back()->with('post_delete', 'ลบสำเร็จแล้ว');
     }
 
-    
+
 
     public function deleteActivity_Dormitory_Director(Request $request)
     {
@@ -228,7 +256,7 @@ class ActivityController extends Controller
         $file = Activity::all();
         return view('auth.Activity.manageActivityOutlineDormitory_Director', compact('file'));
     }
-    
+
     public function manageActivityOutlineDormitory_Chairman()
     {
         $file = Activity::all();
@@ -240,7 +268,7 @@ class ActivityController extends Controller
         $file = Activity::all();
         return view('auth.Activity.manageActivityFellDormitory_Director', compact('file'));
     }
-    
+
     public function manageActivityFellDormitory_Chairman()
     {
         $file = Activity::all();
@@ -249,9 +277,15 @@ class ActivityController extends Controller
 
     public function submitCreateActivityOutlineDormitory_Director(Request $request)
     {
-        $request->validate([
-            'activityName' => 'required ',
-        ]);
+        $this->validate(
+            $request,
+            [
+                'activityName' => 'required ',
+            ],
+            [
+                'activityName.required'    => 'กรุณากรอกชื่อกิจกรรม',
+            ]
+        );
 
         $data1 = new Activity;
         if ($request->file('activityFile')) {
@@ -287,55 +321,14 @@ class ActivityController extends Controller
         if ($request->semester != null) {
             $data1->semester = $request->semester;
         }
+        $data1->userActivityResponsibleActivity = auth()->user()->id_users;
         $data1->id_status = 10;
         $data1->save();
+        Alert::success('บันทึกร่างโครงการสำเร็จ');
         return back();
     }
-    public function submitCreateActivityOutlineDormitory_Chairman(Request $request)
-    {
-        $request->validate([
-            'activityName' => 'required ',
-        ]);
 
-        $data1 = new Activity;
-        if ($request->file('activityFile')) {
-            $activityFile = $request->file('activityFile');
-            $activityFile = time() . '.' . $activityFile->getClientOriginalExtension();
-            $request->activityFile->move('storage/', $activityFile);
-            $data1->activityFile = $activityFile;
-        }
-        $data1->activityName = $request->activityName;
-        $data1->id_type = $request->id_type;
-        if ($request->activityId != null) {
-            $data1->activityId = $request->activityPlace;
-        }
 
-        if ($request->activityPlace != null) {
-            $data1->activityPlace = $request->activityPlace;
-        }
-        if ($request->activityStartDate != null) {
-            $data1->activityStartDate = $request->activityStartDate;
-        }
-        if ($request->activityEndDate != null) {
-            $data1->activityEndDate = $request->activityEndDate;
-        }
-        if ($request->activityScore != null) {
-            $data1->activityScore = $request->activityScore;
-        }
-        if ($request->activity_Target != null) {
-            $data1->activity_Target = $request->activity_Target;
-        }
-        if ($request->activity_Budget != null) {
-            $data1->activity_Budget = $request->activity_Budget;
-        }
-        if ($request->semester != null) {
-            $data1->semester = $request->semester;
-        }
-        $data1->id_status = 10;
-        $data1->save();
-        return back();
-    }
-    
 
     public function activityHasUserDormitory_Director($activityName)
     {
@@ -346,14 +339,71 @@ class ActivityController extends Controller
 
     public function SubmitAddActivityTypeDormitory_Director(Request $request)
     {
+        $this->validate(
+            $request,
+            [
+                'typeId' => 'required ',
+                'typeName' => 'required '
+            ],
+            [
+                'typeId.required'    => 'กรุณากรอกด้านกิจกรรม',
+                'typeName.required'    => 'กรุณากรอกชื่อลักษณะกิจกรรม'
+
+            ]
+        );
+
+
         $data = new activities_types;
-        $data->id_type = $request->a;
+        $data->id_type = $request->typeId;
         $data->typeName = $request->typeName;
         $data->save();
         return back()->with('post_update', 'บันทึกเค้าโครงร่างกิจกรรมสำเร็จ');
     }
 
+    public function SubmitAddActivityTypeDormitory_Chairman(Request $request)
+    {
+        $this->validate(
+            $request,
+            [
+                'typeId' => 'required ',
+                'typeName' => 'required '
+            ],
+            [
+                'typeId.required'    => 'กรุณากรอกด้านกิจกรรม',
+                'typeName.required'    => 'กรุณากรอกชื่อลักษณะกิจกรรม'
 
+            ]
+        );
+
+
+        $data = new activities_types;
+        $data->id_type = $request->typeId;
+        $data->typeName = $request->typeName;
+        $data->save();
+        return back()->with('post_update', 'บันทึกเค้าโครงร่างกิจกรรมสำเร็จ');
+    }
+    public function SubmitAddActivityTypeHead_Information_Unit(Request $request)
+    {
+        $this->validate(
+            $request,
+            [
+                'typeId' => 'required ',
+                'typeName' => 'required '
+            ],
+            [
+                'typeId.required'    => 'กรุณากรอกด้านกิจกรรม',
+                'typeName.required'    => 'กรุณากรอกชื่อลักษณะกิจกรรม'
+
+            ]
+        );
+
+
+        $data = new activities_types;
+        $data->id_type = $request->typeId;
+        $data->typeName = $request->typeName;
+        $data->save();
+        return back()->with('post_update', 'บันทึกเค้าโครงร่างกิจกรรมสำเร็จ');
+    }
 
 
 
@@ -394,7 +444,7 @@ class ActivityController extends Controller
 
 
 
-    
+
     public function approveActivityDormitory_Chairman()
     {
         $file = Activity::all();
@@ -409,21 +459,36 @@ class ActivityController extends Controller
 
     public function submitCreateActivityDormitory_Chairman(Request $request)
     {
-       
-        $request->validate([
-            'activityFile' => 'required ',
-            'activityId' => 'required ',
-            'activityName' => 'required ',
-            'activityPlace' => 'required ',
-            'activityStartDate' => 'required ',
-            'activityEndDate' => 'required ',
-            'activityScore' => 'required ',
-            'id_type' => 'required ',
-            'activity_Target' => 'required ',
-            'activity_Budget' => 'required ',
-            'semester' => 'required ',
-            'dormResponsibility1' => 'required|min:1',
-        ]);
+        $this->validate(
+            $request,
+            [
+                'activityName' => 'required ',
+                'activityId' => 'required ',
+                'activityScore' => 'required ',
+                'activityPlace' => 'required ',
+                'dormResponsibility1' => 'required|min:1',
+                'activityStartDate' => 'required ',
+                'activityEndDate' => 'required ',
+                'activity_Target' => 'required ',
+                'activity_Budget' => 'required ',
+                'semester' => 'required ',
+                'activityFile' => 'required',
+            ],
+            [
+                'activityName.required'    => 'กรุณากรอกชื่อกิจกรรม',
+                'activityId.required'    => 'กรุณากรอกรหัสกิจกรรม',
+                'activityScore.required'    => 'กรุณากรอกคะแนนกิจกรรม',
+                'activityPlace.required'    => 'กรุณากรอกชื่อสถานที่จัดกิจกรรม',
+                'dormResponsibility1.required'    => 'กรุณาเลือกหน่วยงานที่รับผิดชอบโครงการ',
+                'activityStartDate.required'    => 'กรุณาเลือกวันที่เริ่มต้นจัดกิจกรรม',
+                'activityEndDate.required'    => 'กรุณาเลือกวันที่จัดกิจกรรมวันสุดท้าย',
+                'activity_Target.required'    => 'กรุณากรอกจำนวนเป้าหมายผู้เข้าร่วมโครงการ',
+                'activity_Budget.required'    => 'กรุณากรอกงบประมาณที่ใช้ดำเนินโครงการ',
+                'semester.required'    => 'กรุณากรอกปีการศึกษา',
+                'activityFile.required'    => 'กรุณาแนบไฟล์อกสารประกอบโครงการ'
+
+            ]
+        );
 
         $data1 = new Activity;
         if ($request->file('activityFile')) {
@@ -443,23 +508,76 @@ class ActivityController extends Controller
         $data1->activity_Budget = $request->activity_Budget;
         $data1->semester = $request->semester;
         $data1->userActivityResponsibleActivity = auth()->user()->id_users;
-        $data1->id_status = 11;
+        $data1->id_status = 21;
         $data1->save();
 
         if ($request->dormResponsibility1 != null) {
             $data2 = new activity_responsible_dorm;
-            $data2->activityName = $request->activityId;
+            $data2->activityName = $request->activityName;
             $data2->dormName = $request->dormResponsibility1;
             $data2->save();
         }
 
         if ($request->dormResponsibility2 != null) {
             $data2 = new activity_responsible_dorm;
-            $data2->activityName = $request->activityId;
+            $data2->activityName = $request->activityName;
             $data2->dormName = $request->dormResponsibility1;
             $data2->save();
         }
 
+        Alert::success('สร้างกิจกรรมสำเร็จ');
+        return back();
+    }
+    public function submitCreateActivityOutlineDormitory_Chairman(Request $request)
+    {
+        $this->validate(
+            $request,
+            [
+                'activityName' => 'required ',
+            ],
+            [
+                'activityName.required'    => 'กรุณากรอกชื่อกิจกรรม',
+            ]
+        );
+
+        $data1 = new Activity;
+        if ($request->file('activityFile')) {
+            $activityFile = $request->file('activityFile');
+            $activityFile = time() . '.' . $activityFile->getClientOriginalExtension();
+            $request->activityFile->move('storage/', $activityFile);
+            $data1->activityFile = $activityFile;
+        }
+        $data1->activityName = $request->activityName;
+        $data1->id_type = $request->id_type;
+        if ($request->activityId != null) {
+            $data1->activityId = $request->activityPlace;
+        }
+
+        if ($request->activityPlace != null) {
+            $data1->activityPlace = $request->activityPlace;
+        }
+        if ($request->activityStartDate != null) {
+            $data1->activityStartDate = $request->activityStartDate;
+        }
+        if ($request->activityEndDate != null) {
+            $data1->activityEndDate = $request->activityEndDate;
+        }
+        if ($request->activityScore != null) {
+            $data1->activityScore = $request->activityScore;
+        }
+        if ($request->activity_Target != null) {
+            $data1->activity_Target = $request->activity_Target;
+        }
+        if ($request->activity_Budget != null) {
+            $data1->activity_Budget = $request->activity_Budget;
+        }
+        if ($request->semester != null) {
+            $data1->semester = $request->semester;
+        }
+        $data1->userActivityResponsibleActivity = auth()->user()->id_users;
+        $data1->id_status = 10;
+        $data1->save();
+        Alert::success('บันทึกร่างโครงการสำเร็จ');
         return back();
     }
 
@@ -554,7 +672,7 @@ class ActivityController extends Controller
         $Activity = DB::table('activities')->where('activityName', $activityName)->first();
         return view('auth.Activity.activityDetailDormitory_Chairman', compact('Activity'));
     }
-    
+
 
 
     //-------------------------------------------------------------------------------------------------------------------
@@ -655,71 +773,131 @@ class ActivityController extends Controller
     }
 
 
-
-
-
-
-
-
-
-
     public function submitCreateActivityHead_Information_Unit(Request $request)
     {
-        $request->validate([
-            'activityName' => 'required ',
-            'activityType' => 'required ',
-            'activityPlace' => 'required ',
-            'activityResponsible' => 'required',
-            'activityStartDate' => 'required ',
-            'activityEndDate' => 'required ',
-            'activityTarget' => 'required ',
-            'activityBudget' => 'required ',
-            'activityFile' => 'required '
-        ]);
-        $data = new Activity;
+        $this->validate(
+            $request,
+            [
+                'activityName' => 'required ',
+                'activityId' => 'required ',
+                'activityScore' => 'required ',
+                'activityPlace' => 'required ',
+                'dormResponsibility1' => 'required|min:1',
+                'activityStartDate' => 'required ',
+                'activityEndDate' => 'required ',
+                'activity_Target' => 'required ',
+                'activity_Budget' => 'required ',
+                'semester' => 'required ',
+                'activityFile' => 'required',
+            ],
+            [
+                'activityName.required'    => 'กรุณากรอกชื่อกิจกรรม',
+                'activityId.required'    => 'กรุณากรอกรหัสกิจกรรม',
+                'activityScore.required'    => 'กรุณากรอกคะแนนกิจกรรม',
+                'activityPlace.required'    => 'กรุณากรอกชื่อสถานที่จัดกิจกรรม',
+                'dormResponsibility1.required'    => 'กรุณาเลือกหน่วยงานที่รับผิดชอบโครงการ',
+                'activityStartDate.required'    => 'กรุณาเลือกวันที่เริ่มต้นจัดกิจกรรม',
+                'activityEndDate.required'    => 'กรุณาเลือกวันที่จัดกิจกรรมวันสุดท้าย',
+                'activity_Target.required'    => 'กรุณากรอกจำนวนเป้าหมายผู้เข้าร่วมโครงการ',
+                'activity_Budget.required'    => 'กรุณากรอกงบประมาณที่ใช้ดำเนินโครงการ',
+                'semester.required'    => 'กรุณากรอกปีการศึกษา',
+                'activityFile.required'    => 'กรุณาแนบไฟล์อกสารประกอบโครงการ'
+
+            ]
+        );
+
+        $data1 = new Activity;
         if ($request->file('activityFile')) {
             $activityFile = $request->file('activityFile');
             $activityFile = time() . '.' . $activityFile->getClientOriginalExtension();
             $request->activityFile->move('storage/', $activityFile);
-            $data->activityFile = $activityFile;
+            $data1->activityFile = $activityFile;
         }
-        $data->activityName = $request->activityName;
-        $data->id_type = $request->id_type;
-        $data->activityPlace = $request->activityPlace;
-        $data->activityResponsible = $request->activityResponsible;
-        $data->activityStartDate = $request->activityStartDate;
-        $data->activityEndDate = $request->activityEndDate;
-        $data->activity_Target = $request->activityTarget;
-        $data->activity_Budget = $request->activityBudget;
-        $data->id_status = 51;
-        $data->save();
+        $data1->activityId = $request->activityId;
+        $data1->activityName = $request->activityName;
+        $data1->activityPlace = $request->activityPlace;
+        $data1->activityStartDate = $request->activityStartDate;
+        $data1->activityEndDate = $request->activityEndDate;
+        $data1->activityScore = $request->activityScore;
+        $data1->id_type = $request->id_type;
+        $data1->activity_Target = $request->activity_Target;
+        $data1->activity_Budget = $request->activity_Budget;
+        $data1->semester = $request->semester;
+        $data1->userActivityResponsibleActivity = auth()->user()->id_users;
+        $data1->id_status = 51;
+        $data1->save();
+
+        if ($request->dormResponsibility1 != null) {
+            $data2 = new activity_responsible_dorm;
+            $data2->activityName = $request->activityName;
+            $data2->dormName = $request->dormResponsibility1;
+            $data2->save();
+        }
+
+        if ($request->dormResponsibility2 != null) {
+            $data2 = new activity_responsible_dorm;
+            $data2->activityName = $request->activityName;
+            $data2->dormName = $request->dormResponsibility1;
+            $data2->save();
+        }
+
+        Alert::success('สร้างกิจกรรมสำเร็จ');
+        return back();
     }
 
 
     public function submitCreateActivityOutlineHead_Information_Unit(Request $request)
     {
-        $request->validate([
-            'activityName' => 'required | max:50',
-        ]);
+        $this->validate(
+            $request,
+            [
+                'activityName' => 'required ',
+            ],
+            [
+                'activityName.required'    => 'กรุณากรอกชื่อกิจกรรม',
+            ]
+        );
 
-        $data = new Activity;
+        $data1 = new Activity;
         if ($request->file('activityFile')) {
             $activityFile = $request->file('activityFile');
             $activityFile = time() . '.' . $activityFile->getClientOriginalExtension();
             $request->activityFile->move('storage/', $activityFile);
-            $data->activityFile = $activityFile;
+            $data1->activityFile = $activityFile;
         }
-        $data->activityName = $request->activityName;
-        $data->id_type = $request->id_type;
-        $data->activityPlace = $request->activityPlace;
-        $data->activityResponsible = $request->activityResponsible;
-        $data->activityStartDate = $request->activityStartDate;
-        $data->activityEndDate = $request->activityEndDate;
-        $data->activity_Target = $request->activityTarget;
-        $data->activity_Budget = $request->activityBudget;
-        $data->id_status = 10;
-        $data->save();
-        return back()->with('post_update', 'บันทึกเค้าโครงร่างกิจกรรมสำเร็จ');
+        $data1->activityName = $request->activityName;
+        $data1->id_type = $request->id_type;
+        if ($request->activityId != null) {
+            $data1->activityId = $request->activityPlace;
+        }
+
+        if ($request->activityPlace != null) {
+            $data1->activityPlace = $request->activityPlace;
+        }
+        if ($request->activityStartDate != null) {
+            $data1->activityStartDate = $request->activityStartDate;
+        }
+        if ($request->activityEndDate != null) {
+            $data1->activityEndDate = $request->activityEndDate;
+        }
+        if ($request->activityScore != null) {
+            $data1->activityScore = $request->activityScore;
+        }
+        if ($request->activity_Target != null) {
+            $data1->activity_Target = $request->activity_Target;
+        }
+        if ($request->activity_Budget != null) {
+            $data1->activity_Budget = $request->activity_Budget;
+        }
+        if ($request->semester != null) {
+            $data1->semester = $request->semester;
+        }
+        $data1->userActivityResponsibleActivity = auth()->user()->id_users;
+        $data1->id_status = 10;
+        $data1->save();
+        Alert::success('บันทึกร่างโครงการสำเร็จ');
+        return back();
+        
     }
 
 
@@ -962,6 +1140,7 @@ class ActivityController extends Controller
 
     public function checkName($activityName)
     {
+        
         $user_has_activity = users_has_activities::all();
         $Activity = DB::table('activities')->where('activityName', $activityName)->first();
         return view('auth.checkName.checkName', compact('Activity'))->with('data', $user_has_activity);
@@ -970,6 +1149,17 @@ class ActivityController extends Controller
 
     public function submitCheckName(Request $request, $activityName)
     {
+        $this->validate(
+            $request,
+            [
+                'id_users' => 'required ',
+
+            ],
+            [
+                'id_users.required'    => 'กรุณากรอกรหัสนักศึกษาที่เช้าร่วมกิจกรรม',
+
+            ]
+        );
         $Activity = DB::table('activities')->where('activityName', $activityName)->first();
 
         $data = new users_has_activities;
@@ -992,9 +1182,10 @@ class ActivityController extends Controller
             'count_of_activities' => $count_user_has_activities,
             'sum_score' =>  $sum_user_has_activities
         ]);
+        Alert::success('เช็กชื่อสำเร็จ');
 
-        
-        return back()->with('post_update', 'บันทึกเค้าโครงร่างกิจกรรมสำเร็จ');
+
+        return back();
     }
 
 
