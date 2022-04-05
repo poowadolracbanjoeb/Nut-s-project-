@@ -54,7 +54,7 @@
             <td>{{$Activity->activityPlace}}</td>
             <td>{{$Activity->activityStartDate}} ถึง {{$Activity->activityEndDate}}</td>
             <td><a class="btn btn-info" href="/Dormitory_Chairman/manageActivity/activityDetail/{{$Activity->activityName}}">ดูรายละเอียด</a>
-              <a class="btn btn-info" href="/Dormitory_Chairman/manageActivity/editActivity/{{$Activity->activityName}}">แก้ไข</a>
+              <a class="btn btn-info" href="/Dormitory_Chairman/manageActivity/editActivityOutline/{{$Activity->activityName}}">แก้ไข</a>
               <a class="btn btn-info" href="/Dormitory_Chairman/manageActivity/deleteActivity/{{$Activity->activityId}}">ลบ</a>
             </td>
           </tbody>
@@ -64,10 +64,6 @@
       </div>
     </div>
   </div>
-
 </div>
-
-
-
-
+@include('sweetalert::alert')
 @endsection

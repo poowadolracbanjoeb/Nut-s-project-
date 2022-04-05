@@ -30,7 +30,7 @@
 
             </div>
             <div class="col">
-                <a class="btn btn-warning" href="/export/UserHasActivity">ดาวน์โหลด</a>
+                <a class="btn btn-warning" href="/export/UserHasActivity/{{$Activity -> activityName}}">ดาวน์โหลด</a>
             </div>
 
         </div>
@@ -38,7 +38,7 @@
             <div class="card-body">
                 <div class="low">
                     <div class="col-sm-6">
-                        <font size="5">กิจกรรมต้อนรับน้องใหม่
+                        <font size="5">{{$Activity -> activityName}}
                         </font><br>
                     </div>
                 </div><br>

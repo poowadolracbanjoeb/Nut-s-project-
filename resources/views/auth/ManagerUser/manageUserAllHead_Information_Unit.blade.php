@@ -86,8 +86,6 @@
                         <a class="btn btn-warning" href="/Head_Information_Unit/editUserDetail/{{$Members->id_users}}">แก้ไข</a>
                         <a class="btn btn-danger" href="">ลบ</a>
                     </td>
-
-
                     @endforeach
                 </tbody>
             </table>
@@ -98,5 +96,5 @@
         </div>
     </div>
 </div>
-
+@include('sweetalert::alert')
 @endsection

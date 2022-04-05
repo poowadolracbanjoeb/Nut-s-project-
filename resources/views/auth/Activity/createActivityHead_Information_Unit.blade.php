@@ -30,10 +30,6 @@
             ชื่อกิจกรรม
             <input type="text" name="activityName" class="form-control">
             <span class="text-danger"> @error("activityName"){{$message}}@enderror </span><br><br>
-            รหัสกิจกรรม
-            <input type="text" name="activityId" class="form-control">
-            <span class="text-danger"> @error("activityId"){{$message}}@enderror </span><br><br>
-
             ลักษณะกิจกรรม
             <br>
             <select class="form-select" name="id_type" class="form-control">

@@ -1,5 +1,6 @@
 @extends('layouts.appDormitory_Chairman')
 
+
 @section('content')
 <div class="wrapper">
   <!-- Content Header (Page header) -->
@@ -7,14 +8,14 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>สร้างกิจกรรม
+          <h1>แก้ไขกิจกรรม
           </h1><br>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="/Dormitory_Chairman/home">หน้าหลัก</a></li>
-            <li class="breadcrumb-item active"> <a href="/Dormitory_Chairman/manageActivity">จัดการกิจกรรม</a></li>
-            <li class="breadcrumb-item active"> <a href="/Dormitory_Chairman/createActivity"> สร้างกิจกรรม</a></li>
+            <li class="breadcrumb-item"><a href="/Dormitory_Director/home">หน้าหลัก</a></li>
+            <li class="breadcrumb-item active"> <a href="/Dormitory_Director/manageActivity">จัดการกิจกรรม</a></li>
+            <li class="breadcrumb-item active"> <a href="/Dormitory_Director/editActivity"> แก้ไขโครงร่างกิจกรรม</a></li>
           </ol>
         </div>
       </div>
@@ -30,7 +31,10 @@
             ชื่อกิจกรรม
             <input type="text" name="activityName" class="form-control">
             <span class="text-danger"> @error("activityName"){{$message}}@enderror </span><br><br>
-           
+            รหัสกิจกรรม
+            <input type="text" name="activityId" class="form-control">
+            <span class="text-danger"> @error("activityId"){{$message}}@enderror </span><br><br>
+
             ลักษณะกิจกรรม
             <br>
             <select class="form-select" name="id_type" class="form-control">
@@ -38,7 +42,7 @@
               <option value="{{$type->id_type}}">ด้านที่ {{$type->id_type}} {{$type->typeName}}</option>
               @endforeach
             </select>
-            <a href="/Dormitory_Chairman/AddActivityType">เพิ่มลักษณะกิจกรรม</a>
+            <a href="/Dormitory_Director/AddActivityType">เพิ่มลักษณะกิจกรรม</a>
             <br>
             <br>
             <br>
@@ -96,8 +100,8 @@
 
             <br>
             <br>
-            <input type="submit" class="btn btn-success" value="สร้างกิจกรรม" formaction="{{url('/Dormitory_Chairman/createActivity/Submit')}}">
-            <input type="submit" class="btn btn-warning" value="บันทึกร่างโครงการ" formaction="{{url('/Dormitory_Chairman/createActivity/Outline/Submit')}}">
+            <input type="submit" class="btn btn-success" value="สร้างกิจกรรม" formaction="{{url('/Dormitory_Director/createActivity/Submit')}}">
+            <input type="submit" class="btn btn-warning" value="บันทึกร่างโครงการ" formaction="{{url('/Dormitory_Director/createActivity/Outline/Submit')}}">
         </form>
       </div>
     </div>

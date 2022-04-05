@@ -18,7 +18,7 @@ use App\Exports\ExportUserHasActivity;
 use App\Models\Activity;
 use App\Imports\UsersHistoryImport;
 use App\Imports\UsersScoreImport;
-
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class UserController extends Controller
@@ -309,10 +309,11 @@ class UserController extends Controller
         return Excel::download(new UsersExport, 'users.xlsx');
     }
 
-    public function exportUserHasActivity()
+    public function exportUserHasActivity($activityName)
     {
-        return Excel::download(new ExportUserHasActivity, 'ExportUserHasActivity.xlsx');
+        return Excel::download(new ExportUserHasActivity($activityName), 'ExportUserHasActivity.xlsx');
     }
+
     
 
     /**
@@ -341,17 +342,33 @@ class UserController extends Controller
 
 
     public function changePassword(Request $request)
-    {
-        $id_users =$request->id_users;
-        $request->validate([
-            'current_password' => ['required', new MatchOldPassword],
-            'new_password' => ['required'],
-            'new_confirm_password' => ['same:new_password'],
-        ]);
 
+    {$this->validate(
+        $request,
+        [
+            'current_password' => ['required', new MatchOldPassword],
+            'new_password' => ['required','min:8','max:20'],
+            'new_confirm_password' => ['required','same:new_password'],
+
+        ],
+        [
+            'current_password.new MatchOldPassword'    => 'รหัสผ่านเดิมไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง',
+            'current_password.required'    => 'กรุณากรอกรหัสผ่านเดิม',
+            'new_password.required'    => 'กรุณากรอกรหัสผ่านใหม่',
+            'new_password.min'    => 'กรุณากรอกรหัสผ่านใหม่อย่างน้อย 8 ตัวอักษร',
+            'new_password.max'    => 'กรุณากรอกรหัสผ่านใหม่ไม่เกิน 20 ตัวอักษร',
+            'new_confirm_password.required'    => 'กรุณากรอกยืนยันรหัสผ่าน',
+            'new_confirm_password.same'    => 'รหัสผ่านไม่ตรงกัน กรุณาลองใหม่อีกครั้ง',
+
+        ]
+    );
+
+    
+        $id_users =$request->id_users;
         DB::table('users')->where('id_users', $id_users)->update(['password'=> Hash::make($request->new_password)]);
-   
-        return back()->with('post_update', 'เปลี่ยนรหัสผ่านสำเร็จ');
+
+        Alert::success('เปลี่ยนรหัสผ่านสำเร็จ');
+        return back();
     }
     
     
@@ -419,7 +436,7 @@ class UserController extends Controller
     public function deleteUserHead_Information_Unit($id_user)
     {
         DB::table('users')->where('id_users', $id_user)->delete();
-        return back()->with('post_delete', 'ลบสำเร็จแล้ว');
+        return back();
     }
 
     public function  importUserHead_Information_Unit()
