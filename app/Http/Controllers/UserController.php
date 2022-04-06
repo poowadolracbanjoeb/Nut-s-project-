@@ -25,83 +25,83 @@ class UserController extends Controller
 {
     public function changePasswordStudent()
     {
-        return view('auth.ManagerUser.changePasswordStudent'); 
+        return view('auth.ManagerUser.changePasswordStudent');
     }
     public function changePasswordDormitory_Director()
     {
-        return view('auth.ManagerUser.changePasswordDormitory_Director'); 
+        return view('auth.ManagerUser.changePasswordDormitory_Director');
     }
     public function changePasswordDormitory_Chairman()
     {
-        return view('auth.ManagerUser.changePasswordDormitory_Chairman'); 
+        return view('auth.ManagerUser.changePasswordDormitory_Chairman');
     }
     public function changePasswordDormitory_Counselor()
     {
-        return view('auth.ManagerUser.changePasswordDormitory_Counselor'); 
+        return view('auth.ManagerUser.changePasswordDormitory_Counselor');
     }
     public function changePasswordHead_Dormitory_Service()
     {
-        return view('auth.ManagerUser.changePasswordHead_Dormitory_Service'); 
+        return view('auth.ManagerUser.changePasswordHead_Dormitory_Service');
     }
     public function changePasswordDirector_Dormitory_Service_Division()
     {
-        return view('auth.ManagerUser.changePasswordDirector_Dormitory_Service_Division'); 
+        return view('auth.ManagerUser.changePasswordDirector_Dormitory_Service_Division');
     }
     public function changePasswordHead_Information_Unit()
     {
-        return view('auth.ManagerUser.changePasswordHead_Information_Unit'); 
+        return view('auth.ManagerUser.changePasswordHead_Information_Unit');
     }
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
 
     public function showDataUserStudent()
     {
         $data = dormitory_user_history::all();
-        return view('auth.ManagerUser.showDataUserStudent')->with('data',$data);
+        return view('auth.ManagerUser.showDataUserStudent')->with('data', $data);
     }
     public function showDataUserDormitory_Director()
     {
         $data = dormitory_user_history::all();
-        return view('auth.ManagerUser.showDataUserDormitory_Director')->with('data',$data);
+        return view('auth.ManagerUser.showDataUserDormitory_Director')->with('data', $data);
     }
     public function showDataUserDormitory_Chairman()
     {
         $data = dormitory_user_history::all();
-        return view('auth.ManagerUser.showDataUserDormitory_Chairman')->with('data',$data);
+        return view('auth.ManagerUser.showDataUserDormitory_Chairman')->with('data', $data);
     }
     public function showDataUserDormitory_Counselor()
     {
         $data = dormitory_user_history::all();
-        return view('auth.ManagerUser.showDataUserDormitory_Counselor')->with('data',$data);
+        return view('auth.ManagerUser.showDataUserDormitory_Counselor')->with('data', $data);
     }
     public function showDataUserHead_Dormitory_Service()
     {
         $data = dormitory_user_history::all();
-        return view('auth.ManagerUser.showDataUserHead_Dormitory_Service')->with('data',$data);
+        return view('auth.ManagerUser.showDataUserHead_Dormitory_Service')->with('data', $data);
     }
     public function showDataUserDirector_Dormitory_Service_Division()
     {
         $data = dormitory_user_history::all();
-        return view('auth.ManagerUser.showDataUserDirector_Dormitory_Service_Division')->with('data',$data);
+        return view('auth.ManagerUser.showDataUserDirector_Dormitory_Service_Division')->with('data', $data);
     }
     public function showDataUserHead_Information_Unit()
     {
         $data = dormitory_user_history::all();
-        return view('auth.ManagerUser.showDataUserHead_Information_Unit')->with('data',$data);
+        return view('auth.ManagerUser.showDataUserHead_Information_Unit')->with('data', $data);
     }
-    
-    
-    
-    
-    
-    
-    
 
- 
+
+
+
+
+
+
+
+
 
 
 
@@ -112,23 +112,20 @@ class UserController extends Controller
         $Activity = Activity::all();
         $joinActivity = users_has_activities::all();
         $user_score = DB::table('user_score')->where('id_users', $id_users)->first();
-        return view('auth.ManagerUser.showDataActivityJoinStudent',compact('user_score'))->with('data', $joinActivity);
-
+        return view('auth.ManagerUser.showDataActivityJoinStudent', compact('user_score'))->with('data', $joinActivity);
     }
     public function showDataActivityJoinDormitory_Director($id_users)
     {
         $joinActivity = users_has_activities::all();
         $user_score = DB::table('user_score')->where('id_users', $id_users)->first();
-        return view('auth.ManagerUser.showDataActivityJoinDormitory_Director',compact('user_score'))->with('data', $joinActivity);
-
+        return view('auth.ManagerUser.showDataActivityJoinDormitory_Director', compact('user_score'))->with('data', $joinActivity);
     }
 
     public function showDataActivityJoinDormitory_Chairman($id_users)
     {
         $joinActivity = users_has_activities::all();
         $user_score = DB::table('user_score')->where('id_users', $id_users)->first();
-        return view('auth.ManagerUser.showDataActivityJoinDormitory_Chairman',compact('user_score'))->with('data', $joinActivity);
-
+        return view('auth.ManagerUser.showDataActivityJoinDormitory_Chairman', compact('user_score'))->with('data', $joinActivity);
     }
 
 
@@ -137,144 +134,227 @@ class UserController extends Controller
 
     public function showDataActivityAllStudent()
     {
+        $myDorm = DB::table('dormitory_user_history')->where('id_users', auth()->user()->id_users)->first();
         $Activity = Activity::all();
-        return view('auth.ManagerUser.showDataActivityAllStudent')->with('data',$Activity);
+        return view('auth.ManagerUser.showDataActivityAllStudent', compact('myDorm'))->with('file', $Activity);
     }
     public function showDataActivityAllDormitory_Counselor()
     {
+        $myDorm = DB::table('dormitory_user_history')->where('id_users', auth()->user()->id_users)->first();
         $Activity = Activity::all();
-        return view('auth.ManagerUser.showDataActivityAllDormitory_Counselor')->with('data',$Activity);
+        return view('auth.ManagerUser.showDataActivityAllDormitory_Counselor', compact('myDorm'))->with('file', $Activity);
     }
     public function showDataActivityAllHead_Dormitory_Service()
     {
+        $myDorm = DB::table('dormitory_user_history')->where('id_users', auth()->user()->id_users)->first();
         $Activity = Activity::all();
-        return view('auth.ManagerUser.showDataActivityAllHead_Dormitory_Service')->with('data',$Activity);
+        return view('auth.ManagerUser.showDataActivityAllHead_Dormitory_Service', compact('myDorm'))->with('file', $Activity);
     }
     public function showDataActivityAllDirector_Dormitory_Service_Division()
     {
+        $myDorm = DB::table('dormitory_user_history')->where('id_users', auth()->user()->id_users)->first();
         $Activity = Activity::all();
-        return view('auth.ManagerUser.showDataActivityAllDirector_Dormitory_Service_Division')->with('data',$Activity);
+        return view('auth.ManagerUser.showDataActivityAllDirector_Dormitory_Service_Division', compact('myDorm'))->with('file', $Activity);
     }
-    
-    
-    
 
-    
 
-    
+
+
+
+
+
 
 
     public function showDataStudentAllDormitory_Director(Request $request)
     {
-        $myDorm = DB::table('dormitory_user_history')->where('id_users',auth()->user()->id_users)->first();
+        $myDorm = DB::table('dormitory_user_history')->where('id_users', auth()->user()->id_users)->first();
         $semester = $request->input('semester');
         $search =  $request->input('search');
-        if($search!=""){
-            $Members = dormitory_user_history::where(function ($query) use ($search){
-                $query->where('id_users', 'like', '%'.$search.'%');
-            })->where('semester',$semester)->paginate(7);
+        if ($search != "" && $semester != "") {
+            $Members = dormitory_user_history::where(function ($query) use ($search) {
+                $query->where('id_users', 'like', '%' . $search . '%');
+            })->where('semester', $semester)->paginate(7);
             $Members->appends(['search' => $search]);
+        } elseif ($search == "" && $semester != "") {
+            $Members = dormitory_user_history::where('semester', $semester)->paginate(7);
+        } elseif ($search != "" && $semester == "") {
+            $Members = dormitory_user_history::where(function ($query) use ($search) {
+                $query->where('id_users', 'like', '%' . $search . '%');
+            })->paginate(7);
+            $Members->appends(['search' => $search]);
+        } else {
+            $Members = dormitory_user_history::paginate(12);
         }
-        else{
-            $Members = dormitory_user_history::where('semester',$semester)->paginate(7);
-        }
-        return view('auth.ManagerUser.showDataStudentAllDormitory_Director',compact('myDorm'))->with('data',$Members);
+        return view('auth.ManagerUser.showDataStudentAllDormitory_Director', compact('myDorm'))->with('data', $Members);
     }
 
 
 
 
-    
+
 
     public function showDataStudentAllDormitory_Chairman(Request $request)
     {
-        $myDorm = DB::table('dormitory_user_history')->where('id_users',auth()->user()->id_users)->first();
+        $myDorm = DB::table('dormitory_user_history')->where('id_users', auth()->user()->id_users)->first();
         $semester = $request->input('semester');
         $search =  $request->input('search');
-        if($search!=""){
-            $Members = dormitory_user_history::where(function ($query) use ($search){
-                $query->where('id_users', 'like', '%'.$search.'%');
-            })->where('semester',$semester)->paginate(7);
+        if ($search != "" && $semester != "") {
+            $Members = dormitory_user_history::where(function ($query) use ($search) {
+                $query->where('id_users', 'like', '%' . $search . '%');
+            })->where('semester', $semester)->paginate(7);
             $Members->appends(['search' => $search]);
+        } elseif ($search == "" && $semester != "") {
+            $Members = dormitory_user_history::where('semester', $semester)->paginate(7);
+        } elseif ($search != "" && $semester == "") {
+            $Members = dormitory_user_history::where(function ($query) use ($search) {
+                $query->where('id_users', 'like', '%' . $search . '%');
+            })->paginate(7);
+            $Members->appends(['search' => $search]);
+        } else {
+            $Members = dormitory_user_history::paginate(12);
         }
-        else{
-            $Members = dormitory_user_history::where('semester',$semester)->paginate(7);
-        }
-        return view('auth.ManagerUser.showDataStudentAllDormitory_Chairman',compact('myDorm'))->with('data',$Members);
+        return view('auth.ManagerUser.showDataStudentAllDormitory_Chairman', compact('myDorm'))->with('data', $Members);
     }
 
     public function showDataStudentAllDormitory_Counselor(Request $request)
     {
-        $myDorm = DB::table('dormitory_user_history')->where('id_users',auth()->user()->id_users)->first();
+        $myDorm = DB::table('dormitory_user_history')->where('id_users', auth()->user()->id_users)->first();
         $semester = $request->input('semester');
         $search =  $request->input('search');
-        if($search!=""){
-            $Members = dormitory_user_history::where(function ($query) use ($search){
-                $query->where('id_users', 'like', '%'.$search.'%');
-            })->where('semester',$semester)->paginate(7);
+        if ($search != "" && $semester != "") {
+            $Members = dormitory_user_history::where(function ($query) use ($search) {
+                $query->where('id_users', 'like', '%' . $search . '%');
+            })->where('semester', $semester)->paginate(7);
             $Members->appends(['search' => $search]);
+        } elseif ($search == "" && $semester != "") {
+            $Members = dormitory_user_history::where('semester', $semester)->paginate(7);
+        } elseif ($search != "" && $semester == "") {
+            $Members = dormitory_user_history::where(function ($query) use ($search) {
+                $query->where('id_users', 'like', '%' . $search . '%');
+            })->paginate(7);
+            $Members->appends(['search' => $search]);
+        } else {
+            $Members = dormitory_user_history::paginate(12);
         }
-        else{
-            $Members = dormitory_user_history::where('semester',$semester)->paginate(7);
-        }
-        return view('auth.ManagerUser.showDataStudentAllDormitory_Counselor',compact('myDorm'))->with('data',$Members);
+        return view('auth.ManagerUser.showDataStudentAllDormitory_Counselor', compact('myDorm'))->with('data', $Members);
     }
-    
+
 
 
 
 
     public function showDataStudentAllHead_Dormitory_Service(Request $request)
     {
-        $search =  $request->input('q');
-        if($search!=""){
-            $Members = User::where(function ($query) use ($search){
-                $query->where('name', 'like', '%'.$search.'%')
-                    ->orWhere('id_users', 'like', '%'.$search.'%');
-            })
-            ->paginate(7);
-            $Members->appends(['q' => $search]);
+        $dormAll = dormitories::all();
+        $semester = $request->input('semester');
+        $dorm = $request->input('dorm');
+        $search =  $request->input('search');
+
+
+        if ($search != "" && $dorm != "" && $semester != "") {
+            $Members = dormitory_user_history::where(function ($query) use ($search) {
+                $query->where('id_users', 'like', '%' . $search . '%');
+            })->where('semester', $semester)->where('dormName', $dorm)->paginate(7);
+            $Members->appends(['search' => $search]);
+        } elseif ($search != "" && $dorm == "" && $semester == "") {
+            $Members = dormitory_user_history::where(function ($query) use ($search) {
+                $query->where('id_users', 'like', '%' . $search . '%');
+            })->paginate(7);
+        } elseif ($search != "" && $dorm != "" && $semester == "") {
+            $Members = dormitory_user_history::where(function ($query) use ($search) {
+                $query->where('id_users', 'like', '%' . $search . '%');
+            })->where('dormName', $dorm)->paginate(7);
+        } elseif ($search != "" && $semester != "" && $dorm == "") {
+            $Members = dormitory_user_history::where(function ($query) use ($search) {
+                $query->where('id_users', 'like', '%' . $search . '%');
+            })->where('semester', $semester)->paginate(7);
+        } elseif ($dorm != "" && $search == "" && $semester == "") {
+            $Members = dormitory_user_history::where('dormName', $dorm)->paginate(7);
+        } elseif ($semester != "" && $dorm == "" && $search == "") {
+            $Members = dormitory_user_history::where('semester', $semester)->paginate(7);
+        } elseif ($semester != "" && $dorm != "" && $search == "") {
+            $Members = dormitory_user_history::where('semester', $semester)->where('dormName', $dorm)->paginate(7);
+        } else {
+            $Members = dormitory_user_history::paginate(7);
         }
-        else{
-            $Members = User::paginate(7);
-        }
-        return view('auth.ManagerUser.showDataStudentAllHead_Dormitory_Service')->with('data',$Members);
+
+        return view('auth.ManagerUser.showDataStudentAllHead_Dormitory_Service')->with('data', $dormAll)->with('data2', $Members);
     }
 
 
     public function showDataStudentAllDirector_Dormitory_Service_Division(Request $request)
     {
-        $search =  $request->input('q');
-        if($search!=""){
-            $Members = User::where(function ($query) use ($search){
-                $query->where('name', 'like', '%'.$search.'%')
-                    ->orWhere('id_users', 'like', '%'.$search.'%');
-            })
-            ->paginate(7);
-            $Members->appends(['q' => $search]);
+        $dormAll = dormitories::all();
+        $semester = $request->input('semester');
+        $dorm = $request->input('dorm');
+        $search =  $request->input('search');
+
+
+        if ($search != "" && $dorm != "" && $semester != "") {
+            $Members = dormitory_user_history::where(function ($query) use ($search) {
+                $query->where('id_users', 'like', '%' . $search . '%');
+            })->where('semester', $semester)->where('dormName', $dorm)->paginate(7);
+            $Members->appends(['search' => $search]);
+        } elseif ($search != "" && $dorm == "" && $semester == "") {
+            $Members = dormitory_user_history::where(function ($query) use ($search) {
+                $query->where('id_users', 'like', '%' . $search . '%');
+            })->paginate(7);
+        } elseif ($search != "" && $dorm != "" && $semester == "") {
+            $Members = dormitory_user_history::where(function ($query) use ($search) {
+                $query->where('id_users', 'like', '%' . $search . '%');
+            })->where('dormName', $dorm)->paginate(7);
+        } elseif ($search != "" && $semester != "" && $dorm == "") {
+            $Members = dormitory_user_history::where(function ($query) use ($search) {
+                $query->where('id_users', 'like', '%' . $search . '%');
+            })->where('semester', $semester)->paginate(7);
+        } elseif ($dorm != "" && $search == "" && $semester == "") {
+            $Members = dormitory_user_history::where('dormName', $dorm)->paginate(7);
+        } elseif ($semester != "" && $dorm == "" && $search == "") {
+            $Members = dormitory_user_history::where('semester', $semester)->paginate(7);
+        } elseif ($semester != "" && $dorm != "" && $search == "") {
+            $Members = dormitory_user_history::where('semester', $semester)->where('dormName', $dorm)->paginate(7);
+        } else {
+            $Members = dormitory_user_history::paginate(7);
         }
-        else{
-            $Members = User::paginate(7);
-        }
-        return view('auth.ManagerUser.showDataStudentAllDirector_Dormitory_Service_Division')->with('data',$Members);
+
+        return view('auth.ManagerUser.showDataStudentAllDirector_Dormitory_Service_Division')->with('data', $dormAll)->with('data2', $Members);
     }
 
     public function manageUserAllHead_Information_Unit(Request $request)
     {
-        $dorm = dormitories::all();
+        $dormAll = dormitories::all();
         $semester = $request->input('semester');
         $dorm = $request->input('dorm');
         $search =  $request->input('search');
-        if($search!=""){
-            $Members = dormitory_user_history::where(function ($query) use ($search){
-                $query->where('id_users', 'like', '%'.$search.'%');
-            })->where('semester',$semester)->where('dormName',$dorm)->paginate(7);
+
+
+        if ($search != "" && $dorm != "" && $semester != "") {
+            $Members = dormitory_user_history::where(function ($query) use ($search) {
+                $query->where('id_users', 'like', '%' . $search . '%');
+            })->where('semester', $semester)->where('dormName', $dorm)->paginate(7);
             $Members->appends(['search' => $search]);
+        } elseif ($search != "" && $dorm == "" && $semester == "") {
+            $Members = dormitory_user_history::where(function ($query) use ($search) {
+                $query->where('id_users', 'like', '%' . $search . '%');
+            })->paginate(7);
+        } elseif ($search != "" && $dorm != "" && $semester == "") {
+            $Members = dormitory_user_history::where(function ($query) use ($search) {
+                $query->where('id_users', 'like', '%' . $search . '%');
+            })->where('dormName', $dorm)->paginate(7);
+        } elseif ($search != "" && $semester != "" && $dorm == "") {
+            $Members = dormitory_user_history::where(function ($query) use ($search) {
+                $query->where('id_users', 'like', '%' . $search . '%');
+            })->where('semester', $semester)->paginate(7);
+        } elseif ($dorm != "" && $search == "" && $semester == "") {
+            $Members = dormitory_user_history::where('dormName', $dorm)->paginate(7);
+        } elseif ($semester != "" && $dorm == "" && $search == "") {
+            $Members = dormitory_user_history::where('semester', $semester)->paginate(7);
+        } elseif ($semester != "" && $dorm != "" && $search == "") {
+            $Members = dormitory_user_history::where('semester', $semester)->where('dormName', $dorm)->paginate(7);
+        } else {
+            $Members = dormitory_user_history::paginate(7);
         }
-        else{
-            $Members = dormitory_user_history::where('semester',$semester)->paginate(7);
-        }
-        return view('auth.ManagerUser.manageUserAllHead_Information_Unit')->with('data', $dorm)->with('data2',$Members);
+        return view('auth.ManagerUser.manageUserAllHead_Information_Unit')->with('data', $dormAll)->with('data2', $Members);
     }
 
 
@@ -291,69 +371,102 @@ class UserController extends Controller
         return Excel::download(new ExportUserHasActivity($activityName), 'ExportUserHasActivity.xlsx');
     }
 
-    
+
 
     /**
      * @return \Illuminate\Support\Collection
      */
 
-    public function importUsers()
+    public function importUsers(Request $request)
     {
-        Excel::import(new UsersImport, request()->file('file'));
+        $this->validate(
+            $request,
+            [
+                'file1' => 'required',
+            ],
+            [
+                'file1.required'    => 'กรุณาแนบไฟล์ข้อมูลผู้ใช้หอพัก'
+
+            ]
+        );
+        Excel::import(new UsersImport, request()->file('file1'));
+        Alert::success('นำข้อมูลเข้าสำเร็จ');
         return back();
     }
 
-    public function importUsersHistory()
+    public function importUsersHistory(Request $request)
     {
-        Excel::import(new UsersHistoryImport, request()->file('file'));
+        $this->validate(
+            $request,
+            [
+                'file2' => 'required',
+            ],
+            [
+                'file2.required'    => 'กรุณาแนบไฟล์ข้อมูลประวัติเข้าใช้หอพัก'
 
+            ]
+        );
+        Excel::import(new UsersHistoryImport, request()->file('file2'));
+        Alert::success('นำข้อมูลเข้าสำเร็จ');
         return back();
     }
-    public function importUsersScore()
-    {
-        Excel::import(new UsersScoreImport, request()->file('file'));
 
+    public function importUsersScore(Request $request)
+    {
+        $this->validate(
+            $request,
+            [
+                'file3' => 'required',
+            ],
+            [
+                'file3.required'    => 'กรุณาแนบไฟล์ข้อมูลคะแนนผู้เข้าใช้หอพัก'
+
+            ]
+        );
+        Excel::import(new UsersScoreImport, request()->file('file3'));
+        Alert::success('นำข้อมูลเข้าสำเร็จ');
         return back();
     }
-    
+
 
 
     public function changePassword(Request $request)
 
-    {$this->validate(
-        $request,
-        [
-            'current_password' => ['required', new MatchOldPassword],
-            'new_password' => ['required','min:8','max:20'],
-            'new_confirm_password' => ['required','same:new_password'],
+    {
+        $this->validate(
+            $request,
+            [
+                'current_password' => ['required', new MatchOldPassword],
+                'new_password' => ['required', 'min:8', 'max:20'],
+                'new_confirm_password' => ['required', 'same:new_password'],
 
-        ],
-        [
-            'current_password.new MatchOldPassword'    => 'รหัสผ่านเดิมไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง',
-            'current_password.required'    => 'กรุณากรอกรหัสผ่านเดิม',
-            'new_password.required'    => 'กรุณากรอกรหัสผ่านใหม่',
-            'new_password.min'    => 'กรุณากรอกรหัสผ่านใหม่อย่างน้อย 8 ตัวอักษร',
-            'new_password.max'    => 'กรุณากรอกรหัสผ่านใหม่ไม่เกิน 20 ตัวอักษร',
-            'new_confirm_password.required'    => 'กรุณากรอกยืนยันรหัสผ่าน',
-            'new_confirm_password.same'    => 'รหัสผ่านไม่ตรงกัน กรุณาลองใหม่อีกครั้ง',
+            ],
+            [
+                'current_password.new MatchOldPassword'    => 'รหัสผ่านเดิมไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง',
+                'current_password.required'    => 'กรุณากรอกรหัสผ่านเดิม',
+                'new_password.required'    => 'กรุณากรอกรหัสผ่านใหม่',
+                'new_password.min'    => 'กรุณากรอกรหัสผ่านใหม่อย่างน้อย 8 ตัวอักษร',
+                'new_password.max'    => 'กรุณากรอกรหัสผ่านใหม่ไม่เกิน 20 ตัวอักษร',
+                'new_confirm_password.required'    => 'กรุณากรอกยืนยันรหัสผ่าน',
+                'new_confirm_password.same'    => 'รหัสผ่านไม่ตรงกัน กรุณาลองใหม่อีกครั้ง',
 
-        ]
-    );
+            ]
+        );
 
-    
-        $id_users =$request->id_users;
-        DB::table('users')->where('id_users', $id_users)->update(['password'=> Hash::make($request->new_password)]);
+
+        $id_users = $request->id_users;
+        DB::table('users')->where('id_users', $id_users)->update(['password' => Hash::make($request->new_password)]);
 
         Alert::success('เปลี่ยนรหัสผ่านสำเร็จ');
         return back();
     }
-    
-    
-    
 
 
 
-    
+
+
+
+
 
 
     public function  userDetailDormitory_Director($id_users)
@@ -406,13 +519,14 @@ class UserController extends Controller
             'tel' => $request->tel,
             'email' => $request->email
         ]);
-        return back()->with('post_update', 'บันทึกเค้าโครงร่างกิจกรรมสำเร็จ');
-        
+        Alert::success('แก้ไขข้อมูลผู้ใช้สำเร็จ');
+        return back();
     }
 
     public function deleteUserHead_Information_Unit($id_user)
     {
         DB::table('users')->where('id_users', $id_user)->delete();
+        Alert::success('ลบผู้ใช้สำเร็จ');
         return back();
     }
 
@@ -420,11 +534,4 @@ class UserController extends Controller
     {
         return view('auth.ManagerUser.importUserHead_Information_Unit');
     }
-
-     
-    
-    
-
-    
-    
 }

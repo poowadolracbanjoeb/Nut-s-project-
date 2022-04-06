@@ -29,18 +29,8 @@ class ActivityController extends Controller
     public function manageActivityDormitory_Director(Request $request)
     {
         $myDorm = DB::table('dormitory_user_history')->where('id_users', auth()->user()->id_users)->first();
-        $search =  $request->input('q');
-        if ($search != "") {
-            $Activity = Activity::where(function ($query) use ($search) {
-                $query->where('name', 'like', '%' . $search . '%')
-                    ->orWhere('email', 'like', '%' . $search . '%');
-            })
-                ->paginate(10);
-            $Activity->appends(['q' => $search]);
-        } else {
-            $Activity = Activity::paginate(10);
-            return view('auth.Activity.manageActivityDormitory_Director', compact('myDorm'))->with('file', $Activity);
-        }
+        $Activity = Activity::paginate(10);
+        return view('auth.Activity.manageActivityDormitory_Director', compact('myDorm'))->with('file', $Activity);
     }
 
     public function AddActivityTypeDormitory_Director()
@@ -127,12 +117,12 @@ class ActivityController extends Controller
         $data1->semester = $request->semester;
         $data1->userActivityResponsibleActivity = auth()->user()->id_users;
         $data1->id_status = 11;
-        $data1->dormResponsibleActivity = $myDorm;
+        $data1->dormResponsibleActivity = $myDorm->dormName;
         $data1->save();
 
         $data2 = new activity_responsible_dorm;
         $data2->activityName = $request->activityName;
-        $data2->dormName = $myDorm;
+        $data2->dormName = $myDorm->dormName;
         $data2->save();
 
         if ($request->dormResponsibility1 != null) {
@@ -279,6 +269,7 @@ class ActivityController extends Controller
     public function deleteActivity_Dormitory_Director(Request $request)
     {
         DB::table('activities')->where('activityId', $request->activityId)->delete();
+        Alert::success('ลบสำเร็จ');
         return back();
     }
 
@@ -317,7 +308,7 @@ class ActivityController extends Controller
                 'activityName.required'    => 'กรุณากรอกชื่อกิจกรรม',
             ]
         );
-
+        $myDorm = DB::table('dormitory_user_history')->where('id_users', auth()->user()->id_users)->first();
         $data1 = new Activity;
         if ($request->file('activityFile')) {
             $activityFile = $request->file('activityFile');
@@ -352,6 +343,7 @@ class ActivityController extends Controller
         if ($request->semester != null) {
             $data1->semester = $request->semester;
         }
+        $data1->dormResponsibleActivity = $myDorm->dormName;
         $data1->userActivityResponsibleActivity = auth()->user()->id_users;
         $data1->id_status = 10;
         $data1->save();
@@ -388,7 +380,8 @@ class ActivityController extends Controller
         $data->id_type = $request->typeId;
         $data->typeName = $request->typeName;
         $data->save();
-        return back()->with('post_update', 'บันทึกเค้าโครงร่างกิจกรรมสำเร็จ');
+        Alert::success('เพิ่มลักษณะกิจกรรมกิจกรรมสำเร็จ');
+        return back();
     }
 
     public function SubmitAddActivityTypeDormitory_Chairman(Request $request)
@@ -411,7 +404,8 @@ class ActivityController extends Controller
         $data->id_type = $request->typeId;
         $data->typeName = $request->typeName;
         $data->save();
-        return back()->with('post_update', 'บันทึกเค้าโครงร่างกิจกรรมสำเร็จ');
+        Alert::success('เพิ่มลักษณะกิจกรรมกิจกรรมสำเร็จ');
+        return back();
     }
     public function SubmitAddActivityTypeHead_Information_Unit(Request $request)
     {
@@ -433,7 +427,8 @@ class ActivityController extends Controller
         $data->id_type = $request->typeId;
         $data->typeName = $request->typeName;
         $data->save();
-        return back()->with('post_update', 'บันทึกเค้าโครงร่างกิจกรรมสำเร็จ');
+        Alert::success('เพิ่มลักษณะกิจกรรมกิจกรรมสำเร็จ');
+        return back();
     }
 
 
@@ -537,12 +532,12 @@ class ActivityController extends Controller
         $data1->semester = $request->semester;
         $data1->userActivityResponsibleActivity = auth()->user()->id_users;
         $data1->id_status = 21;
-        $data1->dormResponsibleActivity = $myDorm;
+        $data1->dormResponsibleActivity = $myDorm->dormName;
         $data1->save();
 
         $data2 = new activity_responsible_dorm;
         $data2->activityName = $request->activityName;
-        $data2->dormName = $myDorm;
+        $data2->dormName = $myDorm->dormName;
         $data2->save();
 
         if ($request->dormResponsibility1 != null) {
@@ -575,7 +570,7 @@ class ActivityController extends Controller
                 'activityName.required'    => 'กรุณากรอกชื่อกิจกรรม',
             ]
         );
-
+        $myDorm = DB::table('dormitory_user_history')->where('id_users', auth()->user()->id_users)->first();
         $data1 = new Activity;
         if ($request->file('activityFile')) {
             $activityFile = $request->file('activityFile');
@@ -610,6 +605,7 @@ class ActivityController extends Controller
         if ($request->semester != null) {
             $data1->semester = $request->semester;
         }
+        $data1->dormResponsibleActivity = $myDorm->dormName;
         $data1->userActivityResponsibleActivity = auth()->user()->id_users;
         $data1->id_status = 10;
         $data1->save();
@@ -646,7 +642,8 @@ class ActivityController extends Controller
         DB::table('activities')->where('activityId', $request->activityId)->update([
             'id_status' => 21
         ]);
-        return back()->with('post_update', 'อนุมัติสำเร็จแล้ว');
+        Alert::success('อนุมัติกิจกรรมสำเร็จ');
+        return back();
     }
 
     public function submitNotApproveDormitory_Chairman(Request $request)
@@ -660,7 +657,8 @@ class ActivityController extends Controller
         ]);
 
 
-        return back()->with('post_update', 'ไม่อนุมัติสำเร็จแล้ว');
+        Alert::success('ไม่อนุมัติกิจกรรมสำเร็จ');
+        return back();
     }
 
     public function userConductActivityDormitory_Chairman($activityId)
@@ -714,6 +712,7 @@ class ActivityController extends Controller
     public function deleteActivity_Dormitory_Chairman(Request $request)
     {
         DB::table('activities')->where('activityId', $request->activityId)->delete();
+        Alert::success('ลบสำเร็จ');
         return back();
     }
 
@@ -825,7 +824,7 @@ class ActivityController extends Controller
 
     public function submitCreateActivityHead_Information_Unit(Request $request)
     {
-       $this->validate(
+        $this->validate(
             $request,
             [
                 'activityName' => 'required|unique:activities',
@@ -872,12 +871,12 @@ class ActivityController extends Controller
         $data1->semester = $request->semester;
         $data1->userActivityResponsibleActivity = auth()->user()->id_users;
         $data1->id_status = 51;
-        $data1->dormResponsibleActivity = $myDorm;
+        $data1->dormResponsibleActivity = "all";
         $data1->save();
 
         $data2 = new activity_responsible_dorm;
         $data2->activityName = $request->activityName;
-        $data2->dormName = $myDorm;
+        $data2->dormName = $myDorm->dormName;
         $data2->save();
 
         if ($request->dormResponsibility1 != null) {
@@ -945,6 +944,7 @@ class ActivityController extends Controller
         if ($request->semester != null) {
             $data1->semester = $request->semester;
         }
+        $data1->dormResponsibleActivity = "all";
         $data1->userActivityResponsibleActivity = auth()->user()->id_users;
         $data1->id_status = 10;
         $data1->save();
@@ -1038,7 +1038,8 @@ class ActivityController extends Controller
             'id_status' => 30,
             'activityAdvice' => $request->activityAdvice
         ]);
-        return back()->with('post_update', 'ไม่อนุมัติสำเร็จแล้ว');
+        Alert::success('ไม่อนุมัติกิจกรรมสำเร็จ');
+        return back();;
     }
 
     public function submitApproveHead_Dormitory_Service(Request $request)
@@ -1057,7 +1058,8 @@ class ActivityController extends Controller
         DB::table('activities')->where('activityId', $request->activityId)->update([
             'id_status' => 41
         ]);
-        return back()->with('post_update', 'อนุมัติสำเร็จแล้ว');
+        Alert::success('อนุมัติกิจกรรมสำเร็จ');
+        return back();
     }
     public function submitNotApproveHead_Dormitory_Service(Request $request)
     {
@@ -1068,7 +1070,8 @@ class ActivityController extends Controller
             'id_status' => 40,
             'activityAdvice' => $request->activityAdvice
         ]);
-        return back()->with('post_update', 'ไม่อนุมัติสำเร็จแล้ว');
+        Alert::success('ไม่อนุมัติกิจกรรมสำเร็จ');
+        return back();
     }
 
     public function submitApproveDirector_Dormitory_Service_Division(Request $request)
@@ -1087,7 +1090,8 @@ class ActivityController extends Controller
         DB::table('activities')->where('activityId', $request->activityId)->update([
             'id_status' => 51
         ]);
-        return back()->with('post_update', 'อนุมัติสำเร็จแล้ว');
+        Alert::success('อนุมัติกิจกรรมสำเร็จ');
+        return back();
     }
 
     public function submitNotApproveDirector_Dormitory_Service_Division(Request $request)
@@ -1099,7 +1103,8 @@ class ActivityController extends Controller
             'id_status' => 50,
             'activityAdvice' => $request->activityAdvice
         ]);
-        return back()->with('post_update', 'ไม่อนุมัติสำเร็จแล้ว');
+        Alert::success('ไม่อนุมัติกิจกรรมสำเร็จ');
+        return back();
     }
 
 
@@ -1109,6 +1114,7 @@ class ActivityController extends Controller
     public function deleteActivityAll_Head_Information_Unit(Request $request)
     {
         DB::table('activities')->where('activityId', $request->activityId)->delete();
+        Alert::success('ลบสำเร็จ');
         return back();
     }
 
@@ -1120,7 +1126,6 @@ class ActivityController extends Controller
                 'activityName' => 'required ',
                 'activityScore' => 'required ',
                 'activityPlace' => 'required ',
-                'dormResponsibility1' => 'required|min:1',
                 'activityStartDate' => 'required ',
                 'activityEndDate' => 'required ',
                 'activity_Target' => 'required ',
@@ -1132,7 +1137,6 @@ class ActivityController extends Controller
                 'activityName.required'    => 'กรุณากรอกชื่อกิจกรรม',
                 'activityScore.required'    => 'กรุณากรอกคะแนนกิจกรรม',
                 'activityPlace.required'    => 'กรุณากรอกชื่อสถานที่จัดกิจกรรม',
-                'dormResponsibility1.required'    => 'กรุณาเลือกหน่วยงานที่รับผิดชอบโครงการ',
                 'activityStartDate.required'    => 'กรุณาเลือกวันที่เริ่มต้นจัดกิจกรรม',
                 'activityEndDate.required'    => 'กรุณาเลือกวันที่จัดกิจกรรมวันสุดท้าย',
                 'activity_Target.required'    => 'กรุณากรอกจำนวนเป้าหมายผู้เข้าร่วมโครงการ',
@@ -1168,6 +1172,10 @@ class ActivityController extends Controller
             'id_status' =>  11,
 
         ]);
+        $data2 = new activity_responsible_dorm;
+            $data2->activityName = $request->activityName;
+            $data2->dormName = $myDorm->dormName;
+            $data2->save();
 
         if ($request->dormResponsibility1 != null) {
             $data2 = new activity_responsible_dorm;
@@ -1195,7 +1203,6 @@ class ActivityController extends Controller
                 'activityName' => 'required|unique:activities',
                 'activityScore' => 'required',
                 'activityPlace' => 'required',
-                'dormResponsibility1' => 'required|min:1',
                 'activityStartDate' => 'required',
                 'activityEndDate' => 'required',
                 'activity_Target' => 'required',
@@ -1208,7 +1215,6 @@ class ActivityController extends Controller
                 'activityName.unique'    => 'มีชื่อกิจกรรมนี้แล้ว กรุณากรอกใหม่อีกครั้ง',
                 'activityScore.required'    => 'กรุณากรอกคะแนนกิจกรรม',
                 'activityPlace.required'    => 'กรุณากรอกชื่อสถานที่จัดกิจกรรม',
-                'dormResponsibility1.required'    => 'กรุณาเลือกหน่วยงานที่รับผิดชอบโครงการ',
                 'activityStartDate.required'    => 'กรุณาเลือกวันที่เริ่มต้นจัดกิจกรรม',
                 'activityEndDate.required'    => 'กรุณาเลือกวันที่จัดกิจกรรมวันสุดท้าย',
                 'activity_Target.required'    => 'กรุณากรอกจำนวนเป้าหมายผู้เข้าร่วมโครงการ',
@@ -1218,6 +1224,7 @@ class ActivityController extends Controller
 
             ]
         );
+        $myDorm = DB::table('dormitory_user_history')->where('id_users', auth()->user()->id_users)->first();
 
         if ($request->file('activityFile')) {
             $activityFile = $request->file('activityFile');
@@ -1242,6 +1249,10 @@ class ActivityController extends Controller
             'id_status' =>  21,
 
         ]);
+        $data2 = new activity_responsible_dorm;
+            $data2->activityName = $request->activityName;
+            $data2->dormName = $myDorm->dormName;
+            $data2->save();
 
         if ($request->dormResponsibility1 != null) {
             $data2 = new activity_responsible_dorm;
@@ -1318,20 +1329,6 @@ class ActivityController extends Controller
 
         ]);
 
-        if ($request->dormResponsibility1 != null) {
-            $data2 = new activity_responsible_dorm;
-            $data2->activityName = $request->activityName;
-            $data2->dormName = $request->dormResponsibility1;
-            $data2->save();
-        }
-
-        if ($request->dormResponsibility2 != null) {
-            $data2 = new activity_responsible_dorm;
-            $data2->activityName = $request->activityName;
-            $data2->dormName = $request->dormResponsibility1;
-            $data2->save();
-        }
-
         Alert::success('สร้างกิจกรรมสำเร็จ');
         return back();
     }
@@ -1394,20 +1391,6 @@ class ActivityController extends Controller
 
         ]);
 
-        if ($request->dormResponsibility1 != null) {
-            $data2 = new activity_responsible_dorm;
-            $data2->activityName = $request->activityName;
-            $data2->dormName = $request->dormResponsibility1;
-            $data2->save();
-        }
-
-        if ($request->dormResponsibility2 != null) {
-            $data2 = new activity_responsible_dorm;
-            $data2->activityName = $request->activityName;
-            $data2->dormName = $request->dormResponsibility1;
-            $data2->save();
-        }
-
         Alert::success('สร้างกิจกรรมสำเร็จ');
         return back();
     }
@@ -1421,10 +1404,9 @@ class ActivityController extends Controller
         $this->validate(
             $request,
             [
-                'activityName' => 'required|unique:activities',
+                'activityName' => 'required',
             ],
             [
-                'activityName.required'    => 'กรุณากรอกชื่อกิจกรรม',
                 'activityName.unique'    => 'มีชื่อกิจกรรมนี้แล้ว กรุณากรอกใหม่อีกครั้ง',
             ]
         );
@@ -1501,11 +1483,11 @@ class ActivityController extends Controller
 
     public function submitCheckName(Request $request, $activityName)
     {
-        
+
         $this->validate(
             $request,
             [
-                'id_users' => 'required|exists:users|unique:users_has_activities,id_users,null,null,activityName,'.$activityName,
+                'id_users' => 'required|exists:users|unique:users_has_activities,id_users,null,null,activityName,' . $activityName,
 
             ],
             [

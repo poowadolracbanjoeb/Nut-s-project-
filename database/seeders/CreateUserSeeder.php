@@ -25,7 +25,6 @@ class CreateUserSeeder extends Seeder
                 'student_degree' =>'1',
                 'student_faculty' =>'วิทยาศาสตร์',
                 'id_role' =>'1',
-                'id' =>'1'
 
             ], [
                 #กรรมการหอพัก
@@ -37,7 +36,6 @@ class CreateUserSeeder extends Seeder
                 'student_degree' =>'2',
                 'student_faculty' =>'วิศวกรรมศาสตร์',
                 'id_role' =>'2',
-                'id' =>'1'
             ], [
                 #ประธานหอพัก
                 'id_users' => '603452635-6',
@@ -48,7 +46,6 @@ class CreateUserSeeder extends Seeder
                 'student_degree' =>'2',
                 'student_faculty' =>'นิติศาสตร์',
                 'id_role' =>'3',
-                'id' =>'1'
             ], [
                 #ที่ปรึกษาหอพัก
                 'id_users' => '603456985-9',
@@ -59,7 +56,6 @@ class CreateUserSeeder extends Seeder
                 'student_degree' =>'',
                 'student_faculty' =>'',
                 'id_role' =>'4',
-                'id' =>'1'
             ], [
                 #หัวหน้าหน่วยบริการหอพัก
                 'id_users' => '456235659-8',
@@ -70,7 +66,6 @@ class CreateUserSeeder extends Seeder
                 'student_degree' =>'',
                 'student_faculty' =>'',
                 'id_role' =>'5',
-                'id' =>'1'
             ],[
                 #ผู้อำนวยการกองบริการหอพัก
                 'id_users' => '789456123-9',
@@ -80,8 +75,7 @@ class CreateUserSeeder extends Seeder
                 'tel' =>'0812555678',
                 'student_degree' =>'',
                 'student_faculty' =>'',
-                'id_role' =>'6',
-                'id' =>'6'
+                'id_role' =>'6'
             ],[
                 #หัวหน้าหน่วยสารสนเทศ
                 'id_users' => '321654987-3',
@@ -92,7 +86,6 @@ class CreateUserSeeder extends Seeder
                 'student_degree' =>'',
                 'student_faculty' =>'',
                 'id_role' =>'7',
-                'id' =>'7'
             ]
 
         ];

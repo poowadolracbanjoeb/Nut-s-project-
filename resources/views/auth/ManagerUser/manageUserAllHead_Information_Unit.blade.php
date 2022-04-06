@@ -18,6 +18,7 @@
         </div>
     </div><!-- /.container-fluid -->
 </section>
+
 <div class="container">
     <div class="card bg-light mt-3">
         <div class="card-body">
@@ -69,21 +70,22 @@
                 <thead>
                     <tr class="table-warning ">
                         <th>รหัสผู้ใช้</th>
-                        <th>ชื่อผู้ใช้</th>
                         <th>ดำเนินการ</th>
                     </tr>
                 </thead>
                 @foreach($data2 as $Members)
                 <tbody>
                     <td>{{$Members->id_users}}</td>
-                    <td><a class="btn btn-info" href="/Dormitory_Director/userDetail/{{$Members->id_users}}">ดูข้อมูล</a>
+                    <td><a class="btn btn-info" href="/Head_Information_Unit/userDetail/{{$Members->id_users}}">ดูข้อมูล</a>
+                    <a class="btn btn-info" href="/Head_Information_Unit/manageUserAll/editUserDetail/{{$Members->id_users}}">แก้ไข</a>
+                    <a class="btn btn-info" href="/Head_Information_Unit/manageUserAll/delete_user/{{$Members->id_users}}">ลบ</a>
                     </td>
                 </tbody>
                 @endforeach
                 </tbody>
             </table>
             <div class="d-flex justify-content-center">
-                {!! $data->links() !!}
+                {!! $data2->links() !!}
             </div>
 
         </div>

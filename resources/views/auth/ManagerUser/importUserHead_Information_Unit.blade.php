@@ -13,7 +13,7 @@
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="/Head_Information_Unit/home">หน้าหลัก</a></li>
                     <li class="breadcrumb-item active"><a href="/Head_Information_Unit/manageUserAll">จัดการข้อมูลผู้ใช้</a></li>
-                    <li class="breadcrumb-item active"><a href="/Head_Information_Unit/manageUserAll">นำผู้ใช้เข้า</a></li>
+                    <li class="breadcrumb-item active"><a href="/Head_Information_Unit/manageUserAll/importUsers">นำผู้ใช้เข้า</a></li>
                 </ol>
             </div>
         </div>
@@ -27,16 +27,20 @@
             <h3>ข้อมูลผู้ใช้หอพัก</h3><br>
             <form action="{{ route('importUsers') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <input type="file" name="file" class="form-control">
+                <input type="file" name="file1" class="form-control">
+                <span class="text-danger"> @error("file1"){{$message}}@enderror </span><br>
                 <br>
                 <button class="btn btn-success">นำข้อมูลเข้า</button>
             </form>
         </div>
+       
+
         <div class="card-body">
             <h3>ข้อมูลประวัติเข้าใช้หอพัก</h3><br>
             <form action="{{ route('importUsersHistory') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <input type="file" name="file" class="form-control">
+                <input type="file" name="file2" class="form-control">
+                <span class="text-danger"> @error("file2"){{$message}}@enderror </span><br>
                 <br>
                 <button class="btn btn-success">นำข้อมูลเข้า</button>
 
@@ -46,7 +50,8 @@
             <h3>ข้อมูลคะแนนผู้เข้าใช้หอพัก</h3><br>
             <form action="{{ route('importUsersScore') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <input type="file" name="file" class="form-control">
+                <input type="file" name="file3" class="form-control">
+                <span class="text-danger"> @error("file3"){{$message}}@enderror </span><br>
                 <br>
                 <button class="btn btn-success">นำข้อมูลเข้า</button>
 
@@ -54,5 +59,5 @@
         </div>
     </div>
 </section>
-
+@include('sweetalert::alert')
 @endsection

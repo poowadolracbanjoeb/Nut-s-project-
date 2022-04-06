@@ -74,7 +74,7 @@
 
             จัดกิจกรรมตั้งแต่วันที่<br>
             <span class="glyphicon glyphicon-calendar"></span>
-            <input type="text" name="activityStartDate" class="form-control date form-control" placeholder=""     value="{{$Activity->activityStartDate}}"
+            <input type="text" name="activityStartDate" class="form-control date form-control" placeholder="" value="{{$Activity->activityStartDate}}">
             <span class="text-danger"> @error("activityStartDate"){{$message}}@enderror </span><br><br>ถึงวันที่<br>
 
             <input type="text" name="activityEndDate" class="form-control date form-control" placeholder=""  value="{{$Activity->activityEndDate}}">

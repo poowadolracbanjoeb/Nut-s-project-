@@ -50,7 +50,7 @@
           </thead>
           @foreach($file as $Activity)
           @if($Activity->id_status == 51)
-          @if($Activity->dormResponsibleActivity == $myDorm->dormName)
+          @if($Activity->dormResponsibleActivity == $myDorm->dormName || $Activity->dormResponsibleActivity == "all" )
           <tbody>
             <td>{{$Activity->activityName}}</td>
             <td>{{$Activity->activityPlace}}</td>

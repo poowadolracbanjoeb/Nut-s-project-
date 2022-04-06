@@ -14,7 +14,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="/Student/home">หน้าหลัก</a></li>
-            <li class="breadcrumb-item active"><a href="/Student/showDataActivityJoin/{{ Auth::user()->id_users }}">กิจกรรมที่เข้าร่วม</a></li>
+            <li class="breadcrumb-item active"><a href="/Student/showDataActivityAll">กิจกรรมทั้งหมด</a></li>
           </ol>
         </div>
       </div>
@@ -31,13 +31,17 @@
               <th>ดำเนินการ</th>
             </tr>
           </thead>
-          @foreach($data as $Activity)
+          @foreach($file as $Activity)
+          @if($Activity->id_status == 51)
+          @if($Activity->dormResponsibleActivity == $myDorm->dormName || $Activity->dormResponsibleActivity == "all")
           <tbody>
             <td>{{$Activity->activityName}}</td>
             <td>{{$Activity->activityScore}}</td>
             <td><a class="btn btn-info" href="/Student/manageActivity/activityDetail/{{$Activity ->activityName}}">ดูรายละเอียด</a>
             </td>
           </tbody>
+          @endif
+          @endif
           @endforeach
         </table>
       </div>

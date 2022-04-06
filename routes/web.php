@@ -181,7 +181,8 @@ Route::get('/Director_Dormitory_Service_Division/userDetail/{activityId}', [App\
 Route::get('/Head_Information_Unit/userDetail/{activityId}', [App\Http\Controllers\UserController::class, 'userDetailHead_Information_Unit'])->name('userDetailHead_Information_Unit');
 
 
-Route::get('/Head_Information_Unit/editUserDetail/{activityId}', [App\Http\Controllers\UserController::class, 'editUserDetailHead_Information_Unit'])->name('editUserDetailHead_Information_Unit');
+Route::get('/Head_Information_Unit/manageUserAll/editUserDetail/{activityId}', [App\Http\Controllers\UserController::class, 'editUserDetailHead_Information_Unit'])->name('editUserDetailHead_Information_Unit');
+Route::post('/Head_Information_Unit/manageUserAll/editActivity/submit', [App\Http\Controllers\UserController::class, 'submitEditUserDetailHead_Information_Unit'])->name('submitEditUserDetailHead_Information_Unit');
 
 Route::get('export', [App\Http\Controllers\UserController::class, 'export'])->name('export');
 Route::post('importUsers', [App\Http\Controllers\UserController::class, 'importUsers'])->name('importUsers');
@@ -208,7 +209,7 @@ Route::post('/Dormitory_Director/createActivity/AddActivityType/Submit', [App\Ht
 Route::get('/export/UserHasActivity/{activityName}', [App\Http\Controllers\UserController::class, 'exportUserHasActivity'])->name('exportUserHasActivity');
 
 
-Route::get('/Dormitory_Director/checkName/delete_user/{id_user}/{activityId}', [App\Http\Controllers\UserController::class, 'deleteUserHead_Information_Unit'])->name('deleteUserHead_Information_Unit');
+Route::get('/Head_Information_Unit/manageUserAll/delete_user/{id_user}', [App\Http\Controllers\UserController::class, 'deleteUserHead_Information_Unit'])->name('deleteUserHead_Information_Unit');
 
 
 Route::post('/Dormitory_Director/createActivity/Outline/Submit', [App\Http\Controllers\ActivityController::class, 'submitCreateActivityOutlineDormitory_Director'])->name('submitCreateActivityOutlineDormitory_Director');
