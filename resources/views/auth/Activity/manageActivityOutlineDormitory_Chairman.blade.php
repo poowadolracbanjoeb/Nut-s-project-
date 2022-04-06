@@ -49,6 +49,7 @@
           </thead>
           @foreach($file as $Activity)
           @if($Activity->id_status == 10)
+          @if($Activity->userActivityResponsibleActivity == Auth::user()->id_users)
           <tbody>
             <td>{{$Activity->activityName}}</td>
             <td>{{$Activity->activityPlace}}</td>
@@ -58,6 +59,7 @@
               <a class="btn btn-info" href="/Dormitory_Chairman/manageActivity/deleteActivity/{{$Activity->activityId}}">ลบ</a>
             </td>
           </tbody>
+          @endif
           @endif
           @endforeach
         </table>

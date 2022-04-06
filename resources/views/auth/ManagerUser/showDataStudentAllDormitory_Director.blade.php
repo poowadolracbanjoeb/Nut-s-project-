@@ -46,17 +46,17 @@
         <thead>
           <tr class="table-warning ">
             <th>รหัสนักศึกษา</th>
-            <th>ชื่อ</th>
             <th>ดำเนินการ</th>
           </tr>
         </thead>
         @foreach($data as $Members)
+        @if($Members->dormName ==  $myDorm->dormName)
         <tbody>
           <td>{{$Members->id_users}}</td>
-          <td>{{$Members->name}}</td>
           <td><a class="btn btn-info" href="/Dormitory_Director/userDetail/{{$Members->id_users}}">ดูข้อมูล</a>
           </td>  
         </tbody>
+        @endif
         @endforeach
       </table>
       <div class="d-flex justify-content-center">

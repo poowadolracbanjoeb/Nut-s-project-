@@ -50,15 +50,16 @@
           </thead>
           @foreach($file as $Activity)
           @if($Activity->id_status==20||$Activity->id_status==30||$Activity->id_status==40||$Activity->id_status==50)
+          @if($Activity->userActivityResponsibleActivity == Auth::user()->id_users)
           <tbody>
             <td>{{$Activity->activityName}}</td>
             <td>{{$Activity->activityPlace}}</td>
             <td>{{$Activity->activityStartDate}} ถึง {{$Activity->activityEndDate}}</td>
             <td><a class="btn btn-info" href="/Dormitory_Chairman/showActivityAdvice/{{$Activity->activityId}}">ดูคำอธิบาย</a>
-              <a class="btn btn-info" href="/Dormitory_Chairman/manageActivity/editActivity/{activityId}">แก้ไข</a>
               <a class="btn btn-info" href="/Dormitory_Chairman/manageActivity/deleteActivity/{{$Activity->activityId}}">ลบ</a>
             </td>
           </tbody>
+          @endif
           @endif
           @endforeach
         </table>

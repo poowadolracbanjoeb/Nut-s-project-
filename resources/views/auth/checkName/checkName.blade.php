@@ -45,6 +45,8 @@
         <br>
         <span class="text-danger"> @error("id_users"){{$message}}@enderror </span><br>
       </form><br>
+
+
       <table class="table table-striped table-light">
         <thead>
           <tr class="table-warning ">

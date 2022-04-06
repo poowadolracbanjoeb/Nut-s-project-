@@ -37,16 +37,11 @@
                         <option value="2/2563">2/2563</option>
                         <option value="1/2563">1/2563</option>
                     </select>
-                    <select class="form-select" name="semester" class="form-control">
+                    <select class="form-select" name="dorm" class="form-control">
                         <option value="">หอพัก</option>
-                        <option value="2/2565">2/2565</option>
-                        <option value="1/2565">1/2565</option>
-                        <option value="3/2564">3/2564</option>
-                        <option value="2/2564">2/2564</option>
-                        <option value="1/2564">1/2564</option>
-                        <option value="3/2563">3/2563</option>
-                        <option value="2/2563">2/2563</option>
-                        <option value="1/2563">1/2563</option>
+                        @foreach($data as $dorm)
+                        <option value="{{$dorm->dormName}}">{{$dorm->dormName}}</option>
+                        @endforeach
                     </select>
                     <br>
                     <br>
@@ -78,15 +73,13 @@
                         <th>ดำเนินการ</th>
                     </tr>
                 </thead>
-                @foreach($data as $Members)
+                @foreach($data2 as $Members)
                 <tbody>
                     <td>{{$Members->id_users}}</td>
-                    <td>{{$Members->name}}</td>
-                    <td><a class="btn btn-info" href="/Head_Information_Unit/userDetail/{{$Members->id_users}}">ดูข้อมูล</a>
-                        <a class="btn btn-warning" href="/Head_Information_Unit/editUserDetail/{{$Members->id_users}}">แก้ไข</a>
-                        <a class="btn btn-danger" href="">ลบ</a>
+                    <td><a class="btn btn-info" href="/Dormitory_Director/userDetail/{{$Members->id_users}}">ดูข้อมูล</a>
                     </td>
-                    @endforeach
+                </tbody>
+                @endforeach
                 </tbody>
             </table>
             <div class="d-flex justify-content-center">

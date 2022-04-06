@@ -50,6 +50,7 @@
           </thead>
           @foreach($file as $Activity)
           @if($Activity->id_status == 51)
+          @if($Activity->dormResponsibleActivity == $myDorm->dormName)
           <tbody>
             <td>{{$Activity->activityName}}</td>
             <td>{{$Activity->activityPlace}}</td>
@@ -59,6 +60,7 @@
               <a class="btn btn-info" href="/checkName/{{$Activity->activityName}}">เช็กชื่อ</a>
             </td>
           </tbody>
+          @endif
           @endif
           @endforeach
         </table>

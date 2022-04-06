@@ -53,6 +53,7 @@
           </thead>
           @foreach($file as $Activity)
           @if($Activity->id_status == 11 || $Activity->id_status == 21|| $Activity->id_status == 31|| $Activity->id_status == 41)
+          @if($Activity->userActivityResponsibleActivity == Auth::user()->id_users)
           <tbody>
             <td>{{$Activity->activityName}}</td>
             <td>{{$Activity->activityPlace}}</td>
@@ -61,6 +62,7 @@
             <td><a class="btn btn-info" href="/Dormitory_Chairman/manageActivity/activityDetail/{{$Activity->activityName}}">ดูรายละเอียด</a>
             </td>
           </tbody>
+          @endif
           @endif
           @endforeach
         </table>

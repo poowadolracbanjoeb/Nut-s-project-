@@ -30,7 +30,6 @@
             ชื่อกิจกรรม
             <input type="text" name="activityName" class="form-control">
             <span class="text-danger"> @error("activityName"){{$message}}@enderror </span><br><br>
-           
             ลักษณะกิจกรรม
             <br>
             <select class="form-select" name="id_type" class="form-control">
@@ -48,17 +47,23 @@
             สถานที่จัดกิจกรรม
             <input type="text" name="activityPlace" class="form-control">
             <span class="text-danger"> @error("activityPlace"){{$message}}@enderror </span><br><br>
-            หน่วยงานที่รับผิดชอบโครงการ
+
+
+
+            เพิ่มหน่วยงานที่รับผิดชอบโครงการ (กรณีมีมากกว่า 1 หอพัก)
             <br>
-            <select class="form-select" name="dormResponsibility1" class="form-control">
-              <option value="">เลือกหน่วยงานที่รับผิดชอบโครงการ</option>
-              @foreach($data as $dorm)
-              <option value="{{$dorm->dormName}}">{{$dorm->dormName}}</option>
-              @endforeach
-            </select> 
-            <a href="#demo" data-toggle="collapse">เพิ่มหน่วยงานรับผิดชอบโครงการ</a><br>
-            <span class="text-danger"> @error("dormResponsibility1"){{$message}}@enderror </span>
-            <div id="demo" class="collapse">
+            <a href="#demo1" data-toggle="collapse">เพิ่มหน่วยงานรับผิดชอบโครงการ 2</a><br>
+            <div id="demo1" class="collapse">
+              <select class="form-select" name="dormResponsibility1" class="form-control">
+                <option value="">เลือกหน่วยงานที่รับผิดชอบโครงการ</option>
+                @foreach($data as $dorm)
+                <option value="{{$dorm->dormName}}">{{$dorm->dormName}}</option>
+                @endforeach
+              </select>
+              <br><br>
+              <a href="#demo2" data-toggle="collapse">เพิ่มหน่วยงานรับผิดชอบโครงการ 3</a><br>
+            </div>
+            <div id="demo2" class="collapse">
               <select class="form-select" name="dormResponsibility2" class="form-control">
                 <option value="">เลือกหน่วยงานที่รับผิดชอบโครงการ</option>
                 @foreach($data as $dorm)
@@ -67,6 +72,8 @@
               </select>
               <span class="text-danger"> @error("dormResponsibility2"){{$message}}@enderror </span><br><br>
             </div><br><br>
+
+
 
             จัดกิจกรรมตั้งแต่วันที่<br>
             <span class="glyphicon glyphicon-calendar"></span>

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Activity extends Model
 {
     // use HasFactory;
-    protected $fillable=[
+    protected $fillable = [
         'activityId',
         'activityName',
         'activityPlace',
@@ -25,6 +25,8 @@ class Activity extends Model
         'update_at',
         'semester',
         'id_status',
-        'userActivityResponsibleActivity'];
-    protected $table ="activities";
+        'userActivityResponsibleActivity',
+        'dormResponsibleActivity'
+    ];
+    protected $table = "activities";
 }
