@@ -1,4 +1,4 @@
-@extends('layouts.appDormitory_Chairman')
+@extends('layouts.appHead_Information_Unit')
 
 
 @section('content')
@@ -13,9 +13,9 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="/Dormitory_Director/home">หน้าหลัก</a></li>
-            <li class="breadcrumb-item active"> <a href="/Dormitory_Director/manageActivity">จัดการกิจกรรม</a></li>
-            <li class="breadcrumb-item active"> <a href="/Dormitory_Director/manageActivity/editActivityOutline/{{$Activity->activityId}}"> แก้ไขเค้าโครงร่างกิจกรรม</a></li>
+            <li class="breadcrumb-item"><a href="/Head_Information_Unit/home">หน้าหลัก</a></li>
+            <li class="breadcrumb-item active"> <a href="/Head_Information_Unit/manageActivity">จัดการกิจกรรม</a></li>
+            <li class="breadcrumb-item active"> <a href="/Head_Information_Unit/manageActivity/editActivityAllOutline/{{$Activity->activityId}}"> แก้ไขเค้าโครงร่างกิจกรรม</a></li>
           </ol>
         </div>
       </div>
@@ -28,6 +28,8 @@
         <form method="POST" enctype="multipart/form-data">
           {{csrf_field()}}
           <div class="form-group">
+          รหัสกิจกรรม
+            <input type="text" name="activityId" class="form-control" value="{{$Activity->activityId}}" readonly><br><br>
             ชื่อกิจกรรม
             <input type="text" name="activityName" class="form-control" value="{{$Activity->activityName}}">
             <span class="text-danger"> @error("activityName"){{$message}}@enderror </span><br><br>
@@ -38,7 +40,7 @@
               <option value="{{$type->id_type}}">ด้านที่ {{$type->id_type}} {{$type->typeName}}</option>
               @endforeach
             </select>
-            <a href="/Dormitory_Director/AddActivityType">เพิ่มลักษณะกิจกรรม</a>
+            <a href="/Head_Information_Unit/AddActivityType">เพิ่มลักษณะกิจกรรม</a>
             <br>
             <br>
             <br>
@@ -48,29 +50,6 @@
             สถานที่จัดกิจกรรม
             <input type="text" name="activityPlace" class="form-control" value="{{$Activity->activityPlace}}">
             <span class="text-danger"> @error("activityPlace"){{$message}}@enderror </span><br><br>
-
-            เพิ่มหน่วยงานที่รับผิดชอบโครงการ (กรณีมีมากกว่า 1 หอพัก)
-            <br>
-            <a href="#demo1" data-toggle="collapse">เพิ่มหน่วยงานรับผิดชอบโครงการ 2</a><br>
-            <div id="demo1" class="collapse">
-              <select class="form-select" name="dormResponsibility1" class="form-control">
-                <option value="">เลือกหน่วยงานที่รับผิดชอบโครงการ</option>
-                @foreach($data as $dorm)
-                <option value="{{$dorm->dormName}}">{{$dorm->dormName}}</option>
-                @endforeach
-              </select>
-              <br><br>
-              <a href="#demo2" data-toggle="collapse">เพิ่มหน่วยงานรับผิดชอบโครงการ 3</a><br>
-            </div>
-            <div id="demo2" class="collapse">
-              <select class="form-select" name="dormResponsibility2" class="form-control">
-                <option value="">เลือกหน่วยงานที่รับผิดชอบโครงการ</option>
-                @foreach($data as $dorm)
-                <option value="{{$dorm->dormName}}">{{$dorm->dormName}}</option>
-                @endforeach
-              </select>
-              <span class="text-danger"> @error("dormResponsibility2"){{$message}}@enderror </span><br><br>
-            </div><br><br>
 
             จัดกิจกรรมตั้งแต่วันที่<br>
             <span class="glyphicon glyphicon-calendar"></span>
@@ -100,8 +79,8 @@
 
             <br>
             <br>
-            <input type="submit" class="btn btn-success" value="สร้างกิจกรรม" formaction="{{url('/Dormitory_Director/manageActivity/editActivityOutline/submitCreate')}}">
-            <input type="submit" class="btn btn-warning" value="บันทึกร่างโครงการ" formaction="{{url('/Dormitory_Director/manageActivity/editActivityOutline/submitSave')}}">
+            <input type="submit" class="btn btn-success" value="สร้างกิจกรรม" formaction="{{url('/Head_Information_Unit/manageActivityAll/editActivityOutline/submitCreate')}}">
+            <input type="submit" class="btn btn-warning" value="บันทึกร่างโครงการ" formaction="{{url('/Head_Information_Unit/manageActivityAll/editActivityOutline/submitSave')}}">
         </form>
       </div>
     </div>

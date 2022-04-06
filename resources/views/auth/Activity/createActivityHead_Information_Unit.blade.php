@@ -47,34 +47,6 @@
             สถานที่จัดกิจกรรม
             <input type="text" name="activityPlace" class="form-control">
             <span class="text-danger"> @error("activityPlace"){{$message}}@enderror </span><br><br>
-
-
-
-            เพิ่มหน่วยงานที่รับผิดชอบโครงการ (กรณีมีมากกว่า 1 หอพัก)
-            <br>
-            <a href="#demo1" data-toggle="collapse">เพิ่มหน่วยงานรับผิดชอบโครงการ 2</a><br>
-            <div id="demo1" class="collapse">
-              <select class="form-select" name="dormResponsibility1" class="form-control">
-                <option value="">เลือกหน่วยงานที่รับผิดชอบโครงการ</option>
-                @foreach($data as $dorm)
-                <option value="{{$dorm->dormName}}">{{$dorm->dormName}}</option>
-                @endforeach
-              </select>
-              <br><br>
-              <a href="#demo2" data-toggle="collapse">เพิ่มหน่วยงานรับผิดชอบโครงการ 3</a><br>
-            </div>
-            <div id="demo2" class="collapse">
-              <select class="form-select" name="dormResponsibility2" class="form-control">
-                <option value="">เลือกหน่วยงานที่รับผิดชอบโครงการ</option>
-                @foreach($data as $dorm)
-                <option value="{{$dorm->dormName}}">{{$dorm->dormName}}</option>
-                @endforeach
-              </select>
-              <span class="text-danger"> @error("dormResponsibility2"){{$message}}@enderror </span><br><br>
-            </div><br><br>
-
-
-
             จัดกิจกรรมตั้งแต่วันที่<br>
             <span class="glyphicon glyphicon-calendar"></span>
             <input type="text" name="activityStartDate" class="form-control date form-control" placeholder="">

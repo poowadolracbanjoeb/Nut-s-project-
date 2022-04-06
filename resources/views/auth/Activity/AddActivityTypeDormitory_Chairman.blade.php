@@ -1,4 +1,4 @@
-@extends('layouts.Dormitory_Chairman')
+@extends('layouts.appDormitory_Chairman')
 
 @section('content')
 <section class="content-header">
@@ -32,11 +32,11 @@
           <input type="text" name="typeName" class="form-control">
           <span class="text-danger"> @error("typeName"){{$message}}@enderror </span><br><br>
 
-          <input type="submit" class="btn btn-success" value="ยืนยัน" formaction="{{url('/Dormitory_Chairman/createActivity/AddActivityType/Submit')}}">
+          <input type="submit" class="btn btn-success" value="ยืนยัน" formaction="{{url('/AddActivityType/Submit')}}">
       </form>
     </div>
   </div>
 </div>
 </div>
-
+@include('sweetalert::alert')
 @endsection

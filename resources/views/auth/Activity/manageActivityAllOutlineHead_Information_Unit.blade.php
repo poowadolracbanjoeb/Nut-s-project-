@@ -55,8 +55,8 @@
             <td>{{$Activity->activityPlace}}</td>
             <td>{{$Activity->activityStartDate}} ถึง {{$Activity->activityEndDate}}</td>
             <td><a class="btn btn-info" href="/Head_Information_Unit/manageActivity/activityDetail/{{$Activity->activityName}}">ดูรายละเอียด</a>
-              <a class="btn btn-info" href="/Head_Information_Unit/manageActivity/editActivityOutline/{{$Activity->activityName}}">แก้ไข</a>
-              <a class="btn btn-info" href="/Head_Information_Unit/manageActivity/deleteActivity/{{$Activity->activityId}}">ลบ</a>
+              <a class="btn btn-info" href="/Head_Information_Unit/manageActivityAll/editActivityOutline/{{$Activity->activityId}}">แก้ไข</a>
+              <a class="btn btn-info" href="/Head_Information_Unit/manageActivityAll/deleteActivity/{{$Activity->activityId}}">ลบ</a>
             </td>
           </tbody>
           @endif

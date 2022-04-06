@@ -142,7 +142,7 @@ Route::post('/Dormitory_Director/manageActivity/editActivityOutline/submitCreate
 Route::post('/Dormitory_Chairman/manageActivity/editActivityOutline/submitCreate', [App\Http\Controllers\ActivityController::class, 'submitCreateEditActivity_Dormitory_Chairman'])->name('submitCreateEditActivity_Dormitory_Chairman');
 Route::post('/Head_Information_Unit/manageActivityAll/editActivityOutline/submitCreate', [App\Http\Controllers\ActivityController::class, 'submitCreateEditActivity_Head_Information_Unit'])->name('submitCreateEditActivity_Head_Information_Unit');
 
-Route::post('/Head_Information_Unit/manageActivityAll/editActivity/submit', [App\Http\Controllers\ActivityController::class, 'submitEditActivity_Head_Information_Unit'])->name('submitEditActivity_Head_Information_Unit');
+Route::get('/Head_Information_Unit/manageActivityAll/editActivity/submit', [App\Http\Controllers\ActivityController::class, 'submitEditActivity_Head_Information_Unit'])->name('submitEditActivity_Head_Information_Unit');
 
 
 Route::post('/Dormitory_Director/manageActivity/editActivityOutline/submitSave', [App\Http\Controllers\ActivityController::class, 'submitSaveEditActivityOutline_Dormitory_Director'])->name('submitSaveEditActivityOutline_Dormitory_Director');
@@ -204,7 +204,7 @@ Route::get('/Head_Information_Unit/AddActivityType', [App\Http\Controllers\Activ
 
 Route::get('/Dormitory_Director/manageActivity/activityHasUser/{activityId}', [App\Http\Controllers\ActivityController::class, 'activityHasUserDormitory_Director'])->name('activityHasUserDormitory_Director');
 
-Route::post('/Dormitory_Director/createActivity/AddActivityType/Submit', [App\Http\Controllers\ActivityController::class, 'SubmitAddActivityTypeDormitory_Director'])->name('SubmitAddActivityTypeDormitory_Director');
+Route::post('/AddActivityType/Submit', [App\Http\Controllers\ActivityController::class, 'SubmitAddActivityTypeDormitory_Director'])->name('SubmitAddActivityTypeDormitory_Director');
 
 Route::get('/export/UserHasActivity/{activityName}', [App\Http\Controllers\UserController::class, 'exportUserHasActivity'])->name('exportUserHasActivity');
 

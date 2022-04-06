@@ -27,6 +27,8 @@
         <form method="POST" enctype="multipart/form-data">
           {{csrf_field()}}
           <div class="form-group">
+            รหัสกิจกรรม
+            <input type="text" name="activityId" class="form-control" value="{{$Activity->activityId}}" readonly><br><br>
             ชื่อกิจกรรม
             <input type="text" name="activityName" class="form-control" value="{{$Activity->activityName}}">
             <span class="text-danger"> @error("activityName"){{$message}}@enderror </span><br><br>
