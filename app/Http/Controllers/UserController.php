@@ -146,15 +146,15 @@ class UserController extends Controller
     }
     public function showDataActivityAllHead_Dormitory_Service()
     {
-        $myDorm = DB::table('dormitory_user_history')->where('id_users', auth()->user()->id_users)->first();
+
         $Activity = Activity::all();
-        return view('auth.ManagerUser.showDataActivityAllHead_Dormitory_Service', compact('myDorm'))->with('file', $Activity);
+        return view('auth.ManagerUser.showDataActivityAllHead_Dormitory_Service')->with('data', $Activity);
     }
     public function showDataActivityAllDirector_Dormitory_Service_Division()
     {
-        $myDorm = DB::table('dormitory_user_history')->where('id_users', auth()->user()->id_users)->first();
+
         $Activity = Activity::all();
-        return view('auth.ManagerUser.showDataActivityAllDirector_Dormitory_Service_Division', compact('myDorm'))->with('file', $Activity);
+        return view('auth.ManagerUser.showDataActivityAllDirector_Dormitory_Service_Division')->with('data', $Activity);
     }
 
 

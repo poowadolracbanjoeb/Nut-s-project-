@@ -14,7 +14,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/Dormitory_Counselor/home">หน้าหลัก</a></li>
-            <li class="breadcrumb-item active"><a href="/Dormitory_Counselor/manageActivity">จัดการกิจกรรม</a></li>
+            <li class="breadcrumb-item active"><a href="/Dormitory_Counselor/showDataActivityAll">ดูข้อมูลกิจกรรม</a></li>
             <li class="breadcrumb-item active"><a href="/Dormitory_Counselor/manageActivity/activityDetail/{{$Activity->activityName}}">ดูรายละเอียดกิจกรรม</a></li>
           </ol>
         </div>

@@ -12,7 +12,7 @@
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="/Dormitory_Director/home">หน้าหลัก</a></li>
-          <li class="breadcrumb-item active"><a href="/Dormitory_Director/showDataStudentAll">จัดการข้อมูลผู้ใช้</a></li>
+          <li class="breadcrumb-item active"><a href="/Dormitory_Director/showDataStudentAll">ดูข้อมูลผู้ใช้</a></li>
         </ol>
       </div>
     </div>

@@ -17,7 +17,7 @@ class CreateUserSeeder extends Seeder
         $user = [
             [
                 #นักศึกษา
-                'id_users' => '61385456-8',
+                'id_users' => '613854556-8',
                 'name' => 'บุญมา ดัตวทฤษ',
                 'email' => '1@1',
                 'password' => bcrypt('1'),

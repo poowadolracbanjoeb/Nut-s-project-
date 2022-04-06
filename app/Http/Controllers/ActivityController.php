@@ -792,33 +792,14 @@ class ActivityController extends Controller
 
     public function manageActivityAllHead_Information_Unit(Request $request)
     {
-        $search =  $request->input('q');
-        if ($search != "") {
-            $Activity = Activity::where(function ($query) use ($search) {
-                $query->where('name', 'like', '%' . $search . '%')
-                    ->orWhere('email', 'like', '%' . $search . '%');
-            })
-                ->paginate(10);
-            $Activity->appends(['q' => $search]);
-        } else {
-            $Activity = Activity::paginate(10);
-            return view('auth.Activity.manageActivityAllHead_Information_Unit')->with('file', $Activity);
-        }
+        $Activity = Activity::paginate(10);
+        return view('auth.Activity.manageActivityAllHead_Information_Unit')->with('file', $Activity);
     }
     public function manageActivityAllOutlineHead_Information_Unit(Request $request)
     {
-        $search =  $request->input('q');
-        if ($search != "") {
-            $Activity = Activity::where(function ($query) use ($search) {
-                $query->where('name', 'like', '%' . $search . '%')
-                    ->orWhere('email', 'like', '%' . $search . '%');
-            })
-                ->paginate(10);
-            $Activity->appends(['q' => $search]);
-        } else {
-            $Activity = Activity::paginate(10);
-            return view('auth.Activity.manageActivityAllOutlineHead_Information_Unit')->with('file', $Activity);
-        }
+
+        $Activity = Activity::paginate(10);
+        return view('auth.Activity.manageActivityAllOutlineHead_Information_Unit')->with('file', $Activity);
     }
 
 
@@ -876,7 +857,7 @@ class ActivityController extends Controller
 
         $data2 = new activity_responsible_dorm;
         $data2->activityName = $request->activityName;
-        $data2->dormName = $myDorm->dormName;
+        $data2->dormName = "all";
         $data2->save();
 
         if ($request->dormResponsibility1 != null) {
@@ -1173,9 +1154,9 @@ class ActivityController extends Controller
 
         ]);
         $data2 = new activity_responsible_dorm;
-            $data2->activityName = $request->activityName;
-            $data2->dormName = $myDorm->dormName;
-            $data2->save();
+        $data2->activityName = $request->activityName;
+        $data2->dormName = $myDorm->dormName;
+        $data2->save();
 
         if ($request->dormResponsibility1 != null) {
             $data2 = new activity_responsible_dorm;
@@ -1250,9 +1231,9 @@ class ActivityController extends Controller
 
         ]);
         $data2 = new activity_responsible_dorm;
-            $data2->activityName = $request->activityName;
-            $data2->dormName = $myDorm->dormName;
-            $data2->save();
+        $data2->activityName = $request->activityName;
+        $data2->dormName = $myDorm->dormName;
+        $data2->save();
 
         if ($request->dormResponsibility1 != null) {
             $data2 = new activity_responsible_dorm;
