@@ -41,7 +41,7 @@
                         <td>{{$Activity->activityStartDate}} ถึง {{$Activity->activityEndDate}}</td>
                         <td><a class="btn btn-info" href="/activityFile/download/{{$Activity->activityFile}}">ดาวน์โหลด</a></td>
                         <td>
-                        <a class="btn btn-info" href="/Head_Dormitory_Service/approveActivity/approve/{{$Activity->activityId}}">อนุมัติกิจกรรม</a>
+                            <a class="btn btn-info" href="/Head_Dormitory_Service/approveActivity/approve/{{$Activity->activityId}}">อนุมัติกิจกรรม</a>
                         </td>
                     </tbody>
                     @endif
@@ -50,7 +50,5 @@
             </div>
         </div>
     </div>
-
 </div>
-
 @endsection

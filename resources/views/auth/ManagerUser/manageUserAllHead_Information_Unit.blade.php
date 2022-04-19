@@ -60,6 +60,7 @@
             <div class="row">
                 <div class="col-10">
                     <a class="btn btn-success" href="/Head_Information_Unit/manageUserAll/importUsers">นำผู้ใช้เข้า</a>
+                    <a class="btn btn-warning" href="/export">ดาวน์โหลดข้อมูลผู้ใช้</a>
                 </div>
 
             </div>

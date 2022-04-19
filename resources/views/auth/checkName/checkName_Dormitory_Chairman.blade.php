@@ -1,4 +1,4 @@
-@extends('layouts.appDormitory_Director')
+@extends('layouts.appDormitory_Chairman')
 
 @section('content')
 <br>
@@ -12,9 +12,9 @@
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="/Head_Information_Unit/home">หน้าหลัก</a></li>
-          <li class="breadcrumb-item active"><a href="/Dormitory_Director/manageActivity">จัดการกิจกรรม</a></li>
-          <li class="breadcrumb-item active"><a href="/Head_Information_Unit/manageUserAll">เช็กชื่อกิจกรรม</a></li>
+          <li class="breadcrumb-item"><a href="/Dormitory_Chairman/home">หน้าหลัก</a></li>
+          <li class="breadcrumb-item active"><a href="/Dormitory_Chairman/manageActivity">จัดการกิจกรรม</a></li>
+          <li class="breadcrumb-item active"><a href="/Dormitory_Chairman/manageUserAll">เช็กชื่อกิจกรรม</a></li>
         </ol>
       </div>
     </div>
@@ -60,7 +60,7 @@
           <tr>
             <td> {{$user_has_activity -> id_users}}</td>
             <td>
-              <a class="btn btn-danger" href="/Dormitory_Director/checkName/delete_user/{{$user_has_activity -> id_users}}/{{$Activity->activityName}}">ลบ</a>
+              <a class="btn btn-danger" href="/Dormitory_Chairman/checkName/delete_user/{{$user_has_activity -> id_users}}/{{$Activity->activityName}}">ลบ</a>
             </td>
           </tr>
         </tbody>

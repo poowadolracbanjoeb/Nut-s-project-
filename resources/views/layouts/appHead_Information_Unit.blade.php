@@ -65,7 +65,7 @@
       <ul class="navbar-nav ml-auto">
         <!-- User Name -->
         <li class="nav-item d-none d-sm-inline-block">
-          <a class="nav-link">
+          <a class="nav-link" href="/Head_Information_Unit/showDataUser">
             {{ Auth::user()->name }}
           </a>
         </li>

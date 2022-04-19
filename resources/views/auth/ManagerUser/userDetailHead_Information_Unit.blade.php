@@ -11,8 +11,9 @@
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="/Student/home">หน้าหลัก</a></li>
-          <li class="breadcrumb-item active"><a href="/Student/showDataUser">ข้อมูลนักศึกษา</a></li>
+          <li class="breadcrumb-item"><a href="/Head_Information_Unit/home">หน้าหลัก</a></li>
+          <li class="breadcrumb-item active"><a href="/Head_Information_Unit/manageUserAll">จัดการข้อมูลผู้ใช้</a></li>
+          <li class="breadcrumb-item active"><a href="/Head_Information_Unit/userDetail/{{$user->id_users}}">ข้อมูลผู้ใช้</a></li>
         </ol>
       </div>
     </div>

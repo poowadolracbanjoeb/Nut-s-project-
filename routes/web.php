@@ -154,7 +154,7 @@ Route::get('/Dormitory_Chairman/manageActivity/deleteActivity/{activityId}', [Ap
 Route::get('/Head_Information_Unit/manageActivityAll/deleteActivity/{activityId}', [App\Http\Controllers\ActivityController::class, 'deleteActivityAll_Head_Information_Unit'])->name('deleteActivityAll_Head_Information_Unit');
 
 
-Route::get('/Dormitory_Director/checkName/delete_user/{id_user}/{activityName}', [App\Http\Controllers\ActivityController::class, 'delete_user_has_Activity_Dormitory_Director'])->name('delete_user_has_Activity_Dormitory_Director');
+Route::get('/checkName/delete_user/{id_user}/{activityName}', [App\Http\Controllers\ActivityController::class, 'delete_user_has_Activity_Dormitory_Director'])->name('delete_user_has_Activity_Dormitory_Director');
 
 
 
@@ -184,7 +184,7 @@ Route::get('/Head_Information_Unit/userDetail/{activityId}', [App\Http\Controlle
 Route::get('/Head_Information_Unit/manageUserAll/editUserDetail/{activityId}', [App\Http\Controllers\UserController::class, 'editUserDetailHead_Information_Unit'])->name('editUserDetailHead_Information_Unit');
 Route::post('/Head_Information_Unit/manageUserAll/editActivity/submit', [App\Http\Controllers\UserController::class, 'submitEditUserDetailHead_Information_Unit'])->name('submitEditUserDetailHead_Information_Unit');
 
-Route::get('export', [App\Http\Controllers\UserController::class, 'export'])->name('export');
+Route::get('/export', [App\Http\Controllers\UserController::class, 'export'])->name('export');
 Route::post('importUsers', [App\Http\Controllers\UserController::class, 'importUsers'])->name('importUsers');
 Route::post('importUsersHistory', [App\Http\Controllers\UserController::class, 'importUsersHistory'])->name('importUsersHistory');
 Route::get('search', [App\Http\Controllers\UserController::class, 'search'])->name('search');
@@ -195,14 +195,18 @@ Route::post('importUsersScore', [App\Http\Controllers\UserController::class, 'im
 Route::get('/Dormitory_Director/viewStatusActivityApprove', [App\Http\Controllers\ActivityController::class, 'viewStatusActivityApproveDormitory_Director'])->name('viewStatusActivityApproveDormitory_Director');
 Route::get('/Dormitory_Chairman/viewStatusActivityApprove', [App\Http\Controllers\ActivityController::class, 'viewStatusActivityApproveDormitory_Chairman'])->name('viewStatusActivityApproveDormitory_Chairman');
 
-Route::get('/checkName/{activityName}', [App\Http\Controllers\ActivityController::class, 'checkName'])->name('checkName');
+Route::get('/Dormitory_Director/checkName/{activityName}', [App\Http\Controllers\ActivityController::class, 'checkName_Dormitory_Director'])->name('checkName_Dormitory_Director');
 Route::post('/checkName/{activityName}/Submit', [App\Http\Controllers\ActivityController::class, 'submitCheckName'])->name('submitCheckName');
+
+Route::get('/Dormitory_Chairman/checkName/{activityName}', [App\Http\Controllers\ActivityController::class, 'checkName_Dormitory_Chairman'])->name('checkName_Dormitory_Chairman');
 
 Route::get('/Dormitory_Chairman/AddActivityType', [App\Http\Controllers\ActivityController::class, 'AddActivityTypeDormitory_Chairman'])->name('AddActivityTypeDormitory_Chairman');
 Route::get('/Dormitory_Director/AddActivityType', [App\Http\Controllers\ActivityController::class, 'AddActivityTypeDormitory_Director'])->name('AddActivityTypeDormitory_Director');
 Route::get('/Head_Information_Unit/AddActivityType', [App\Http\Controllers\ActivityController::class, 'AddActivityTypeHead_Information_Unit'])->name('AddActivityTypeHead_Information_Unit');
 
 Route::get('/Dormitory_Director/manageActivity/activityHasUser/{activityId}', [App\Http\Controllers\ActivityController::class, 'activityHasUserDormitory_Director'])->name('activityHasUserDormitory_Director');
+Route::get('/Dormitory_Chairman/manageActivity/activityHasUser/{activityId}', [App\Http\Controllers\ActivityController::class, 'activityHasUserDormitory_Chairman'])->name('activityHasUserDormitory_Chairman');
+
 
 Route::post('/AddActivityType/Submit', [App\Http\Controllers\ActivityController::class, 'SubmitAddActivityTypeDormitory_Director'])->name('SubmitAddActivityTypeDormitory_Director');
 

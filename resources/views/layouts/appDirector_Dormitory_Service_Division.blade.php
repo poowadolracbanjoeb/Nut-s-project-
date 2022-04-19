@@ -55,7 +55,7 @@
       <ul class="navbar-nav ml-auto">
         <!-- User Name -->
         <li class="nav-item d-none d-sm-inline-block">
-          <a class="nav-link">
+          <a class="nav-link" href="/Director_Dormitory_service_Division/showDataUser">
             {{ Auth::user()->name }}
           </a>
         </li>
@@ -66,7 +66,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-light-success elevation-4">
       <!-- Brand Logo -->
-      <a href="/Dormitory_Director/home" class="brand-link">
+      <a href="/Director_Dormitory_service_Division/home" class="brand-link">
         <img src="{{ asset('dist/img/LogoKKU-thai.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">AMS KKU</span>
       </a>

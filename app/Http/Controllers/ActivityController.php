@@ -358,6 +358,13 @@ class ActivityController extends Controller
         $Activity = DB::table('activities')->where('activityName', $activityName)->first();
         return view('auth.Activity.activityHasUserDormitory_Director', compact('Activity'))->with('data', $user_has_activity);
     }
+    
+    public function activityHasUserDormitory_Chairman($activityName)
+    {
+        $user_has_activity = users_has_activities::all();
+        $Activity = DB::table('activities')->where('activityName', $activityName)->first();
+        return view('auth.Activity.activityHasUserDormitory_Chairman', compact('Activity'))->with('data', $user_has_activity);
+    }
 
     public function SubmitAddActivityTypeDormitory_Director(Request $request)
     {
@@ -1006,7 +1013,8 @@ class ActivityController extends Controller
         DB::table('activities')->where('activityId', $request->activityId)->update([
             'id_status' => 31
         ]);
-        return back()->with('post_update', 'อนุมัติสำเร็จแล้ว');
+        Alert::success('อนุมัติกิจกรรมสำเร็จ');
+        return back();
     }
 
     public function submitNotApproveDormitory_Counselor(Request $request)
@@ -1444,13 +1452,23 @@ class ActivityController extends Controller
 
     //--------------------combined function-------------------------------
 
-    public function checkName($activityName)
+    public function checkName_Dormitory_Director($activityName)
     {
 
         $user_has_activity = users_has_activities::all();
         $Activity = DB::table('activities')->where('activityName', $activityName)->first();
-        return view('auth.checkName.checkName', compact('Activity'))->with('data', $user_has_activity);
+        return view('auth.checkName.checkName_Dormitory_Director', compact('Activity'))->with('data', $user_has_activity);
     }
+
+    public function checkName_Dormitory_Chairman($activityName)
+    {
+
+        $user_has_activity = users_has_activities::all();
+        $Activity = DB::table('activities')->where('activityName', $activityName)->first();
+        return view('auth.checkName.checkName_Dormitory_Chairman', compact('Activity'))->with('data', $user_has_activity);
+    }
+
+    
 
 
     public function submitCheckName(Request $request, $activityName)

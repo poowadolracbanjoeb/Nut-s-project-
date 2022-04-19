@@ -55,7 +55,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="/Dormitory_Chairman/home" class="nav-link">หน้าหลัก</a>
+          <a href="/Dormitory_Director/home" class="nav-link">หน้าหลัก</a>
         </li>
       </ul>
 
@@ -63,7 +63,7 @@
       <ul class="navbar-nav ml-auto">
         <!-- User Name -->
         <li class="nav-item d-none d-sm-inline-block">
-          <a class="nav-link">
+          <a class="nav-link" href="/Dormitory_Director/showDataUser">
             {{ Auth::user()->name }}
           </a>
         </li>
@@ -74,7 +74,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-light-success elevation-4">
       <!-- Brand Logo -->
-      <a href="/Dormitory_Chairman/home" class="brand-link">
+      <a href="/Dormitory_Director/home" class="brand-link">
         <img src="{{ asset('dist/img/LogoKKU-thai.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">AMS KKU</span>
       </a>

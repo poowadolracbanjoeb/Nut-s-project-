@@ -46,7 +46,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="/Dormitory_Director/home" class="nav-link">หน้าหลัก</a>
+          <a href="/Head_Dormitory_Service/home" class="nav-link">หน้าหลัก</a>
         </li>
       </ul>
 
@@ -54,7 +54,7 @@
       <ul class="navbar-nav ml-auto">
         <!-- User Name -->
         <li class="nav-item d-none d-sm-inline-block">
-          <a class="nav-link">
+          <a class="nav-link" href="/Head_Dormitory_Service/showDataUser">
             {{ Auth::user()->name }}
           </a>
         </li>

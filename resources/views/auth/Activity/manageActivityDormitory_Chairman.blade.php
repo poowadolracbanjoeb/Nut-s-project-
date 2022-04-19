@@ -57,7 +57,7 @@
             <td>{{$Activity->activityStartDate}} ถึง {{$Activity->activityEndDate}}</td>
             <td><a class="btn btn-info" href="/Dormitory_Chairman/manageActivity/activityDetail/{{$Activity->activityName}}">ดูรายละเอียด</a>
               <a class="btn btn-info" href="/Dormitory_Chairman/manageActivity/activityHasUser/{{$Activity->activityName}}">ดูนักศึกษาที่เข้าร่วม</a>
-              <a class="btn btn-info" href="/checkName/{{$Activity->activityName}}">เช็กชื่อ</a>
+              <a class="btn btn-info" href="/Dormitory_Chairman/checkName/{{$Activity->activityName}}">เช็กชื่อ</a>
             </td>
           </tbody>
           @endif

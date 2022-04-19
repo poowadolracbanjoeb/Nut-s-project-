@@ -32,7 +32,7 @@
           <input type="text" name="typeName" class="form-control">
           <span class="text-danger"> @error("typeName"){{$message}}@enderror </span><br><br>
 
-          <input type="submit" class="btn btn-success" value="ยืนยัน" formaction="{{url('/Dormitory_Director/createActivity/AddActivityType/Submit')}}">
+          <input type="submit" class="btn btn-success" value="ยืนยัน" formaction="{{url('/AddActivityType/Submit')}}">
       </form>
     </div>
   </div>
