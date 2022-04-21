@@ -361,9 +361,10 @@ class UserController extends Controller
     /**
      * @return \Illuminate\Support\Collection
      */
-    public function export()
+    public function export(Request $request)
     {
-        return Excel::download(new UsersExport, 'users.xlsx');
+        $semester2 = $request->semester2;
+        return Excel::download(new UsersExport($semester2), 'Users.xlsx');
     }
 
     public function exportUserHasActivity($activityName)

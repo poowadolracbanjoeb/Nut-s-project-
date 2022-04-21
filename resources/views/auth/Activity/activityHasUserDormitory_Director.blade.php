@@ -46,6 +46,7 @@
                     <thead>
                         <tr class="table-warning ">
                             <th>รหัสนักศึกษา</th>
+                            <th>ชื่อผู้ใช้</th>
                         </tr>
                     </thead>
                     @foreach($data as $user_has_activity)
@@ -53,6 +54,7 @@
                     <tbody>
                         <tr>
                             <td> {{$user_has_activity -> id_users}}</td>
+                            <td> {{$user_has_activity->getUser->name}}</td>
 
                         </tr>
                     </tbody>

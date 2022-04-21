@@ -51,6 +51,7 @@
         <thead>
           <tr class="table-warning ">
             <th>รหัสนักศึกษา</th>
+            <th>ชื่อนักศึกษา</th>
             <th>ดำเนินการ</th>
           </tr>
         </thead>
@@ -59,6 +60,7 @@
         <tbody>
           <tr>
             <td> {{$user_has_activity -> id_users}}</td>
+            <td> {{$user_has_activity->getUser->name}}</td>
             <td>
               <a class="btn btn-danger" href="/Dormitory_Chairman/checkName/delete_user/{{$user_has_activity -> id_users}}/{{$Activity->activityName}}">ลบ</a>
             </td>

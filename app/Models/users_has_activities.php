@@ -14,4 +14,8 @@ class users_has_activities extends Model
         'activityScore'
     ];
     protected $table = "users_has_activities";
+
+    public function getUser(){
+        return $this->belongsTo(User::class,'id_users');
+    }
 }

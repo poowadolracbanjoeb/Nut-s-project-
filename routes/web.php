@@ -187,7 +187,6 @@ Route::post('/Head_Information_Unit/manageUserAll/editActivity/submit', [App\Htt
 Route::get('/export', [App\Http\Controllers\UserController::class, 'export'])->name('export');
 Route::post('importUsers', [App\Http\Controllers\UserController::class, 'importUsers'])->name('importUsers');
 Route::post('importUsersHistory', [App\Http\Controllers\UserController::class, 'importUsersHistory'])->name('importUsersHistory');
-Route::get('search', [App\Http\Controllers\UserController::class, 'search'])->name('search');
 Route::post('changePassword', [App\Http\Controllers\UserController::class, 'changePassword'])->name('changePassword');
 Route::post('importUsersScore', [App\Http\Controllers\UserController::class, 'importUsersScore'])->name('importUsersScore');
 

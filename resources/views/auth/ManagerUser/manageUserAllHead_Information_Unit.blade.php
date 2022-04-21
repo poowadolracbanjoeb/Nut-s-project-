@@ -22,6 +22,45 @@
 <div class="container">
     <div class="card bg-light mt-3">
         <div class="card-body">
+            <br>
+            <div class="row">
+                <div class="col-10">
+                    <a class="btn btn-success" href="/Head_Information_Unit/manageUserAll/importUsers">นำผู้ใช้เข้า</a>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="card bg-light mt-3">
+        <div class="card-body">
+            <br>
+            <div class="row">
+                <div class="col-10">
+                    <div class="form-group">
+                        <select class="form-select" name="semester2" class="form-control">
+                            <option value="">ปีการศึกษา</option>
+                            <option value="2/2565">2/2565</option>
+                            <option value="1/2565">1/2565</option>
+                            <option value="3/2564">3/2564</option>
+                            <option value="2/2564">2/2564</option>
+                            <option value="1/2564">1/2564</option>
+                            <option value="3/2563">3/2563</option>
+                            <option value="2/2563">2/2563</option>
+                            <option value="1/2563">1/2563</option>
+                        </select>
+                        <a type="submit" class="btn btn-warning" href="/export">ดาวน์โหลดข้อมูลผู้ใช้</a>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="card bg-light mt-3">
+        <div class="card-body">
             <h3>ค้นหาผู้ใช้</h3><br>
 
             <form action="">
@@ -52,34 +91,24 @@
         </div>
     </div>
 </div>
-
 <div class="container">
     <div class="card bg-light mt-3">
         <div class="card-body">
-            <br>
-            <div class="row">
-                <div class="col-10">
-                    <a class="btn btn-success" href="/Head_Information_Unit/manageUserAll/importUsers">นำผู้ใช้เข้า</a>
-                    <a class="btn btn-warning" href="/export">ดาวน์โหลดข้อมูลผู้ใช้</a>
-                </div>
-
-            </div>
-            <br>
-
-
             <table class="table table-striped table-ligh">
                 <thead>
                     <tr class="table-warning ">
                         <th>รหัสผู้ใช้</th>
+                        <th>ชื่อผู้ใช้</th>
                         <th>ดำเนินการ</th>
                     </tr>
                 </thead>
                 @foreach($data2 as $Members)
                 <tbody>
                     <td>{{$Members->id_users}}</td>
+                    <td>{{$Members->getUser->name}}</td>
                     <td><a class="btn btn-info" href="/Head_Information_Unit/userDetail/{{$Members->id_users}}">ดูข้อมูล</a>
-                    <a class="btn btn-info" href="/Head_Information_Unit/manageUserAll/editUserDetail/{{$Members->id_users}}">แก้ไข</a>
-                    <a class="btn btn-info" href="/Head_Information_Unit/manageUserAll/delete_user/{{$Members->id_users}}">ลบ</a>
+                        <a class="btn btn-info" href="/Head_Information_Unit/manageUserAll/editUserDetail/{{$Members->id_users}}">แก้ไข</a>
+                        <a class="btn btn-info" href="/Head_Information_Unit/manageUserAll/delete_user/{{$Members->id_users}}">ลบ</a>
                     </td>
                 </tbody>
                 @endforeach

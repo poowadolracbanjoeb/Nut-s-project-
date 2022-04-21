@@ -61,12 +61,14 @@
                 <thead>
                     <tr class="table-warning ">
                         <th>รหัสผู้ใช้</th>
+                        <th>ชื่อผู้ใช้</th>
                         <th>ดำเนินการ</th>
                     </tr>
                 </thead>
                 @foreach($data2 as $Members)
                 <tbody>
                     <td>{{$Members->id_users}}</td>
+                    <td>{{$Members->getUser->name}}</td>
                     <td><a class="btn btn-info" href="/Director_Dormitory_Service_Division/userDetail/{{$Members->id_users}}">ดูข้อมูล</a>
                     </td>
                 </tbody>

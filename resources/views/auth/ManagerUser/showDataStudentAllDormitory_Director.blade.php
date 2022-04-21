@@ -46,6 +46,7 @@
         <thead>
           <tr class="table-warning ">
             <th>รหัสนักศึกษา</th>
+            <th>ชื่อผู้ใช้</th>
             <th>ดำเนินการ</th>
           </tr>
         </thead>
@@ -53,6 +54,7 @@
         @if($Members->dormName ==  $myDorm->dormName)
         <tbody>
           <td>{{$Members->id_users}}</td>
+          <td>{{$Members->getUser->name}}</td>
           <td><a class="btn btn-info" href="/Dormitory_Director/userDetail/{{$Members->id_users}}">ดูข้อมูล</a>
           </td>  
         </tbody>

@@ -16,4 +16,8 @@ class dormitory_user_history extends Model
     ];
 
     protected $table ="dormitory_user_history";
+
+    public function getUser(){
+        return $this->belongsTo(User::class,'id_users');
+    }
 }
